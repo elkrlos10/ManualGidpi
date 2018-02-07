@@ -7,13 +7,17 @@ ManualApp.controller('MenuController',
 
             $rootScope.globals = $cookieStore.get('username');
 
-            if (VideoDemo == 0) {
-                setTimeout(function () {
-                    $('#AbrirDemo').trigger('click');
-                    VideoDemo = 1;
-                }, 1000);
+            if ($rootScope.proyecto == undefined) {
+                if (VideoDemo == 0) {
+                    setTimeout(function () {
+                        $('#AbrirDemo').trigger('click');
+                        VideoDemo = 1;
+                    }, 1000);
+                }
             }
+            
            
+
           
             //Funciones para direccionar a las vistas 
             $scope.DatosBasicos = function () {

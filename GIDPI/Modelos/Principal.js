@@ -103,8 +103,6 @@ ManualApp.config(function ($routeProvider) {
 
             $rootScope.proyecto = $cookieStore.get('datosProyecto');
 
-           
-      
             //Posición para las alertas
             alertify.set('notifier', 'position', 'top-right');
 
@@ -114,7 +112,7 @@ ManualApp.config(function ($routeProvider) {
                     return false;
                 }
 
-                if (!$rootScope.proyecto && $rootScope.InicioProyecto == 0) {
+                if (!$rootScope.proyecto && $rootScope.InicioProyecto == 0 && $location.path() != '/Colaboradores') {
                     $location.url("/Menu");
 
                 } else {
@@ -172,6 +170,7 @@ ManualApp.config(function ($routeProvider) {
                 $location.url("/Login");
             }
 
+           
         });
     }]);
 
