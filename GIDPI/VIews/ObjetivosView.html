@@ -1,0 +1,654 @@
+﻿<link href="../Css/MenuAyudaObjetivos.css" rel="stylesheet" />
+<link href="../Css/AyudaAudio.css" rel="stylesheet" />
+<link href="../Css/fontAudio.css" rel="stylesheet" />
+
+<!--INICIA AYUDA TEXTO-->
+
+<div id="ayudaTextoCuatro">
+    <div class="svg-popup-content" style="width:auto;">
+        <h3 class="title-plagin" style="text-align:center; color:#238271; text-transform:uppercase; font-weight:600;">Árbol de objetivos</h3>
+        <hr style="background:black;" />
+
+        <p>
+            <h4><b>Medios</b></h4>
+        <p>
+            Los medios son la transformación de las causas del árbol de problemas en positivo, estos deben ir relacionados para garantizar el alcance del objetivo general y los fines.
+        </p>
+
+        <br />
+
+        <h4><b>Fines</b></h4>
+        <p>
+            Son los resultados finales después de alcanzar el objetivo general; el cual, es la transformación de los efectos del árbol de problemas en positivo.
+        </p>
+
+        </p>
+
+    </div>
+</div>
+
+<!--FINALIZA AYUDA TEXTO-->
+<!--INICIA AYUDA VIDEO-->
+
+
+<div id="ArbolObjetivos">
+    <div id="ayudaVideoCuatro">
+        <div class="svg-popup-content" style="width:auto;">
+            <h3 class="title-plagin">Video ayuda arbol objetivos</h3>
+            <iframe width="560" height="315" class="cierre" src="https://www.youtube.com/embed/PMCHY43Tg8s"  frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!--FINALIZA AYUDA VIDEO-->
+    <!--INICIA AYUDA AUDIO-->
+    <div id="audioAyudaCuatro" style="display:none">
+        <div class="player audioArbolObjetivos">
+            <div class="control-row">
+                <div class="pauseButton" id="pause-button">
+                    <i class="icon icon-play"></i>
+                    <i class="icon"></i>
+                </div>
+                <div class="seek-field">
+                    <input id="audioSeekBar" min="0" max="334" step="1" value="0" type="range" oninput="audioSeekBar()" onchange="this.oninput()">
+                </div>
+                <div class="volume-icon">
+                    <i class="icon-volume-up"></i>
+                </div>
+                <div class="volume-field">
+                    <input type="range" min="0" max="100" value="100" step="1" oninput="audio.volume = this.value/100" onchange="this.oninput()">
+                </div>
+                <div>
+                    <button class="fa fa-close " id="closeObj1" ng-click="CerrarAudio()"  style="float:right; border:none; background:none ;color:#238276; margin-right:1%; font-size:18px;">  </button>
+                </div>
+            </div>
+        </div>
+
+        <audio id="audio-player" ontimeupdate="SeekBar()" ondurationchange="CreateSeekBar()" preload="auto" >
+            <source src="../audios/4.ÁRBOL DE OBJETIVOS.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+    <!--FINALIZA AYUDA AUDIO-->
+
+    <nav class="vertical" id="menuAyuda">
+        <input type="checkbox" id="toggle2" />
+        <label id="menuToggle" for="toggle2">
+            <span class="fa fa-bars" style="font-size:22px;"></span>
+        </label>
+        <menu style="margin-top:-6%;">
+            <li><a class="fa fa-power-off menuAyuda" style="font-size:22px;" ng-click="cerrarSesion()" title="Cerrar sesión"></a></li>
+            <li><a class="fa fa-arrow-left menuAyuda" title="Regresar al menú" ng-click="atras()" style="font-size:22px;"></a></li>
+            <li><a class="fa fa-file button demo-btn ayudaTextoCuatro menuAyuda" title="Leer ayuda" data-svg-popup="ayudaTextoCuatro" style="font-size:22px;"></a></li>
+            <li><a class="fa fa-video-camera button demo-btn ayudaVideoCuatro menuAyuda" title="Ver ayuda" data-svg-popup="ayudaVideoCuatro" ng-click="PauseAudio()" style="font-size:22px;"></a></li>
+            <li><a class="fa fa-volume-up button menuAyuda" title="Escuchar ayuda" id="ayudaAudioCuatro" style="font-size:22px;"></a></li>
+            <li><a class="fa fa-book button menuAyuda" title="Sobre nosotros" ng-click="Colaboradores()" style="font-size:22px;"></a></li>
+
+        </menu>
+    </nav>
+
+    <!-- ALERTAS -->
+    <div id="alerta">
+        <h3></h3>
+        <p></p>
+    </div>
+
+    <div id="tipArbolDeObjetivos">
+        <h5></h5>
+        <p></p>
+    </div>
+
+    <!-- VENTANAS MODALES -->
+    <div id="modal">
+        <div id="crearProblemaCentral" class="contenidoModal">
+            <h2 style="font-weight:600;">Define tu problema central</h2>
+            <hr>
+            <p>Nota: Maximo 140 caracteres.</p>
+            <textarea id="txtProblemaInicial" name="name" maxlength="140"></textarea>
+            <input id="btnProblemaCentral" class="btn" type="button" name="problemaCentral" value="Listo">
+        </div>
+    </div>
+
+    <!-- MOSTRAR Y OCULTAR EL PANEL -->
+    <div id="mostrarPanel" ng-click="mostrarPanel()">
+        <h6 id="textoPanel">Ocultar</h6>
+    </div>
+
+    <!-- PANEL -->
+    <div id="panel">
+        <h4>Agregar</h4>
+        <hr>
+        <!-- ELEMENTO -->
+        <select class="form-control" name="elemento" id="elemento" ng-change="cambioElemento()" ng-model="probando">
+            <option value="vacio">Seleccionar...</option>
+            <option value="efecto">Fines</option>
+            <option value="causa">Medios</option>
+            <option value="efectoIndirecto">Fines Indirectos</option>
+            <option value="causaIndirecta">Medios Indirectos</option>
+        </select>
+        <!-- ASIGNAR INDIRECTA -->
+        <div id="indirecta">
+            <h5 style="font-weight:600;">Asignar a <span id="txtIndirecta">Causa</span></h5>
+            <select class="form-control" name="asiganrIndirecta" id="asignarIndirecta">
+                <option value="vacio">Seleccionar...</option>
+            </select>
+        </div>
+        <!-- BOTON CREAR ELEMENTO -->
+        <input id="btnCrear" class="btn" type="button" name="crearElemento" value="Crear" ng-click="crear()">
+
+    </div>
+
+    <!--<div id="guardar"><p>Guardar</p></div>-->
+    <!-- ARBOL -->
+    <div id="arbolContenedor">
+        <!-- EFECTOS INDIRECTOS -->
+        <ul id="efectoIndirecto" class="nivel3"></ul>
+        <!-- IMG3 -->
+        <div id="imgEfecto3" class="img3"></div>
+        <!-- EFECTOS -->
+        <ul id="efecto" class="nivel2"></ul>
+        <!-- IMG2 -->
+        <img id="imgEfecto" src="" class="img2">
+        <!-- PROBLEMA CENTRAL -->
+        <ul id="problemaCentral" class="nivel1">
+            <li id="bloque1"  class="bloque">
+                <textarea id="txtProblema" class="txtBloque" name="txtProblema" maxlength="150"></textarea>
+            </li>
+        </ul>
+
+        <div id="guardar" style="position:absolute; z-index:9;" title="Guardar" ng-click="guardar()">
+            <i id="iconGuardar" class="fa fa-floppy-o" style="cursor:pointer; font-size:30px; color:#238276;" aria-hidden="true"></i>
+            <p style="font-size:10px; margin-left:-15%; text-align:center">Guardar</p>
+        </div>
+
+        <div id="tipArbolObjetivos" style="height:5vh; position:absolute; z-index:99;">
+            <span><i class="fa fa-info-circle" style="font-size:40px; color:#238276; cursor:pointer; float:left;" onclick="tipArbolObjetivos()"></i></span>
+        </div>
+
+
+        <!-- IMG2 -->
+        <img id="imgCausa" src="" class="img2">
+        <!-- CAUSAS -->
+        <ul id="causa" class="nivel2"></ul>
+        <!-- IMG3 -->
+        <div id="imgCausa3" class="img3"></div>
+        <!-- CAUSAS INDIRECTAS -->
+        <ul id="causaIndirecta" class="nivel3"></ul>
+    </div>
+
+</div>
+
+
+<!--INICIA AYUDA TEXTO-->
+
+<div id="ayudaTextoCinco">
+    <div class="svg-popup-content" id="objetivosAyuda">
+        <h3 class="title-plagin" style="text-align:center; color:#238271; text-transform:uppercase; font-weight:600;">Objetivos</h3>
+        <hr style="background:black;" />
+
+        <p>
+            <h4><b>Objetivo general</b></h4>
+        <p>
+            Es una acción o proceso a realizar, por eso comienza con un verbo en infinitivo y expresa una situación deseada en un proyecto, precisa la finalidad en cuanto a sus expectativas más amplias.
+        </p>
+        <h4><b>Objetivos específicos</b></h4>
+        <p>
+            Son los que permiten alcanzar el objetivo general, son propósitos puntuales para llevar a cabo el proyecto.
+        </p>
+
+        <p>
+            Para la elaboración de los objetivos específicos debe tener en cuenta lo siguiente: <br />
+
+            <ol>
+                <li>- Verifique que las causas identificadas permitan dar una respuesta total y completa a la pregunta: ¿Por qué ocurre esa problemática? </li>
+                <br />
+                <li>- Proceda a describir situaciones deseables que contrarresten las causas o factores negativos identificados. Es decir, cada una de las causas identificadas deberá expresarse de forma positiva convirtiéndose en un medio u objetivo específico que contribuirá a solucionar el problema.</li>
+                <br />
+                <li>- Verifique que los objetivos específicos abordados por el proyecto sean los que más incidencia tienen en la solución del problema, permitiendo alcanzar el objetivo general de la iniciativa.</li>
+                <br />
+                <li>
+                    - Si los objetivos específicos se realizan de forma complementaria, ¿llevarán al cumplimiento del objetivo general del proyecto?
+                    Al materializar los medios u objetivos específicos que abarca el proyecto, ¿se garantiza la solución del problema?
+                </li>
+                <br />
+            </ol>
+
+        <p><b>Verbo en infinitivo:</b>Son aquellas palabras que manifiestan acciones y que no están determinados por un tiempo, ya sea presente, pasado, futuro, o ningún otro. Además de que siempre terminan en “ar”, “er”, “ir”.</p>
+
+        <p><b>Sujeto:</b>Es el elemento de la oración que tiene la función de informar quién realiza, causa o padece la acción del verbo. El Sujeto se localiza fácilmente preguntándole al verbo¿quién?: Alberto estudia mucho (¿Quién estudia mucho?: Alberto).</p>
+
+        <p><b>Condición:</b>Se refiere a la descripción de las condiciones (facilidades, restricciones o ambas) en las cuales ha de realizarse el acto observable o resultado.</p>
+
+        <p><b>Criterio:</b>Un objetivo debe poder ser evaluado para ver en qué medida se han conseguido los resultados previstos. Para ello lo mejor es establecer en el mismo objetivo un criterio evaluador cumplido, que ha de considerarse cubierto suficientemente el objetivo.</p>
+
+
+        </p>
+
+        </p>
+
+    </div>
+</div>
+
+<!--FINALIZA AYUDA TEXTO-->
+<!--INICIA AYUDA VIDEO-->
+
+<div id="ayudaVideoCinco">
+    <div class="svg-popup-content" style="width:auto;">
+        <h3 class="title-plagin">Video ayuda objetivos</h3>
+        <iframe width="560" height="315"  src="https://www.youtube.com/embed/hEPzG9e8fwM"  frameborder="0" allowfullscreen></iframe>
+    </div>
+</div>
+
+<!--FINALIZA AYUDA VIDEO-->
+<!--INICIA AYUDA AUDIO-->
+<div id="audioAyudaCinco" style="display:none">
+    <div class="player audioObjetivos">
+        <div class="control-row">
+            <div class="pauseButton" id="pause-button1">
+                <i class="icon icon-play"></i>
+                <i class="icon"></i>
+            </div>
+            <div class="seek-field">
+                <input id="audioSeekBar1" min="0" max="334" step="1" value="0" type="range" oninput="audioSeekBar1()" onchange="this.oninput()">
+            </div>
+            <div class="volume-icon">
+                <i class="icon-volume-up"></i>
+            </div>
+            <div class="volume-field">
+                <input type="range" min="0" max="100" value="100" step="1" oninput="audio.volume = this.value/100" onchange="this.oninput()">
+            </div>
+            <div>
+                <button class="fa fa-close " id="closeObj2" ng-click="CerrarAudio()" style="float:right; border:none; background:none ;color:#238276; margin-right:1%; font-size:18px;">  </button>
+            </div>
+        </div>
+    </div>
+
+    <audio id="audio-player1" ontimeupdate="SeekBar1()" ondurationchange="CreateSeekBar1()" preload="auto" >
+        <source src="../audios/10.Objetivos.mp3" type="audio/mpeg">
+    </audio>
+</div>
+<!--FINALIZA AYUDA AUDIO-->
+
+
+
+<div class="container-fluid" id="VistaObjetivos" style="height: auto; margin-top:-10%;">
+
+    <nav class="verticalDos" id="menuAyudaDos">
+        <input type="checkbox" id="toggle1" />
+        <label id="menuToggle" for="toggle1">
+            <span class="fa fa-bars" style="font-size:22px;"></span>
+        </label>
+        <menu style="margin-top:-6%;">
+            <li><a class="fa fa-power-off menuAyuda" style="font-size:22px;" ng-click="cerrarSesion()" title="Cerrar sesión"></a></li>
+            <li><a class="fa fa-arrow-left menuAyuda" title="Regresar al menú" ng-click="atras()" style="font-size:22px;"></a></li>
+            <li><a class="fa fa-file button demo-btn ayudaTextoCinco menuAyuda" title="Leer ayuda" data-svg-popup="ayudaTextoCinco" style="font-size:22px;"></a></li>
+            <li><a class="fa fa-video-camera button demo-btn ayudaVideoCinco menuAyuda" title="Ver ayuda" data-svg-popup="ayudaVideoCinco" ng-click="PauseAudio()" style="font-size:22px;"></a></li>
+            <li><a class="fa fa-volume-up button menuAyuda" title="Escuchar ayuda" id="ayudaAudioCinco" style="font-size:22px;"></a></li>
+            <li><a class="fa fa-book button menuAyuda" title="Sobre nosotros" ng-click="Colaboradores()" style="font-size:22px;"></a></li>
+
+        </menu>
+    </nav>
+
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:12vh;">
+        <h1 class="titulovistaObjetivos">Objetivos</h1>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height: 60vh;">
+
+
+        <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11" style="height: 47vh; margin-top:3.5%;">
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height: 6vh;"><p class="textos" id="tituloObjetivoGeneral">OBJETIVO GENERAL</p></div>
+
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="height: 6vh;">
+
+                <select class="form-control" id="verbo">
+
+                    <option>Establecer</option>
+                    <option>Averiguar</option>
+                    <option>Identificar</option>
+                    <option>Recopilar</option>
+                    <option>Investigar</option>
+                    <option>Revelar</option>
+                    <option>Descubrir</option>
+                    <option>Indagar</option>
+                    <option>Inquirir</option>
+                    <option>Diseñar</option>
+                    <option>Desarrollar</option>
+                    <option>Analizar</option>
+                    <option>Calcular</option>
+                    <option>Categorizar</option>
+                    <option>Comparar</option>
+                    <option>Definir</option>
+                    <option>Demostrar</option>
+                    <option>Describir</option>
+                    <option>Diagnosticar</option>
+                    <option>Diseñar</option>
+                    <option>Efectuar</option>
+                    <option>Enumerar</option>
+                    <option>Evaluar</option>
+                    <option>Explicar</option>
+                    <option>Examinar</option>
+                    <option>Exponer</option>
+                    <option>Formular</option>
+                    <option>Fundamentar</option>
+                    <option>Generar</option>
+                    <option>Identificar</option>
+                    <option>Ingerir</option>
+                    <option>Mostrar</option>
+                    <option>Orientar</option>
+                    <option>Oponer</option>
+                    <option>Reconstruir</option>
+                    <option>Identificar</option>
+                    <option>Ingerir</option>
+                    <option>Mostrar</option>
+                    <option>Orientar</option>
+                    <option>Oponer</option>
+                    <option>Reconstruir</option>
+                    <option>Relatar</option>
+                    <option>Replicar</option>
+                    <option>Reproducir</option>
+                    <option>Revelar</option>
+                    <option>Planear</option>
+                    <option>Presentar</option>
+                    <option>Probar</option>
+                    <option>Producir</option>
+                    <option>Proponer</option>
+                    <option>Situar</option>
+                    <option>Tasar</option>
+                    <option>Trazar</option>
+                    <option>Valuar</option>
+                </select>
+
+            </div>
+
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="height: 6vh;">
+                <input id="campoObjetivoGeneral" maxlength="200" class="form-control" type="text" ng-model="Objetivos.ObjetivoCentral" />
+            </div>
+
+
+
+
+
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height: 3vh"></div>
+
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height: 6vh"><p class="textos">OBJETIVOS ESPECÍFICOS</p></div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height: 16vh;">
+
+                <div class="input-group" ng-repeat="Medios in medios1">
+                    <span class="input-group-addon">{{$index+1}}</span>
+                    <input type="text" class="form-control" maxlength="199" name="msg" ng-model="Medios.medio" />
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="height: 47vh;">
+
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:3vh;"></div>
+            <div id="ayuda" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:5vh;">
+                <span><i class="fa fa-info-circle" style="font-size:40px; color:#238276; cursor:pointer; float:left;" onclick="tipObjetivos()"></i></span>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:2vh;"></div>
+
+            <div id="ayuda" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:5vh;">
+                <span><i class="fa fa-info-circle" style="font-size:40px; color:#238276; cursor:pointer;" onclick="tipObjetivosDos()"></i></span>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:2vh;"></div>
+
+            <div id="ayuda" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:5vh;">
+                <span><i class="fa fa-info-circle" style="font-size:40px; color:#238276; cursor:pointer;" onclick="tipObjetivosTres()"></i></span>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:2vh;"></div>
+
+    
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:2vh;"></div>
+
+            <div id="ayuda" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:5vh;">
+                <span><i class="fa fa-info-circle" style="font-size:40px; color:#238276; cursor:pointer;" onclick="tipObjetivosCinco()"></i></span>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+<!--INICIA AYUDA TEXTO-->
+
+<div id="ayudaTextoSeis">
+    <div class="svg-popup-content" style="width:auto;">
+        <h3 class="title-plagin" style="text-align:center; color:#238271; text-transform:uppercase; font-weight:600;">Resultados</h3>
+        <hr style="background:black;" />
+
+        <p>
+            <h4><b>Resultados</b></h4>
+        <p>
+            Los resultados son la información que se obtuvo en la investigación y asociadas a los objetivo, estos deben ser intangibles.
+        </p><br />
+
+        <h4><b>Productos</b></h4>
+        <p>
+            Son la consecuencia de un desarrollo de actividades.<br />
+            Los productos en general son tangibles, esto no quiere decir que sean físicos, tales como: Artículos, infraestructura construida, máquinas, software, intercambio de conocimiento, prestación de bien o servicios.
+        </p>
+
+
+    </div>
+</div>
+
+<!--FINALIZA AYUDA TEXTO-->
+<!--INICIA AYUDA AUDIO-->
+<div id="audioAyudaSeis" style="display:none">
+    <div class="player audioResultados">
+        <div class="control-row">
+            <div class="pauseButton" id="pause-button2">
+                <i class="icon icon-play"></i>
+                <i class="icon"></i>
+            </div>
+            <div class="seek-field">
+                <input id="audioSeekBar2" min="0" max="334" step="1" value="0" type="range" oninput="audioSeekBar2()" onchange="this.oninput()">
+            </div>
+            <div class="volume-icon">
+                <i class="icon-volume-up"></i>
+            </div>
+            <div class="volume-field">
+                <input type="range" min="0" max="100" value="100" step="1" oninput="audio.volume = this.value/100" onchange="this.oninput()">
+            </div>
+            <div>
+                <button class="fa fa-close "id="closeObj3" ng-click="CerrarAudio()" style="float:right; border:none; background:none ;color:#238276; margin-right:1%; font-size:18px;">  </button>
+            </div>
+            
+        </div>
+    </div>
+
+    <audio id="audio-player2" ontimeupdate="SeekBar2()" ondurationchange="CreateSeekBar2()" preload="auto" >
+        <source src="../audios/11.Resultado y productos.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+
+<!--FINALIZA AYUDA AUDIO-->
+<!--INICIA AYUDA VIDEO-->
+
+<div id="ayudaVideoSeis">
+    <div class="svg-popup-content" style="width:auto;">
+        <h3 class="title-plagin">Video ayuda Resultados de los objetivos</h3>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/FrGWdrHs8kk"  frameborder="0" allowfullscreen></iframe>
+    </div>
+</div>
+
+<!--FINALIZA AYUDA VIDEO-->
+
+<div class="container-fluid" id="vistaResultados" style="height: auto; margin-top:-10%;">
+
+    <nav class="verticalTres" id="menuAyudaTres">
+        <input type="checkbox" id="toggle3" />
+        <label id="menuToggle" for="toggle3">
+            <span class="fa fa-bars" style="font-size:22px;"></span>
+        </label>
+        <menu style="margin-top:-6%;">
+            <li><a class="fa fa-power-off menuAyuda" style="font-size:22px;" ng-click="cerrarSesion()" title="Cerrar sesión"></a></li>
+            <li><a class="fa fa-arrow-left menuAyuda" title="Regresar al menú" ng-click="atras()" style="font-size:22px;"></a></li>
+            <li><a class="fa fa-file button demo-btn ayudaTextoSeis menuAyuda" title="Leer ayuda" data-svg-popup="ayudaTextoSeis" style="font-size:22px;"></a></li>
+            <li><a class="fa fa-video-camera button demo-btn ayudaVideoSeis menuAyuda" title="Ver ayuda" data-svg-popup="ayudaVideoSeis" ng-click="PauseAudio()" style="font-size:22px;"></a></li>
+            <li><a class="fa fa-volume-up button menuAyuda" title="Escuchar ayuda" id="ayudaAudioSeis" style="font-size:22px;"></a></li>
+            <li><a class="fa fa-book button menuAyuda" title="Sobre nosotros" ng-click="Colaboradores()" style="font-size:22px;"></a></li>
+
+        </menu>
+    </nav>
+
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:12vh;">
+        <h1 class="titulovistaObjetivos">RESULTADOS OBJETIVOS</h1>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height: auto; margin-bottom:1%; margin-top:2%">
+
+        <table class="table  col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:5%;">
+
+            <thead>
+                <tr>
+                      <th class="text-center col-lg-1 col-md-1 col-sm-1 col-xs-1"> 
+                          <div id="ayuda" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:5vh;">
+                              <span><i class="fa fa-info-circle" style="font-size:40px; color:#238276; cursor:pointer;" onclick="tipObjetivosCuatro()"></i></span>
+                          </div>
+                       </th>
+
+                    <th class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-3" style="vertical-align:text-top;">
+                        Resultados esperados de cada uno de los<i class="fa fa-info-circle" style="font-size:25px; color:#238276; cursor:pointer; float:left;" onclick="tipResultados()"></i>objetivos  específicos
+
+                    </th>
+
+                    <th class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-3" style="vertical-align:text-top;">
+                        ¿Cómo va a medir los resultados?
+                        <i class="fa fa-info-circle" style="font-size:25px; color:#238276; cursor:pointer; float:left;" onclick="tipResultadosDos()"></i>
+                    </th>
+                    <th class="text-center col-lg-2 col-md-2 col-sm-2 col-xs-2" style="vertical-align:text-top;">
+                        ¿Qué herramienta va a utilizar<i class="fa fa-info-circle" style="font-size:25px; color:#238276; cursor:pointer; float:left;" onclick="tipResultadosTres()"></i> para medir los resultados?
+
+                    </th>
+
+
+
+                    <th class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-3" style="vertical-align:text-top;">
+                        Producto de los resultados
+                        <i class="fa fa-info-circle" style="font-size:25px; color:#238276; cursor:pointer; float:left;" onclick="tipResultadosCuatro()"></i>
+                    </th>
+
+                </tr>
+            </thead>
+
+            <tbody id="tbl">
+
+                <tr ng-repeat="(I, Indirectos) in medios">
+                    <th class="col-lg-1">
+                        <center><h1> {{$index+1}}</h1></center>
+
+                    </th>
+                    <th class="col-lg-3 col-md- col-sm-3 col-xs-3">
+                        <textarea style="width:100%;" class="block" maxlength="200" z ng-repeat="m in mediosIndirectos" ng-model="m.medioIndirectos" ng-if="m.idMedio == I"></textarea>
+                        <!--<textarea style="width:100%;" ng-if="$index==1"></textarea>
+                        <textarea style="width:100%;" ng-if="$index==2"></textarea>-->
+                    </th>
+
+                    <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                        <textarea style="width:100%;" class="block" maxlength="200" ng-repeat="m in mediosIndirectos" ng-if="m.idMedio == I" ng-model="m.Resultado"></textarea>
+
+                    </th>
+
+                    <th class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                        <textarea style="width:100%;" class="block" maxlength="200" ng-repeat="m in mediosIndirectos" ng-if="m.idMedio == I" ng-model="m.Herramienta"></textarea>
+
+                    </th>
+                    <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                        <textarea style="width:100%;" id="resultados" maxlength="200" ng-repeat="m in mediosIndirectos" ng-if="m.idMedio == I" ng-model="m.Producto"></textarea>
+
+                    </th>
+
+                </tr>
+
+
+
+            </tbody>
+        </table>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 colxs-12" style="height:6vh;">
+
+            <div id="Btnguardar" style="position:absolute; z-index:9; margin-left:95%;" title="Guardar" ng-click="guardarObjetivos()">
+                <i id="iconGuardar" class="fa fa-floppy-o" style="cursor:pointer; font-size:30px; color:#238276;" aria-hidden="true"></i>
+                <p style="font-size:10px; margin-left:-15%; text-align:center">Guardar</p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!--<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="height: 55vh;">
+
+        <!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:10vh;"></div>
+        <div id="ayuda" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:5vh;">
+            <span><i class="fa fa-info-circle" style="font-size:40px; color:#238276; cursor:pointer; float:left;" onclick="tipResultados()"></i></span>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:2vh;"></div>
+
+        <!--<div id="ayuda" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:5vh;">
+            <span><i class="fa fa-info-circle" style="font-size:40px; color:#238276; cursor:pointer;" onclick="tipResultadosDos()"></i></span>
+        </div>-
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:2vh;"></div>
+
+        <!--<div id="ayuda" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:5vh;">
+            <span><i class="fa fa-info-circle" style="font-size:40px; color:#238276; cursor:pointer;" onclick="tipResultadosTres()"></i></span>
+        </div>-
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:2vh;"></div>
+
+        <!--<div id="ayuda" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:5vh;">
+            <span><i class="fa fa-info-circle" style="font-size:40px; color:#238276; cursor:pointer;" onclick="tipResultadosCuatro()"></i></span>
+        </div>-
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:2vh;"></div>
+
+    </div>-->
+
+</div>
+
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="tabObjetivos" style="height: 12vh; margin-left:3%;" >
+
+    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="height: 12vh;"><center><button ng-click="ocultarObjetivos()" class="btn btn-success" title="Árbol de objetivos" style="border-radius:40%; margin-top:23%;"><i class="fa fa-sitemap" style="font-size:55px;"></i></button></center></div>
+
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="height: 12vh;"><hr class="lineaTab" style="height:2px; background:#238276;" /></div>
+
+    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="height: 12vh; "><center><button id="TabObjetivos" ng-click="ocultarArbol()" title="Objetivos" class="btn btn-success" style="border-radius:40%; margin-top:23%;"><i class="fa fa-location-arrow" style="font-size:55px;"></i></button></center></div>
+
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="height: 12vh;"><hr class="lineaTab" style="height:2px; background:#238276;" /></div>
+
+    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="height: 12vh; "><center><button id="resultados" ng-click="mostrarResultados()" title="Resultados de objetivos" class="btn btn-success" style="border-radius:40%; margin-top:23%;"><i class="fa fa-pencil-square-o" style="font-size:55px;"></i></button></center></div>
+
+</div>
+
+<style>
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+</style>
+
+<script src="../Modelos/ArbolObjetivos/BorrarElemento2.js"></script>
+<script src="../scripts/AnimacionTextoVideoAudio.js"></script>
+<script src="../scripts/AnimacionTips.js"></script>
+<script src="../scripts/audioAyuda.js"></script>
+<script src="../scripts/audioAyuda2.js"></script>
+<script src="../scripts/waves.min.js"></script>

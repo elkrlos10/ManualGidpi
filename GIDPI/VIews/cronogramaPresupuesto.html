@@ -1,0 +1,433 @@
+﻿<link href="../Css/MenuAyudaCronogramaPresupuesto.css" rel="stylesheet" />
+<link href="../Css/AyudaAudio.css" rel="stylesheet" />
+<link href="../Css/fontAudio.css" rel="stylesheet" />
+
+
+<!--INICIA AYUDA TEXTO-->
+
+<div id="ayudaTextoDiez">
+    <div class="svg-popup-content" style="width:auto;">
+        <h3 class="title-plagin" style="text-align:center; color:#238271; text-transform:uppercase; font-weight:600;">Cronograma</h3>
+        <hr style="background:black;" />
+
+        <p>
+            Son aquellas actividades que el ejecutor tiene que llevar a cabo para cumplir cada objetivo específico e implican la utilización de recursos.
+        <p>
+
+
+    </div>
+</div>
+
+<!--FINALIZA AYUDA TEXTO-->
+<!--INICIA AYUDA AUDIO-->
+<div id="audioAyudaDiez" style="display:none">
+    <div class="player audioCronograma">
+        <div class="control-row">
+            <div class="pauseButton" id="pause-button">
+                <i class="icon icon-play"></i>
+                <i class="icon"></i>
+            </div>
+            <div class="seek-field">
+                <input id="audioSeekBar" min="0" max="334" step="1" value="0" type="range" oninput="audioSeekBar()" onchange="this.oninput()">
+            </div>
+            <div class="volume-icon">
+                <i class="icon-volume-up"></i>
+            </div>
+            <div class="volume-field">
+                <input type="range" min="0" max="100" value="100" step="1" oninput="audio.volume = this.value/100" onchange="this.oninput()">
+            </div>
+            <div>
+                <button class="fa fa-close " id="closeCrono1" style="float:right; border:none; background:none ;color:#238276; margin-right:1%; font-size:18px;">  </button>
+            </div>
+        </div>
+    </div>
+
+    <audio id="audio-player" ontimeupdate="SeekBar()" ondurationchange="CreateSeekBar()" preload="auto" >
+        <source src="../audios/8.Cronograma.wav" type="audio/mpeg">
+    </audio>
+</div>
+<!--FINALIZA AYUDA AUDIO-->
+<!--INICIA AYUDA VIDEO-->
+
+<div id="ayudaVideoDiez">
+    <div class="svg-popup-content" style="width:auto;">
+        <h3 class="title-plagin">Video ayuda cronograma</h3>
+        <iframe width="560" height="315" class="cierre" src="https://www.youtube.com/embed/3Ir90x7MSYk" frameborder="0" allowfullscreen></iframe>
+    </div>
+</div>
+
+<!--FINALIZA AYUDA VIDEO-->
+
+
+
+<div class="container-fluid" style="height: auto; margin-top:-10%;">
+
+    <div class="container" style="min-height:100vh; background-color:rgba(192,192,192,0.15);">
+
+        <div id="containerCronograma" >
+
+            <nav class="verticalSeis" id="menuAyudaSeis">
+                <input type="checkbox" id="toggle6" />
+                <label id="menuToggle" for="toggle6">
+                    <span class="fa fa-bars" style="font-size:22px;"></span>
+                </label>
+                <menu style="margin-top:-6%;">
+                    <li><a class="fa fa-power-off menuAyuda" style="font-size:22px;" ng-click="cerrarSesion()" title="Cerrar sesión"></a></li>
+                    <li><a class="fa fa-arrow-left menuAyuda" title="Regresar al menú" ng-click="atras()" style="font-size:22px;"></a></li>
+                    <li><a class="fa fa-file button demo-btn ayudaTextoDiez menuAyuda" title="Leer ayuda" data-svg-popup="ayudaTextoDiez" style="font-size:22px;"></a></li>
+                    <li><a class="fa fa-video-camera button demo-btn ayudaVideoDiez menuAyuda" title="Ver ayuda" data-svg-popup="ayudaVideoDiez" ng-click="PauseAudio()" style="font-size:22px;"></a></li>
+                    <li><a class="fa fa-volume-up button menuAyuda" title="Escuchar ayuda" id="ayudaAudioDiez" style="font-size:22px;"></a></li>
+                    <li><a class="fa fa-book button menuAyuda" title="Sobre nosotros" ng-click="Colaboradores()" style="font-size:22px;"></a></li>
+
+                </menu>
+            </nav>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:12vh;">
+                <h1 class="titulovistaObjetivos">CRONOGRAMA</h1>
+            </div>
+
+
+            <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11" style="height: auto;">
+
+                <center>
+                    <table class="table table-responsive " style="width:80%;">
+                        <thead>
+                            <tr>
+                               <th class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center">#</th>
+                                <th class="col-lg-5 col-md-5 col-sm-5 col-xs-5 text-center">Actividad</th>
+                                <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center">Fecha inicio</th>
+                                <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center">Fecha fin</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr ng-repeat="crono in Cronograma">
+
+                                <td><h4 style="text-align:center">{{$index+1}}</h4></td>
+                                <td><textarea class="form-control" maxlength="500" ng-model="crono.Actividad"></textarea></td>
+                                <td class="input-daterange">
+
+                                    <input class="form-control FI" id="FeI" style="width:100%; height:50px;" ng-model="crono.FechaInicio" />
+                                </td>
+
+                                <td class="input-daterange">
+                                    <input class="form-control FE" id="FeF" style="width:100%; height:50px;" ng-model="crono.FechaFin" />
+                                </td>
+                            </tr>
+
+
+
+                        </tbody>
+                    </table>
+
+                </center>
+
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:6vh;">
+
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="height:6vh; margin-left:6%;">
+
+                        <center>
+                            <div id="agregarPresupuesto" ng-click="agregarCronograma()">
+                                <i id="iconEditar" class="fa fa-plus-square-o" style="cursor:pointer; font-size:30px; color:#238276;" aria-hidden="true"></i>
+                            </div>
+                            <p style="font-size:10px;">Agregar</p>
+                        </center>
+
+                    </div>
+
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="height:6vh; margin-left:2%;">
+
+                        <center>
+                            <div ng-click="EliminarCamposCrononograma()">
+                                <i id="iconEditar" class="fa fa-trash-o" style="cursor:pointer; font-size:30px; color:#238276;" aria-hidden="true"></i>
+                            </div>
+                            <p style="font-size:10px;">Eliminar</p>
+                        </center>
+
+                    </div>
+
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="height:6vh;"></div>
+
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="height:6vh; margin-left:80%; margin-top:-5%">
+
+                        <div style="margin-left:92%;" ng-click="GuardarCronograma()">
+                            <i id="iconGuardar" class="fa fa-floppy-o" style="cursor:pointer; font-size:30px; color:#238276;" aria-hidden="true"></i>
+                            <p style="font-size:10px; text-align:center; margin-left:-60%;">Guardar</p>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!--<div>
+                    <button class="btn btn-success fa fa-plus" style="margin-left:10%" id="agregarPresupuesto" ng-click="agregarCronograma()"></button>
+                    <button class="btn btn-danger" ng-click="EliminarCamposCrononograma()" >Eliminar campo</button>
+                    <button class="btn btn-success" style="margin-left:82%; margin-top:-6%" ng-click="GuardarCronograma()">Guardar</button>
+                </div>-->
+            </div>
+
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                <div style="position:absolute; z-index:99; cursor:pointer;">
+                    <span><i class="fa fa-info-circle" style="font-size:40px; color:#238276; float:right; margin-right:170%;" onclick="tipCronograma()"></i></span>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <!--container de Presupuesto-->
+
+        <div id="ayudaTextoOnce">
+            <div class="svg-popup-content" style="width:auto;">
+                <h3 class="title-plagin" style="text-align:center; color:#238271; text-transform:uppercase; font-weight:600;">Presupuesto</h3>
+                <hr style="background:black;" />
+
+                <p>
+                    En el campo de proyectos, un presupuesto es el cálculo anticipado de los gastos y costos que se deben tener en cuenta para la ejecución de un proyecto.
+                <p>
+
+
+            </div>
+        </div>
+
+        <!--FINALIZA AYUDA TEXTO-->
+        <!--INICIA AYUDA AUDIO-->
+        <div id="audioAyudaOnce" style="display:none">
+            <div class="player audioPresupuesto">
+                <div class="control-row">
+                    <div class="pauseButton" id="pause-button1">
+                        <i class="icon icon-play"></i>
+                        <i class="icon"></i>
+                    </div>
+                    <div class="seek-field">
+                        <input id="audioSeekBar1" min="0" max="334" step="1" value="0" type="range" oninput="audioSeekBar1()" onchange="this.oninput()">
+                    </div>
+                    <div class="volume-icon">
+                        <i class="icon-volume-up"></i>
+                    </div>
+                    <div class="volume-field">
+                        <input type="range" min="0" max="100" value="100" step="1" oninput="audio.volume = this.value/100" onchange="this.oninput()">
+                    </div>
+                    <div>
+                        <button class="fa fa-close " id="closeCrono2" ng-click="PauseAudio()" style="float:right; border:none; background:none ;color:#238276; margin-right:1%; font-size:18px;">  </button>
+                    </div>
+                </div>
+            </div>
+
+            <audio id="audio-player1" ontimeupdate="SeekBar1()" ondurationchange="CreateSeekBar1()" preload="auto" >
+                    <source src="../audios/9.Presupuesto%20y%20AIU.mp3" type="audio/mpeg" />
+            </audio>
+        </div>
+        <!--FINALIZA AYUDA AUDIO-->
+        <!--INICIA AYUDA VIDEO-->
+
+        <div id="ayudaVideoOnce">
+            <div class="svg-popup-content" style="width:auto;">
+                <h3 class="title-plagin">Video ayuda Presupuesto</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/zWXb0_W1xdo" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!--FINALIZA AYUDA VIDEO-->
+
+
+
+
+        <div id="containerPresupuesto" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+            <nav class="verticalSiete" id="menuAyudaSiete">
+                <input type="checkbox" id="toggle7" />
+                <label id="menuToggle" for="toggle7">
+                    <span class="fa fa-bars" style="font-size:22px;"></span>
+                </label>
+                <menu style="margin-top:-6%;">
+                    <li><a class="fa fa-power-off menuAyuda" style="font-size:22px;" ng-click="cerrarSesion()" title="Cerrar sesión"></a></li>
+                    <li><a class="fa fa-arrow-left menuAyuda" title="Regresar al menú" ng-click="atras()" style="font-size:22px;"></a></li>
+                    <li><a class="fa fa-file button demo-btn ayudaTextoOnce menuAyuda" title="Leer ayuda" data-svg-popup="ayudaTextoOnce" style="font-size:22px;"></a></li>
+                    <li><a class="fa fa-video-camera button demo-btn ayudaVideoOnce menuAyuda" title="Ver ayuda" data-svg-popup="ayudaVideoOnce" ng-click="PauseAudio()" style="font-size:22px;"></a></li>
+                    <li><a class="fa fa-volume-up button menuAyuda" title="Escuchar ayuda" id="ayudaAudioOnce" style="font-size:22px;"></a></li>
+                    <li><a class="fa fa-book button menuAyuda" title="Sobre nosotros" ng-click="Colaboradores()" style="font-size:22px;"></a></li>
+
+                </menu>
+            </nav>
+
+            <div style="height: 12vh;">
+                <h1 class="titulovistaObjetivos">PRESUPUESTO</h1>
+            </div>
+
+            <center class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
+                <table id="tablita" class="table table-responsive " style="width:100%;">
+                    <thead>
+                        <tr>
+                            <th class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center">Item</th>
+                            <th class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">Concepto</th>
+                            <th class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">Descripción</th>
+                            <th class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center" style="font-size:13px;">Und medida</th>
+                            <th class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center">Cantidad</th>
+                            <th class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">Valor unitario</th>
+                            <th class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">Valor total</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr ng-repeat="presu in Presupuesto">
+                            <td><input class="form-control" type="number" style="margin-top:11%;" min="1" onkeypress="if(this.value.length==3) return false" placeholder="#" ng-model="presu.Item" /></td>
+                            <td><input class="form-control" type="text" style="margin-top:5%; " maxlength="100" ng-model="presu.Concepto" /></td>
+                            <td><textarea class="form-control" type="text" maxlength="200" ng-model="presu.Descripcion"></textarea> </td>
+                            <td><input class="form-control" type="text" style="margin-top:10%; " maxlength="50" ng-model="presu.Unidad" /></td>
+                           
+                             <td><input class="form-control" type="number" style="margin-top:10%;text-align:right "  placeholder="#" ng-keyup="CalcularValorTotal()"  ng-model="presu.Cantidad" format="number"  onkeypress="if(this.value.length==3) return false"  /></td>
+                            <td>
+                                <input placeholder="$" class="form-control" type="text" style="margin-top:4.5%; text-align:right " ng-keyup="CalcularValorTotal()" maxlength="15" ng-model="presu.ValorUnitario" format="number" />
+                            </td>
+
+                            <td><input ng-model="presu.ValorTotal" disabled class="form-control" style="margin-top:4.5%; text-align:right" type="text" format="number" /></td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                <center>
+                                    <div id="agregarPresupuesto" ng-click="agregarPresupuesto()">
+                                        <i id="iconEditar" class="fa fa-plus-square-o" style="cursor:pointer; font-size:30px; color:#238276;" aria-hidden="true"></i>
+                                    </div>
+                                    <p style="font-size:10px;">Agregar</p>
+                                </center>
+                            </td>
+
+                            <td>
+                                <!--<button class="btn btn-danger fa fa-close" style="width:50%;" ng-click="EliminarCamposPresupuesto()"></button>-->
+                                <center>
+                                    <div ng-click="EliminarCamposPresupuesto()" style="margin-left:3%;">
+                                        <i id="iconEditar" class="fa fa-trash-o" style="cursor:pointer; font-size:30px; color:#238276;" aria-hidden="true"></i>
+                                    </div>
+                                    <p style="font-size:10px;">Eliminar</p>
+                                </center>
+                            </td>
+                            <td>
+
+                                <h5 style="float:right"><b>Administracion</b></h5>
+                                <input type="number" placeholder="%" ng-model="AIU.A" ng-keyup="CalcularValorTotal()" class="form-control" onkeypress="if(this.value.length==2) return false" style="width:50%;  margin-top:0%; float:right; text-align:right" />
+
+                            </td>
+                            <td>
+                                <h5><b>Imprevistos</b></h5>
+                                <input type="number" placeholder="%" ng-model="AIU.I" ng-keyup="CalcularValorTotal()" onkeypress="if(this.value.length==2) return false" class="form-control" style="width:100%; text-align:right " />
+
+
+                            </td>
+                            <td>
+                                <h5><b>Utilidad</b></h5>
+                                <input type="number" placeholder="%" ng-model="AIU.U" ng-keyup="CalcularValorTotal()" onkeypress="if(this.value.length==2) return false" class="form-control" style="width:100%; text-align:right " />
+
+                            </td>
+                            <td>
+                                <h5><b>IVA/Utilidad</b></h5>
+                                <input type="number" placeholder="%" ng-model="AIU.Iva" ng-keyup="CalcularValorTotal()" onkeypress="if(this.value.length==2) return false" class="form-control" style="width:50%; margin-left:0%; text-align:right" />
+
+                            </td>
+                            <td>
+                                <center><h5 style=""><b> Subtotal:</b></h5></center>
+                                <input value="$" ng-model="Subtotal" disabled class="form-control " type="text" style="margin-top:2%; text-align:right" format="number" />
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <input value="$" ng-model="A" disabled class="form-control" type="text" style="margin-top:2%; width:50%; float:right; text-align:right" format="number" />
+                            </td>
+                            <td>
+                                <input value="$" ng-model="I" disabled class="form-control" type="text" style="margin-top:2%; text-align:right" format="number" />
+                            </td>
+                            <td>
+                                <input value="$" ng-model="U" disabled class="form-control" type="text" style="margin-top:2%; text-align:right" format="number" />
+                            </td>
+                            <td>
+                                <input value="$" ng-model="IvaUtilidad" disabled class="form-control" type="text" style="margin-top:2%;width:50%; text-align:right" format="number" />
+                            </td>
+
+                            <td>
+                                <center><h5 style=""><b> Costo total:</b></h5></center>
+                                <input value="$" ng-model="total" disabled class="form-control " type="text" style="margin-top:2%; text-align:right" format="number" />
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+
+                <div style="margin-left:92%; margin-top:3%;" ng-click="GuardarPresupuesto()">
+                    <i id="iconGuardar" class="fa fa-floppy-o" style="cursor:pointer; font-size:30px; color:#238276;" aria-hidden="true"></i>
+                    <p style="font-size:10px; text-align:center; margin-left:-0%;">Guardar</p>
+
+                </div>
+
+            </center>
+
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="height:5vh;">
+
+                <div style="position:absolute; z-index:99; cursor:pointer;">
+                    <span><i class="fa fa-info-circle" style="font-size:40px; color:#238276; float:right;" onclick="tipPresupuesto()"></i></span>
+                </div>
+
+            </div>
+
+            <div>
+                <!--<button class="btn btn-success" ng-click="GuardarPresupuesto()" style="margin-left:90%;">Guardar</button>-->
+
+
+
+            </div>
+        </div>
+
+
+        <!--<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="height: 8vh; background: #8196be">ICONO INFORMA</div>-->
+
+
+
+
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="position:relative; height: 12vh; margin-top:20vh;">
+
+
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="height: 12vh;"><center><button id="btnCronograma" ng-click="MostrarCronograma()" class="btn btn-success" title="Cronograma" style="border-radius:40%; margin-top:23%;"><i class="fa fa-calendar-check-o" style="font-size:55px;"></i></button></center></div>
+
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" style="height: 12vh;"><hr class="lineaTab" style="height:2px; background:#238276; margin-top:5%;" /></div>
+
+
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="height: 12vh;"><center><button id="btnPresupuesto" ng-click="MostrarPresupuesto()" class="btn btn-success" title="Presupuesto" style="border-radius:40%; margin-top:23%;"><i class="fa fa-usd" style="font-size:55px;"></i></button></center></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="../scripts/AnimacionTextoVideoAudio.js"></script>
+<script src="../scripts/audioAyuda.js"></script>
+<script src="../scripts/audioAyuda2.js"></script>
+<script src="../scripts/waves.min.js"></script>
+
+<style>
+     ::-webkit-scrollbar {
+        width: 5px;
+    }
+</style>
+<script>
+
+    $("#FeI").change(function () {
+        $("#FeF").val("");
+        $("#FeF").datepicker("destroy");
+        var inicio = $("#FeI").val();
+        $("#FeF").datepicker({
+            minDate:inicio
+        });
+    })
+</script>

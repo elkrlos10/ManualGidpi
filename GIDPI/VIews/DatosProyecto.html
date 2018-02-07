@@ -1,0 +1,178 @@
+﻿<link href="../Css/MenuAyudaDatosBasicos.css" rel="stylesheet" />
+<link href="../Css/AyudaAudio.css" rel="stylesheet" />
+<link href="../Css/fontAudio.css" rel="stylesheet" />
+
+
+<!--INICIA AYUDA TEXTO-->
+
+<div id="ayudaTextoUno">
+    <div class="svg-popup-content" style="width:auto;">
+        <h3 class="title-plagin" style="text-align:center; color:#238271; text-transform:uppercase; font-weight:600;">Datos generales</h3>
+        <hr style="background:black;" />
+        <p>
+            <h4><b>Tipo de proyecto:</b></h4>
+        <p>Este se enfoca en lo que va dirigido el proyecto. El cual se divide en tres opciones que son:</p>
+
+        <h5><b>-Innovación:</b></h5>
+        <p>Es crear o mejorar un producto, proceso o servicio para la introducción en el mercado.</p>
+
+        <h5><b>-Desarrollo tecnológico:</b></h5>
+        <p>Es el conjunto de conocimientos técnicos, ordenados científicamente para diseñar un producto que satisface una necesidad existente de una población.</p>
+
+        <h5><b>-Investigación:</b></h5>
+        <p>Profundizar o apropiarse nuevos conocimientos para la comprobación o producción de nuevas teorías o existentes.</p>
+
+        <br />
+
+        <h4><b>Acción a realizar del proyecto:</b></h4>
+        <p>Es la actividad que engloba un conjunto de acciones para desarrollar el proyecto.</p>
+
+        <br />
+
+        <h4><b>Tema principal del proyecto:</b></h4>
+        <p>Es aquello que queremos abarcar, también llamado situación de interés.</p>
+
+        <br />
+
+        <h4><b>Localización</b></h4>
+        <p>Donde se va desarrollar y ejecutar geográficamente el proyecto.</p>
+
+        </p>
+    </div>
+</div>
+
+<!--FINALIZA AYUDA TEXTO-->
+
+<!--INICIA AYUDA VIDEO-->
+
+<div id="ayudaVideoUno">
+    <div class="svg-popup-content" style="width:auto;">
+        <h3 class="title-plagin">Video ayuda datos generales</h3>
+        <iframe width="560" height="315" class="cierre" src="https://www.youtube.com/embed/AAbTF6mXSDg" frameborder="0" allowfullscreen></iframe>
+    </div>
+</div>
+
+<!--FINALIZA AYUDA VIDEO-->
+
+<!--INICIA AYUDA AUDIO-->
+<div id="audioAyudaUno" style="display:none">
+    <div class="player">
+        <div class="control-row">
+            <div class="pauseButton"  id="pause-button">
+                <i class="icon icon-play"></i>
+                <i class="icon"></i>
+            </div>
+            <div class="seek-field">
+                <input id="audioSeekBar" min="0" max="334" step="1" value="0" type="range" oninput="audioSeekBar()" onchange="this.oninput()">
+            </div>
+            <div class="volume-icon">
+                <i class="icon-volume-up"></i>
+            </div>
+            <div class="volume-field">
+                <input type="range" min="0" max="100" value="100" step="1" oninput="audio.volume = this.value/100" onchange="this.oninput()">
+            </div>
+            <div>
+                <button class="fa fa-close cerrarAudio" ng-click="cerrarAudio()" style="float:right; border:none; background:none ;color:#238276; margin-right:1%; font-size:18px;">  </button>
+            </div>
+        </div>
+    </div>
+
+    <audio id="audio-player" ontimeupdate="SeekBar()" ondurationchange="CreateSeekBar()" preload="auto" >
+        <source src="../audios/1.Datos Generales.mp3" type="audio/mpeg">
+    </audio>
+</div>
+<!--FINALIZA AYUDA AUDIO-->
+
+<div class="container-fluid" style="height:100vh; margin-top:-10%;">
+
+    <nav class="vertical" id="menuAyuda">
+        <input type="checkbox" id="toggle2" />
+        <label id="menuToggle" for="toggle2">
+            <span class="fa fa-bars" style="font-size:22px;"></span>
+        </label>
+        <menu style="margin-top:-6%;">
+            <li><a class="fa fa-power-off menuAyuda" style="font-size:22px;" ng-click="cerrarSesion()" title="Cerrar sesión"></a></li>
+            <li><a class="fa fa-arrow-left menuAyuda" title="Regresar al menú" ng-click="atras()" style="font-size:22px;"></a></li>
+            <li><a class="fa fa-file button demo-btn ayudaTextoUno menuAyuda" title="Leer ayuda" data-svg-popup="ayudaTextoUno" style="font-size:22px;"></a></li>
+            <li><a class="fa fa-video-camera button demo-btn ayudaVideoUno menuAyuda" title="Ver ayuda" data-svg-popup="ayudaVideoUno" ng-click="PauseAudio()" style="font-size:22px;"></a></li>
+            <li><a class="fa fa-volume-up button menuAyuda" title="Escuchar ayuda" id="ayudaAudioUno" style="font-size:22px;"></a></li>
+            <li><a class="fa fa-book button menuAyuda" title="Sobre nosotros" ng-click="Colaboradores()" style="font-size:22px;"></a></li>
+
+        </menu>
+    </nav>
+
+    <div id="contenido" class="container">
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:100%;">
+            <h1 id="datosGenerales" style="margin-top:5%;">DATOS GENERALES</h1><br />
+
+            <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11" style="height:60vh; z-index:0;">
+
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="margin-left:20%;">
+                    <form name="datos" id="datos">
+                        <div class="form-group">
+                            <div>
+                                <label>TIPO DE PROYECTO</label>
+                                <select class="form-control" id="TipoSede" ng-required="true" ng-model="DatosProyecto.TipoProyecto" style="float:right;">
+                                    <option value="INNOVACIÓN">INNOVACIÓN</option>
+                                    <option value="SERVICIOS TECNOLÓGICOS">SERVICIOS TECNOLÓGICOS</option>
+                                    <option value="INVESTIGACIÓN">INVESTIGACIÓN</option>
+                                    <option value="OTRO">OTRO</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                                <label style="padding-top:20px;">ACCIÓN A REALIZAR EN EL PROYECTO</label>
+                                <select class="form-control" id="TipoSede" ng-required="true" ng-model="DatosProyecto.AccionProyecto" style="float:right;">
+                                    <option ng-repeat="accionProyecto in AccionProyecto" class="{{accionProyecto}}" value="{{accionProyecto}}">{{accionProyecto | uppercase}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                                <label style="padding-top:20px;">TEMA PRINCIPAL DEL PROYECTO</label>
+                                <input id="" class="form-control" style="float:right; width:100%; text-transform:uppercase;" ng-model="DatosProyecto.TemaProyecto" maxlength="100" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label style="padding-top:20px;">SELECCIONE DEPARTAMENTO</label>
+                            <select class="form-control" id="Departamento" ng-required="true" ng-model="departamento" ng-change="ConsultarMunicipiosDepartamento(departamento)" style="float:right;">
+                                <option ng-repeat="departamento in Departamentos" class="{{departamento.NombreDepartamento}}" value="{{departamento.IdDepartamento}}">{{departamento.NombreDepartamento}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label style="padding-top:20px;">SELECCIONE MUNICIPIO</label>
+                            <select class="form-control" id="Municipio" ng-required="true" ng-model="DatosProyecto.IdMunicipio" style="float:right;">
+                                <option ng-repeat="municipio in Municipio" class="{{municipio.NombreMunicipio}}" value="{{municipio.IdMunicipio}}">{{municipio.NombreMunicipio}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label style="padding-top:20px;">SECTOR</label>
+                            <select class="form-control" id="TipoSede" ng-required="true" ng-model="DatosProyecto.Sector" style="float:right;">
+                                <option ng-repeat="sector in Sector" class="{{sector}}" value="{{sector}}">{{sector}}</option>
+                            </select>
+                        </div>
+                    </form>
+
+                    <div class="modal-footer">
+                        <br />
+                        <div id="BtnGuardar" data-dismiss="modal" ng-click="GuardarDatosProyecto()">
+                            <i id="iconGuardar" class="fa fa-floppy-o" title="Guardar" style="cursor:pointer; font-size:30px; color:#238276; margin-top:8%;" aria-hidden="true"></i>
+                            <p style="font-size:10px; margin-right:-1%;">Guardar</p>
+                        </div>
+
+                        <div id="BtnModificar" data-dismiss="modal" ng-click="ModificarProyecto()">
+                            <i id="iconEditar" class="fa fa-pencil-square-o" title="Editar" style="cursor:pointer; font-size:30px; color:#238276;" aria-hidden="true"></i>
+                            <p style="font-size:10px; margin-right:1%;">Editar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../scripts/audioAyuda.js"></script>
+<script src="../scripts/waves.min.js"></script>
+<script src="../scripts/AnimacionTextoVideoAudio.js"></script>

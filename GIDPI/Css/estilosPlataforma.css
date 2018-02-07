@@ -1,0 +1,3193 @@
+﻿body{
+    overflow:auto;
+    overflow-x:hidden;
+}
+textarea{
+    resize:none;
+    border:1px solid #ccc;
+}
+
+::-webkit-scrollbar {
+      width: 12px;
+}
+
+::-webkit-scrollbar-track {
+      background-color: white;
+} 
+
+::-webkit-scrollbar-thumb {
+      background-color: #51aba6;
+} 
+
+#btn_reporte:hover
+{
+    box-shadow: 0px 0px 15px #238276;
+    z-index: 2;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.5);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.5);   
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.5);
+    transition: all 200ms ease-in;
+    transform: scale(1.5);
+}
+
+#ayudaUno{
+z-index:997;
+}
+
+#tablaResultados{
+    margin-left:55%;
+    margin-top:15%;
+    position:absolute;
+    transform:translateX(-60%);
+}
+
+#lineaDos{
+    margin-top:77vh;
+    position:fixed;
+    margin-left:88%;
+}
+
+
+/*Preloader*/
+
+.loader {
+    
+  z-index:99999;
+  color: RGB(89,181,72);
+  font-size: 20px;
+  margin-top:25%;
+
+  margin-left:50%;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  position: absolute;
+  text-indent: -9999em;
+  -webkit-animation: load4 1.3s infinite linear;
+  animation: load4 1.3s infinite linear;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+@-webkit-keyframes load4 {
+  0%,
+  100% {
+    box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+  }
+  12.5% {
+    box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+  }
+  25% {
+    box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+  }
+  37.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+  }
+  50% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+  }
+  62.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+  }
+  75% {
+    box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+  }
+  87.5% {
+    box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+  }
+}
+@keyframes load4 {
+  0%,
+  100% {
+    box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+  }
+  12.5% {
+    box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+  }
+  25% {
+    box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+  }
+  37.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+  }
+  50% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+  }
+  62.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+  }
+  75% {
+    box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+  }
+  87.5% {
+    box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+  }
+}
+
+/*FINALIZA ellipse PRELOADER*/
+
+
+#tipMatrizVesterDos{
+    margin-left:26%;
+}
+
+.titulovistaObjetivos{
+    margin-top:3%;
+    position:absolute; 
+    margin-left:50%;
+    transform:translate(-50%);
+    font-weight:600;
+}
+
+.textos{
+     font-weight:600;
+     margin-top:1%;
+}
+
+#personajeDos{
+    position:fixed;
+    float:left; 
+    margin-top:12%;
+    margin-left:-22%; 
+    width:5%;
+}
+#personajeHombre{
+    position:fixed;
+    float:right; 
+    margin-top:13%;
+    margin-left:-80%; 
+    width:5.4%;
+}
+
+#btn_regresar{
+    margin-left:74%; 
+    margin-top:1%; 
+    width:7%;
+}
+
+#contenedorFormulario{
+    width:690px;
+    height:100vh;
+    background-color:rgba(192,192,192,0.15); 
+    position:absolute; 
+    z-index:-2; 
+    margin-left:31%; 
+    margin-top:-10%; 
+    overflow:hidden;
+}
+
+#datosGenerales{
+    font-weight:600;
+}
+
+
+#DocumentoFinal{
+    width:70%;
+    height:100%; 
+    border:2px solid #238276; 
+    position:fixed; 
+    margin-top:-10%; 
+    margin-left:50%; 
+    transform:translateX(-50%); 
+    overflow-y:hidden;
+}
+
+/*INICIA MATRIZ DE VESTER*/
+
+
+#matrizVester{
+    margin-top:4%;
+    position:absolute; 
+    margin-left:50%;
+    transform:translate(-50%);
+    font-weight:600;
+}
+
+.panel-body{
+    width:1500px;
+}
+
+#problematicaCampo{
+    margin-bottom:3%; 
+    width:80%;
+    margin-left:12%;
+    margin-top:6%;
+}
+
+#problematicaCampoDos{
+    margin-bottom:3%; 
+    width:60%;
+    margin-left:64%;
+    margin-top:6%;
+}
+
+#botonGuardar{
+    margin-left:6%; 
+    margin-top:10%; 
+    position:absolute;
+}
+
+#agregar_btn{
+    margin-top:4%;
+    margin-left:7%;
+}
+
+#compararBoton{
+    margin-top: 6%; 
+    margin-left:6%;
+}
+
+#Problematicas{
+    margin-left:20%;
+}
+
+#influeniciaTitulo{
+    text-align:center; 
+    position:absolute; 
+    margin-top:15%;
+    margin-left:41%;
+    transform:translateX(-50%);
+}
+
+#grafica{
+    width: 900px; 
+    height: 500px; 
+    position:absolute; 
+    top: 80%;
+    left: 33%;
+}
+
+#proyectos{
+    font-size: 1em;
+    color: #fff;
+    background: rgb(0, 135, 126);
+    border: 3px solid #238276;
+    outline: none;
+    cursor: pointer;
+    padding: .6em 1em;
+    -webkit-appearance: none;
+    width: 16%;
+    margin-left: 1%;
+    margin-top:6%;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    font-weight:600;
+    z-index:8;
+    position:absolute;
+}
+
+#proyectos:hover{
+    background: transparent;
+    border: 3px solid #16665a;
+    color:#16665a;
+    font-weight:600;
+}
+
+#ObjetivosTitulo{
+    margin-left:50%;
+    transform:translate(-50%);
+    margin-top:15%;
+    font-weight:600;
+    font-size:34px;
+   
+}
+
+#containerFormObjetivos{
+
+    height:100vh;
+    background:rgba(192,192,192,0.15);
+    margin-left:50%; 
+    transform: translate(-50%);
+
+       
+}
+
+#BotonInfo1{
+    position:absolute;
+    height:35px;
+    width:35px;
+    border-radius:100%;
+    background:rgba(2,209,224,0.7);
+    text-align:center;
+    margin-left:95%;
+    margin-top:1%;
+}
+
+#BotonInfo2{
+    position:absolute;
+    height:35px;
+    width:35px;
+    border-radius:100%;
+    background:rgba(2,209,224,0.7);
+    text-align:center;
+    margin-left:95%;
+    margin-top:11%;
+}
+
+#BotonInfo3{
+    position:absolute;
+    height:35px;
+    width:35px;
+    border-radius:100%;
+    background:rgba(2,209,224,0.7);
+    text-align:center;
+    margin-left:95%;
+    margin-top:22%;
+}
+
+.infobasica{
+    margin-top:5px;
+    color:white;
+    font-size:23px;
+}
+
+#containerFormResultados{
+
+    height:100vh;
+    background:rgba(192,192,192,0.15);
+    margin-left:50%; 
+    transform: translate(-50%);
+  
+}
+
+#ResultadosTitulo{
+    margin-left:50%;
+    transform:translate(-50%);
+    margin-top:5%;
+    font-weight:600;
+    font-size:34px;
+   
+}
+
+#BotonInfoR{
+    position:absolute;
+    cursor:default;
+    height:35px;
+    width:35px;
+    border-radius:100%;
+    background:rgba(2,209,224,0.7);
+    text-decoration-color:white;
+    text-align:center;
+    margin-top:5%;
+    margin-left:99%;
+}
+
+#containerFormNombre{
+    
+    height:100%;
+    background:rgba(192,192,192,0.15);
+    margin-left:50%; 
+    transform: translate(-50%);
+  
+}
+
+#tituloNombre{
+    margin-top:5%;
+    font-weight:600;
+}
+
+#containerFormInvolucrados{
+   
+    height:100%;
+    background:rgba(192,192,192,0.15);
+    margin-left:50%; 
+    transform: translate(-50%);
+   
+
+}
+
+#InvolucradosTitulo{
+    margin-top:10%;
+    font-weight:600;
+}
+
+.inputInvolucrados{
+    margin-left:1%; 
+    margin-top:4%;
+    margin-bottom:5%;
+    
+}
+
+.subtilulosInvolucrados{
+    font-size:17px;
+    font-weight:600;
+}
+ 
+    #tituloPerfil{
+        margin-top:10%;
+        font-weight:600;
+    }
+
+    #metodologia{
+        margin-left:1%;
+
+    }
+
+
+.player{
+  position: fixed;
+  background-color: #fff;
+  width: 580px;
+  height: 120px;
+  bottom:0px;
+  margin-left:32%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+
+.audioVester{
+  position: fixed;
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+   bottom:0px;
+  margin-left:1%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+   z-index: 999;
+}
+
+
+.audioArbolProblemas{
+  position: fixed;
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:32%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.audioArbolObjetivos{
+  position: fixed;
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:33%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioObjetivos{
+  position: fixed;
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:33%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.audioResultados{
+  position: fixed;
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:33%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+   z-index: 999;
+}
+
+.audioInvolucrados{
+  position: fixed;
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:33%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.audioNombreProyecto{
+  position: fixed;
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:15%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.audioPerfilProyecto{
+  position: fixed;
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:15%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+    z-index: 99999999;
+}
+
+.audioCronograma{
+  position: fixed;
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+    bottom:0px;
+  margin-left:32%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+
+.audioPresupuesto{
+  position: fixed;
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:18%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.audioMarcoLogico{
+  position: fixed;
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+   bottom:0px;
+  margin-left:30%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+#contenido{
+    background:rgba(192,192,192,0.15); 
+    height:100vh;
+}
+
+#nombreProyectoMenu{
+    margin-top:32%;
+    color:#238276;
+}
+
+
+
+@media (max-width: 1600px)  {
+
+#contenido{
+    background:rgba(192,192,192,0.15); 
+    height:100%;
+}
+
+ #nombreProyectoMenu{
+    margin-top:35%;
+    color:#238276;
+}
+.player{
+
+  background-color: #fff;
+  width: 580px;
+  height: 120px;
+
+  margin-left:31%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+   z-index: 999;
+}
+
+.audioVester{
+
+  background-color: #fff;
+  width: 530px;
+  height: 120px;
+  bottom:0px;
+  margin-left:1%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+   z-index: 999;
+}
+
+.audioArbolProblemas{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:32%;
+ 
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+   z-index: 999;
+}
+
+
+
+.audioArbolObjetivos{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:32%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.audioObjetivos{
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:33%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.audioResultados{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:33%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.audioInvolucrados{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:33%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+   z-index: 999;
+}
+
+.audioNombreProyecto{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:15%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioPerfilProyecto{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:14%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;;
+}
+
+.audioPresupuesto{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:16%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioMarcoLogico{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:30%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+}
+
+@media (max-width: 1499px)  {
+
+#contenido{
+    background:rgba(192,192,192,0.15);  
+    height:100%;
+}
+
+.player{
+
+  background-color: #fff;
+  width: 580px;
+  height: 120px;
+
+  margin-left:27%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioVester{
+  position: fixed;
+  background-color: #fff;
+  width: 530px;
+  height: 120px;
+  bottom:0px;
+  margin-left:1%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#tipMatrizVesterDos{
+    margin-left:35%;
+}
+
+#matrizVester{
+    font-size:22px;
+}
+
+.audioArbolProblemas{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:30%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioArbolObjetivos{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:30%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#nombreProyectoMenu{
+    margin-top:37%;
+    color:#238276;
+}
+
+.audioObjetivos{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:30%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioResultados{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:28%;
+  margin-bottom:1%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioInvolucrados{
+
+  background-color:#fff;
+  width: 560px;
+  height: 120px;
+   bottom:0px;
+  margin-left:26%;
+  margin-bottom:1%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioPerfilProyecto{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:22%;
+  margin-bottom:1%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+}
+
+@media (min-width: 1402px) and (max-width: 1440px) {
+
+#grafica{
+    margin-left: -16%;
+    margin-top: -31%;
+    }
+
+#personajeDos{
+  
+    width:5.4%;
+}
+
+#personajeHombre{
+  
+    width:5.8%;
+}
+
+
+
+#btn_regresar{
+    margin-left:74%; 
+    margin-top:-2%; 
+    width:7%;
+}
+
+
+#DocumentoFinal{
+    width:90%;
+    height:90vh; 
+    border:2px solid red; 
+    position:fixed; 
+    margin-top:-10%; 
+    margin-left:50%; 
+    transform:translateX(-50%); 
+    overflow:hidden;
+}
+
+#contenido{
+    background:rgba(192,192,192,0.15);  
+    height:100%;
+}
+
+.player{
+
+  background-color: #fff;
+  width: 580px;
+  height: 120px;
+
+  margin-left:28%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioVester{
+
+  background-color: #fff;
+  width: 530px;
+  height: 120px;
+  bottom:0px;
+  margin-left:1%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#tipMatrizVesterDos{
+    margin-left:30%;
+}
+
+.audioArbolProblemas{
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:30%;
+  margin-bottom:3%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioArbolObjetivos{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:30%;
+ 
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioObjetivos{
+  
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:33%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+
+.audioResultados{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:33%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+
+.audioInvolucrados{
+ 
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:28%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+
+.audioNombreProyecto{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:20%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioPerfilProyecto{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+    bottom:0px;
+  margin-left:20%;
+  bottom:0px;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioCronograma{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+   bottom:0px;
+  margin-left:25%;
+  
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioPresupuesto{
+  
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+    bottom:0px;
+  margin-left:20%;
+  margin-bottom:1%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioMarcoLogico{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:30%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+}
+
+@media (max-width: 1400px) and (min-width: 1360px) {
+#grafica{
+    margin-left: -18%;
+    margin-top: -29%;
+    }
+
+
+#personajeDos{
+  
+    width:5.6%;
+}
+
+#personajeHombre{
+  
+    width:5.8%;
+}
+
+#btn_regresar{
+    margin-left:-8%; 
+    margin-top:5%; 
+    width:7%;
+}
+
+#contenido{
+    background:rgba(192,192,192,0.15); 
+    height:100%;
+}
+.player{
+
+  background-color: #fff;
+  width: 580px;
+  height: 120px;
+  
+  margin-left:28%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+
+.audioVester{
+  
+  background-color: #fff;
+  width: 530px;
+  height: 120px;
+  bottom:0px;
+  margin-left:1%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioArbolProblemas{
+
+  background-color: pink;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:26%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioObjetivos{
+ 
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+
+  margin-left:33%;
+  margin-bottom:1%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioResultados{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+
+  margin-left:33%;
+    bottom:0px;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioInvolucrados{
+
+  background-color: red;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:33%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioNombreProyecto{
+  
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:20%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioCronograma{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:25%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioMarcoLogico{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:26%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#textoMarcoLogico{
+    font-size:25px;
+}
+
+}
+
+@media (max-width: 1366px) and (max-height: 768px) {
+    #grafica{
+    margin-left: -18%;
+    margin-top: -29%;
+    }
+
+    #nombreProyectoMenu{
+    margin-top:31%;
+    color:#238276;
+}
+
+#personajeDos{
+  
+    width:5.6%;
+}
+
+#personajeHombre{
+  
+    width:5.8%;
+}
+
+#contenido{
+    background:rgba(192,192,192,0.15); 
+    height:103%;
+}
+
+#btn_regresar{
+    margin-left:74%; 
+    margin-top:-2%; 
+    width:7%;
+}
+
+.audioArbolProblemas{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:30%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioObjetivos{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+   bottom:0px;
+  margin-left:30%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+
+.audioResultados{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:28%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioInvolucrados{
+  
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:26%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioCronograma{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:25%;
+  margin-bottom:1%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioPresupuesto{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:20%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioMarcoLogico{
+  
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+   bottom:0px;
+  margin-left:26%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+}
+
+@media (max-width: 1360px) and (max-height: 768px) {
+
+#grafica{
+    margin-left: -18%;
+    margin-top: -30%;
+    }
+
+
+#nombreProyectoMenu{
+    margin-top:31%;
+    color:#238276;
+}
+
+#personajeDos{
+    width:5.6%;
+}
+
+#personajeHombre{
+    width:5.8%;
+}
+
+#btn_regresar{
+    margin-left:74%; 
+    margin-top:0%; 
+    width:7%;
+}
+
+#contenido{
+    background:rgba(192,192,192,0.15); 
+    height:103%;
+}
+
+.audioVester{
+
+  background-color: #fff;
+  width: 530px;
+  height: 120px;
+  bottom:0px;
+  margin-left:1%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioArbolProblemas{
+
+  background-color: red;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:26%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioObjetivos{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:33%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioResultados{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:33%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioInvolucrados{
+
+  background-color: pink;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:33%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioPerfilProyecto{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:15%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioPerfilProyecto{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:24%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioCronograma{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:25%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioPresupuesto{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:16%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+}
+
+@media (max-width: 1280px) and (min-width: 1960px) {
+#grafica{
+    margin-left: -18%;
+    margin-top: -28%;
+    }
+
+#personajeDos{
+  
+    width:5.6%;
+}
+
+#personajeHombre{
+  
+    width:5.8%;
+}
+#btn_regresar{
+    margin-left:-9%; 
+    margin-top:-50%; 
+    width:7%;
+}
+
+#contenido{
+    background:rgba(192,192,192,0.15);  
+    height:100%;
+}
+
+
+.audioVester{
+
+  background-color: #fff;
+  width: 530px;
+  height: 120px;
+  bottom:0px;
+  margin-left:1%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioArbolProblemas{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:26%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#nombreProyectoMenu{
+    margin-top:31%;
+    color:#222;
+}
+
+.audioObjetivos{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:33%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+
+.audioResultados{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:33%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioInvolucrados{
+
+  background-color: black;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:33%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioPerfilProyecto{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:15%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  
+}
+
+}
+
+@media (max-width: 1280px) and (max-height: 1024px) {
+    
+  #grafica {
+        margin-left: -18%;
+        margin-top: -29%;
+    }
+  #personajeDos{
+  
+    width:5.8%;
+}
+
+#personajeHombre{
+  
+    width:5.8%;
+}
+  
+
+    #btn_regresar {
+        margin-left: 75%;
+        margin-top: -3%;
+        width: 7%;
+    }
+
+    #contenido {
+        background: rgba(192,192,192,0.15);
+        height: 120%;
+    }
+
+    .player {
+
+        background-color: #fff;
+        width: 580px;
+        height: 120px;
+
+        margin-left: 26%;
+        border-radius: 3px;
+        box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+    }
+
+    #lineaDos{
+    margin-top:78vh;
+    position:fixed;
+    margin-left:88%;
+}
+
+.audioVester{
+  
+  background-color: #fff;
+  width: 530px;
+  height: 120px;
+  bottom:0px;
+  margin-left:1%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#matrizVester{
+    font-size:20px;
+}
+
+#tipMatrizVesterDos{
+    margin-left:41%;
+}
+
+.audioArbolProblemas{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:26%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#nombreProyectoMenu{
+    margin-top:36%;
+    color:#238276;
+}
+
+.audioObjetivos{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:30%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioResultados{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+    bottom:0px;
+  margin-left:27%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioInvolucrados{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+    bottom:0px;
+  margin-left:26%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#tituloInvolucrados{
+    font-size:24px;
+}
+
+
+.audioNombreProyecto{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:20%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioPerfilProyecto{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:24%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+   z-index: 999;
+}
+
+.audioCronograma{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:25%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioPresupuesto{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:20%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+
+.audioMarcoLogico{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:20%;
+  margin-bottom:1%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+
+
+
+#textoMarcoLogico{
+    font-size:22px;
+}
+
+}
+
+@media (max-width: 1280px) and (max-height: 960px) {
+
+    #grafica {
+        margin-left: -18%;
+        margin-top: -29%;
+    }
+  #personajeDos{
+  
+    width:5.8%;
+}
+
+#personajeHombre{
+  
+    width:5.8%;
+}
+  
+
+    #btn_regresar {
+        margin-left: 75%;
+        margin-top: -3%;
+        width: 7%;
+    }
+
+    #contenido {
+        background: rgba(192,192,192,0.15);
+        height: 100%;
+    }
+
+    .player {
+      
+        background-color: #fff;
+        width: 580px;
+        height: 120px;
+   
+        margin-left: 26%;
+        border-radius: 3px;
+        box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+    }
+
+    #lineaDos{
+    margin-top:78vh;
+    position:fixed;
+    margin-left:88%;
+}
+
+.audioVester{
+
+  background-color: #fff;
+  width: 530px;
+  height: 120px;
+  bottom:0px;
+  margin-left:1%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#matrizVester{
+    font-size:20px;
+}
+
+#tipMatrizVesterDos{
+    margin-left:41%;
+}
+
+.audioArbolProblemas{
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+    bottom:0px;
+  margin-left:26%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#nombreProyectoMenu{
+    margin-top:45%;
+    color:#238276;
+}
+
+.audioObjetivos{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:30%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioResultados{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:27%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioInvolucrados{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:26%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#tituloInvolucrados{
+    font-size:24px;
+}
+
+
+.audioNombreProyecto{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:20%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioPerfilProyecto{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:24%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+   z-index: 999;
+}
+
+.audioCronograma{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:25%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioPresupuesto{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:20%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+
+.audioMarcoLogico{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:20%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+
+.audioMarcoLogico{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  bottom:0px;
+  margin-left:26%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#textoMarcoLogico{
+    font-size:22px;
+}
+
+}
+
+@media (max-width: 1280px) and (max-height: 800px) {
+
+    #grafica {
+        margin-left: -18%;
+        margin-top: -29%;
+    }
+  #personajeDos{
+  
+    width:5.8%;
+}
+
+#personajeHombre{
+  
+    width:5.8%;
+}
+  
+
+    #btn_regresar {
+        margin-left: 75%;
+        margin-top: -3%;
+        width: 7%;
+    }
+
+    #contenido {
+        background: rgba(192,192,192,0.15);
+        height: 120%;
+    }
+
+    .player {
+       
+        background-color: #fff;
+        width: 580px;
+        height: 120px;
+       
+        margin-left: 26%;
+        border-radius: 3px;
+        box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+    }
+
+    #lineaDos{
+    margin-top:78vh;
+    position:fixed;
+    margin-left:88%;
+}
+
+.audioVester{
+
+  background-color: #fff;
+  width: 530px;
+  height: 120px;
+
+  margin-left:1%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#matrizVester{
+    font-size:20px;
+}
+
+#tipMatrizVesterDos{
+    margin-left:41%;
+}
+
+.audioArbolProblemas{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+
+  margin-left:26%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#nombreProyectoMenu{
+    margin-top:-13%;
+    color:#238276;
+}
+
+.audioObjetivos{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+
+  margin-left:30%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioResultados{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+
+  margin-left:27%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioInvolucrados{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+
+  margin-left:26%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#tituloInvolucrados{
+    font-size:24px;
+}
+
+
+.audioNombreProyecto{
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+
+  margin-left:20%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioPerfilProyecto{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+
+  margin-left:24%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+   z-index: 999;
+}
+
+.audioCronograma{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+
+  margin-left:25%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioPresupuesto{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+
+  margin-left:20%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+
+.audioMarcoLogico{
+  
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+
+  margin-left:20%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+
+.audioMarcoLogico{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+
+  margin-left:26%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#textoMarcoLogico{
+    font-size:22px;
+}
+
+}
+
+@media (max-width: 1280px) and (max-height: 769px) {
+
+    #grafica {
+        margin-left: -18%;
+        margin-top: -29%;
+    }
+  #personajeDos{
+  
+    width:5.8%;
+}
+
+#personajeHombre{
+  
+    width:5.8%;
+}
+  
+
+    #btn_regresar {
+        margin-left: 75%;
+        margin-top: -3%;
+        width: 7%;
+    }
+
+    #contenido {
+        background: rgba(192,192,192,0.15);
+        height: 103%;
+    }
+
+    .player {
+       
+        background-color: #fff;
+        width: 580px;
+        height: 120px;
+     
+        margin-left: 26%;
+        border-radius: 3px;
+        box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+    }
+
+    #lineaDos{
+    margin-top:78vh;
+    position:fixed;
+    margin-left:88%;
+}
+
+.audioVester{
+  
+  background-color: #fff;
+  width: 530px;
+  height: 120px;
+  
+  margin-left:1%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#matrizVester{
+    font-size:20px;
+}
+
+#tipMatrizVesterDos{
+    margin-left:41%;
+}
+
+.audioArbolProblemas{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+
+  margin-left:26%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#nombreProyectoMenu{
+    margin-top:-13%;
+    color:#238276;
+}
+
+.audioObjetivos{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+
+  margin-left:30%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioResultados{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+
+  margin-left:27%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioInvolucrados{
+ 
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  
+  margin-left:26%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#tituloInvolucrados{
+    font-size:24px;
+}
+
+
+.audioNombreProyecto{
+  
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+
+  margin-left:20%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioPerfilProyecto{
+  
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+
+  margin-left:24%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+   z-index: 999;
+}
+
+.audioCronograma{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+
+  margin-left:25%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioPresupuesto{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  margin-top:45%;
+  margin-left:20%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+
+.audioMarcoLogico{
+  
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+
+  margin-left:20%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+
+.audioMarcoLogico{
+ 
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+
+  margin-left:26%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#textoMarcoLogico{
+    font-size:22px;
+}
+
+}
+
+@media (max-width: 1280px) and (max-height: 720px) {
+
+    #grafica {
+        margin-left: -18%;
+        margin-top: -29%;
+    }
+  #personajeDos{
+  
+    width:5.8%;
+}
+
+#personajeHombre{
+  
+    width:5.8%;
+}
+  
+
+    #btn_regresar {
+        margin-left: 75%;
+        margin-top: -3%;
+        width: 7%;
+    }
+
+    #contenido {
+        background: rgba(192,192,192,0.15);
+        height: 111%;
+    }
+
+    .player {
+       
+        background-color: #fff;
+        width: 580px;
+        height: 120px;
+   
+        margin-left: 26%;
+        border-radius: 3px;
+        box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+    }
+
+    #lineaDos{
+    margin-top:78vh;
+    position:fixed;
+    margin-left:88%;
+}
+
+.audioVester{
+
+  background-color: #fff;
+  width: 530px;
+  height: 120px;
+ 
+  margin-left:1%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#matrizVester{
+    font-size:20px;
+}
+
+#tipMatrizVesterDos{
+    margin-left:41%;
+}
+
+.audioArbolProblemas{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+ 
+  margin-left:26%;
+ 
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#nombreProyectoMenu{
+    margin-top:-13%;
+    color:#238276;
+}
+
+.audioObjetivos{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+
+  margin-left:30%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioResultados{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+
+  margin-left:27%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioInvolucrados{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+
+  margin-left:26%;
+ 
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#tituloInvolucrados{
+    font-size:24px;
+}
+
+
+.audioNombreProyecto{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+ 
+  margin-left:20%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioPerfilProyecto{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  
+  margin-left:24%;
+  
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+   z-index: 999;
+}
+
+.audioCronograma{
+  
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  
+  margin-left:25%;
+  
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioPresupuesto{
+  
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  
+  margin-left:20%;
+  
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+
+.audioMarcoLogico{
+  
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  
+  margin-left:20%;
+  
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+
+.audioMarcoLogico{
+ 
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  
+  margin-left:26%;
+  
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#textoMarcoLogico{
+    font-size:22px;
+}
+
+}
+
+
+
+@media (max-width: 1176px){ 
+
+    #grafica {
+        margin-left: -18%;
+        margin-top: -29%;
+    }
+  #personajeDos{
+  
+    width:5.8%;
+}
+
+#personajeHombre{
+  
+    width:5.8%;
+}
+  
+
+    #btn_regresar {
+        margin-left: 75%;
+        margin-top: -3%;
+        width: 7%;
+    }
+
+    #contenido {
+        background: rgba(192,192,192,0.15);
+        height: 120%;
+    }
+
+    .player {
+        
+        background-color: #fff;
+        width: 580px;
+        height: 120px;
+       
+        margin-left: 26%;
+        border-radius: 3px;
+        box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+    }
+
+    #lineaDos{
+    margin-top:78vh;
+    position:fixed;
+    margin-left:88%;
+}
+
+.audioVester{
+  
+  background-color: #fff;
+  width: 530px;
+  height: 120px;
+ 
+  margin-left:1%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#matrizVester{
+    font-size:20px;
+}
+
+#tipMatrizVesterDos{
+    margin-left:41%;
+}
+
+.audioArbolProblemas{
+  
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  
+  margin-left:26%;
+  
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#nombreProyectoMenu{
+    margin-top:-14%;
+    color:#238276;
+}
+
+.audioObjetivos{
+  
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  
+  margin-left:30%;
+  
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioResultados{
+  
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  
+  margin-left:27%;
+ 
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioInvolucrados{
+  
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  
+  margin-left:26%;
+  
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#tituloInvolucrados{
+    font-size:24px;
+}
+
+
+.audioNombreProyecto{
+  
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  
+  margin-left:20%;
+  
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioPerfilProyecto{
+  
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  
+  margin-left:24%;
+  
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+   z-index: 999;
+}
+
+.audioCronograma{
+  
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  
+  margin-left:25%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioPresupuesto{
+  
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+
+  margin-left:20%;
+  
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+
+.audioMarcoLogico{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+
+  margin-left:20%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+
+
+#textoMarcoLogico{
+    font-size:22px;
+}
+
+}
+
+@media(max-width:1152px) {
+    #grafica{
+    margin-left: -24%;
+    margin-top: -39%;
+}
+
+#personajeDos{
+  
+    width:6.5%;
+}
+
+#personajeHombre{
+  
+    width:6.8%;
+}
+#btn_regresar{
+    margin-left:75%; 
+    margin-top:-3%; 
+    width:7%;
+}
+
+#contenido{
+    background:rgba(192,192,192,0.15); 
+    height:100%;
+}
+
+
+.player{
+
+  background-color: #fff;
+  width: 580px;
+  height: 120px;
+
+  margin-left:23%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioVester{
+
+  background-color: #fff;
+  width: 530px;
+  height: 120px;
+
+  margin-left:1%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#tipMatrizVesterDos{
+    margin-left:41%;
+}
+
+#matrizVester{
+    font-size:20px;
+}
+
+.audioArbolProblemas{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+
+  margin-left:26%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#nombreProyectoMenu{
+    margin-top:-10%;
+    color:#238276;
+}
+
+.audioObjetivos{
+
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+
+  margin-left:33%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioResultados{
+
+  background-color:#fff;
+  width: 560px;
+  height: 120px;
+
+  margin-left:27%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioInvolucrados{
+ 
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  
+  margin-left:24%;
+
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#tituloInvolucrados{
+    font-size:22px;
+}
+
+.audioNombreProyecto{
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  margin-left:15%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioPerfilProyecto{
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  margin-left:15%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioCronograma{
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  margin-left:25%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioPresupuesto{
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  margin-left:16%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+
+.audioMarcoLogico{
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  margin-left:25%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+}
+
+@media (max-width:1024px) {
+   #grafica{
+    margin-left: -29%;
+    margin-top: -39%;
+}
+
+#personajeDos{
+  
+    width:6.8%;
+}
+
+#personajeHombre{
+  
+    width:7%;
+}
+
+#btn_regresar{
+    margin-left:75%; 
+    margin-top:-3%; 
+    width:7%;
+}
+
+#tipMatrizVesterDos{
+    margin-left:45%;
+}
+
+.player{
+ 
+  background-color: #fff;
+  width: 580px;
+  height: 120px;
+
+  margin-left:20%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#contenido{
+    background:rgba(192,192,192,0.15); 
+    height:100%;
+}
+
+.audioVester{
+  background-color: #fff;
+  width: 530px;
+  height: 120px;
+  margin-left:22%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#matrizVester{
+    font-size:17px;
+}
+
+.audioArbolProblemas{
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  margin-left:22%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+
+#nombreProyectoMenu{
+    margin-top:-13%;
+    color:#238276;
+}
+
+.audioObjetivos{
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  margin-left:33%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioResultados{
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  margin-left:26%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioInvolucrados{
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  margin-left:20%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioNombreProyecto{
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  margin-left:15%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioPerfilProyecto{
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  margin-left:15%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioCronograma{
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  margin-left:20%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.audioPresupuesto{
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  margin-left:20%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+
+.audioMarcoLogico{
+  background-color: #fff;
+  width: 560px;
+  height: 120px;
+  margin-left:20%;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+}

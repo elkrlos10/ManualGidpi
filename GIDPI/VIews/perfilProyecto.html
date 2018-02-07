@@ -1,0 +1,571 @@
+﻿<link href="../Css/MenuAyudaPerfilProyecto.css" rel="stylesheet" />
+<link href="../Css/AyudaAudio.css" rel="stylesheet" />
+<link href="../Css/fontAudio.css" rel="stylesheet" />
+
+
+<div class="container-fluid" style="height: auto; margin-top:-10%">
+
+    <div class="container" style="height: auto;  background-color:rgba(192,192,192,0.15);">
+
+        <!-- EMPIEZA CONTAINER DE NOMBRE DEL PROYECTO -->
+        <div id="ayudaTextoNueve">
+            <div class="svg-popup-content" style="width:auto;">
+                <h3 class="title-plagin" style="text-align:center; color:#238271; text-transform:uppercase; font-weight:600;">nombre del proyecto</h3>
+                <hr style="background:black;" />
+
+                <p>
+                    <h4><b>Área de conocimiento</b></h4>
+                <p>
+                    Las áreas de conocimiento son agrupaciones que se hace de los programas académicos con sus ámbitos específicos de conocimiento, cada uno cuenta con su manera diferente y particular para la adquisición de nuevos conocimientos.
+                </p>
+
+                <h4><b>Justificación</b></h4>
+                <p>
+                    Son las razones por las cuales se piensa realizar el proyecto. Pueden ser razones de orden institucional, económico, social, científico, técnico o cultural.
+                    Se debe mencionar lo siguiente:
+                </p>
+
+                <ol>
+                    <li>-<b>Contexto:</b>Conjunto de circunstancias que rodean un proyecto, como son: <br />-Lo que se sabe y lo que no se sabe <br /> -lo que se hizo y lo que aún no <br />-Y lo controversial.</li>
+                    <li>-<b>Laguna:</b>Mencionar las limitaciones, problemáticas y/o vacíos encontrados en los estudios realizados en esa área.</li>
+                    <li>-<b>Solución:</b>Dar solución a la problemática antes mencionada. Si se utilizan datos, cifras, estadísticas o conceptos, deben estar debidamente soportados en referencias.</li>
+
+                </ol>
+
+
+            </div>
+        </div>
+
+        <!--FINALIZA AYUDA TEXTO-->
+        <!--INICIA AYUDA AUDIO-->
+        <div id="audioAyudaOcho" style="display:none">
+            <div class="player audioNombreProyecto">
+                <div class="control-row">
+                    <div class="pauseButton" id="pause-button">
+                        <i class="icon icon-play"></i>
+                        <i class="icon"></i>
+                    </div>
+                    <div class="seek-field">
+                        <input id="audioSeekBar" min="0" max="334" step="1" value="0" type="range" oninput="audioSeekBar()" onchange="this.oninput()">
+                    </div>
+                    <div class="volume-icon">
+                        <i class="icon-volume-up"></i>
+                    </div>
+                    <div class="volume-field">
+                        <input type="range" min="0" max="100" value="100" step="1" oninput="audio.volume = this.value/100" onchange="this.oninput()">
+                    </div>
+                    <div>
+                        <button class="fa fa-close " id="closePerfil1" style="float:right; border:none; background:none ;color:#238276; margin-right:1%; font-size:18px;">  </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <audio id="audio-player" ontimeupdate="SeekBar()" ondurationchange="CreateSeekBar()" preload="auto">
+                <source src="../audios/6.Área del conocimiento.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+        <!--FINALIZA AYUDA AUDIO-->
+        <!--INICIA AYUDA VIDEO-->
+
+        <div id="ayudaVideoNueve">
+            <div class="svg-popup-content" style="width:auto;">
+                <h3 class="title-plagin">Video ayuda nombre del proyecto</h3>
+                <iframe width="560" height="315" class="cierre" src="https://www.youtube.com/embed/BqIoR9TpxXE" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+
+
+        <div id="containerNombre" style="margin-top:3%">
+
+            <nav class="verticalCuatro" id="menuAyudaCuatro">
+                <input type="checkbox" id="toggle4" />
+                <label id="menuToggle" for="toggle4">
+                    <span class="fa fa-bars" style="font-size:22px;"></span>
+                </label>
+                <menu style="margin-top:-6%;">
+                    <li><a class="fa fa-power-off menuAyuda" style="font-size:22px;" ng-click="cerrarSesion()" title="Cerrar sesión"></a></li>
+                    <li><a class="fa fa-arrow-left menuAyuda" title="Regresar al menú" ng-click="atras()" style="font-size:22px;"></a></li>
+                    <li><a class="fa fa-file button demo-btn ayudaTextoNueve menuAyuda" title="Leer ayuda" data-svg-popup="ayudaTextoNueve" style="font-size:22px;"></a></li>
+                    <li><a class="fa fa-video-camera button demo-btn ayudaVideoNueve menuAyuda" title="Ver ayuda" data-svg-popup="ayudaVideoNueve" ng-click="PauseAudio()" style="font-size:22px;"></a></li>
+                    <li><a class="fa fa-volume-up button menuAyuda" title="Escuchar ayuda" id="ayudaAudioOcho" style="font-size:22px;"></a></li>
+                    <li><a class="fa fa-book button menuAyuda" title="Sobre nosotros"  ng-click="Colaboradores()" style="font-size:22px;"></a></li>
+
+                </menu>
+            </nav>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:12vh;">
+                <h1 class="titulovistaObjetivos" style="margin-left:45%">Nombre del proyecto</h1>
+            </div>
+
+            <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11" style="height: 103vh;">
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height: 6vh;"><p class="textos">NOMBRE DEL PROYECTO</p></div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height: 6vh;">
+                    <input class="form-control" style="text-transform:uppercase;" maxlength="150" type="text" ng-model="PerfilProyecto.NombreProyecto" />
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height: 3vh;"></div>
+
+
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="height: 6vh;"><p class="textos">NOMBRE DEL ÁREA DE CONOCIMIENTO</p></div>
+
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="height: 6vh;"><p class="textos">NÚMERO DEL ÁREA DE CONOCIMIENTO</p></div>
+
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="height: 6vh;">
+                    <select class="form-control" ng-model="area.id" ng-change="datos(area.id)" id="NombreArea">
+                        <option ng-repeat="area in AreaConocimiento.Areas" value="{{area.id}}"> {{area.nombreArea}} </option>
+
+                    </select>
+
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="height: 6vh;">
+                    <select class="form-control" ng-model="a" id="NumeroArea">
+                        <option ng-repeat="a in numeroAreas" value="{{a}}">{{a}}</option>
+
+                    </select>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height: 3vh;"></div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:12vh;">
+                    <h1 class="titulovistaObjetivos" style="margin-left:50%;">justificación</h1>
+                </div>
+
+                <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
+                    <center><textarea class="form-control" maxlength="7999" style="margin-left:3%;" ng-model="PerfilProyecto.Justificacion" rows="18"></textarea></center>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:6vh;">
+
+                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" style="height:6vh;"></div>
+
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="height:6vh;">
+
+
+                    </div>
+
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="height:6vh;">
+
+                        <div style="margin-top:10%;  margin-bottom:3%; float:left;" id="btnGuardarPerfil" ng-click="GuardarProyecto()">
+
+                            <i id="iconGuardar" class="fa fa-floppy-o" style="cursor:pointer; font-size:30px; color:#238276;" aria-hidden="true"></i>
+
+                            <p style="font-size:10px; text-align:center; margin-left:-51%;">Guardar</p>
+                        </div>
+
+
+                        <div style="margin-top:5%;  margin-bottom:3%; float:left;" id="btnEditarPerfil" ng-click="editarPerfilProyecto()">
+                            <i id="iconEditar" class="fa fa-pencil-square-o" title="Editar" style="cursor:pointer; font-size:30px; color:#238276;" aria-hidden="true"></i>
+                            <p style="font-size:10px; text-align:center; margin-left:-25%;">Editar</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="height:90vh;">
+
+                <div style="position:absolute; z-index:99; cursor:pointer;">
+                    <span><i class="fa fa-info-circle" style="font-size:40px; color:#238276; float:right;" onclick="tipNombreProyecto()"></i></span>
+                </div>
+
+                <div style="height:35vh;"></div>
+
+                <div style="position:absolute; z-index:99; cursor:pointer;">
+                    <span><i class="fa fa-info-circle" style="font-size:40px; color:#238276; float:right;" onclick="tipNombreProyectoDos()"></i></span>
+                </div>
+
+                <div style="height:10vh;"></div>
+
+                <div style="position:absolute; z-index:99; cursor:pointer;">
+                    <span><i class="fa fa-info-circle" style="font-size:40px; color:#238276; float:right;" onclick="tipNombreProyectoTres()"></i></span>
+                </div>
+
+                <div style="height:10vh;"></div>
+
+                <div style="position:absolute; z-index:99; cursor:pointer;">
+                    <span><i class="fa fa-info-circle" style="font-size:40px; color:#238276; float:right;" onclick="tipNombreProyectoCuatro()"></i></span>
+                </div>
+
+            </div>
+
+
+        </div>
+        <!--TERMINA CONTAINER DE NOMBRE DEL PROYECTO -->
+        <!-- COMIENZA CONTAINER DE PERFIL PROYECTO -->
+        <!--INICIA AYUDA TEXTO-->
+
+        <div id="ayudaTextoOcho">
+            <div class="svg-popup-content" id="PerfilProyectoAyuda">
+                <h3 class="title-plagin" style="text-align:center; color:#238271; text-transform:uppercase; font-weight:600;">Perfil del proyecto</h3>
+                <hr style="background:black;" />
+
+                <p>
+                    <h4><b>Planteamiento del problema</b></h4>
+                <p>
+                    Es una declaración clara y concisa que describe los síntomas del problema a abordar.
+                    Para contextualizar el problema se debe contestar las siguientes preguntas:
+                    ¿Cómo aparece el problema que se pretende solucionar?
+                    ¿Por qué se origina?
+                    ¿Quién o qué lo origina?
+                    ¿Cuándo se origina?
+                    ¿Cuáles son las causas y efectos que produce el problema?
+                    ¿Dónde se origina?
+                    ¿Qué elementos o circunstancias lo originan?.
+                </p>
+
+                <h4><b>Impacto</b></h4>
+                <p>
+                    El impacto está compuesto por los efectos a mediano y largo plazo que tiene un proyecto para la población objetivo y para el entorno, sean estos efectos o consecuencias deseadas o no deseadas.
+                </p>
+                <h4><b>Metodología</b></h4>
+                <p>
+                    Es el conjunto de métodos que se siguen en una investigación.
+
+                    <ol>
+                        <li>-<b>Enfoque:</b>Se determina de acuerdo al objetivo, el tipo de información a recolectar y el tratamiento que finalmente se dará a los resultados obtenidos.</li>
+                        <li>-<b>Tipo de investigación:</b>Está determinado esencialmente por la pregunta de investigación y el objetivo principal del estudio, pues es en estos ámbitos en los que se define la forma como se va a abordar el problema de investigación, especificando si se va a tratar de una descripción, explicación, correlación o comparación.</li>
+                        <li>-<b>Método de estudio:</b>Se debe considerar el abordaje que se dará a la información recopilada y la temporalidad considerada para el estudio.</li>
+                        <li>-<b>Población y muestra:</b>En el caso de las investigaciones o estudios que se fundamenten en la recolección de información proveniente de fuentes primarias se deberá especificar claramente cuál es la población objeto de estudio y su número, especificar la fórmula aplicada para determinar el tamaño de la muestra, especificar el tamaño de la muestra e indicar de manera clara cuál fue el tipo de muestreo aplicado.</li>
+                        <li>-<b>Variables o categorías de análisis:</b>Son los elementos centrales nacidos del problema y los objetivos específicos que definen los puntos sobre los cuales se centrarán las mediciones, descripciones o análisis a desarrollar en el trabajo. Generalmente las investigaciones de corte cualitativo se fundamentan en la identificación de categorías, mientras que los estudios cuantitativos tienden a identificar variables. Para cada variable o categoría se debe especificar la operacionalización que consiste en describir la manera como se entiende la variable o categoría dentro de la investigación, detallando los indicadores que serán usados para su valoración cualitativa o cuantitativa.</li>
+                        <li>-<b>Técnicas e instrumentis de recolección y análisis de la información:</b>Se debe especificar el instrumento o técnica que será utilizado para la recolección y análisis de la información tanto de fuentes primarias (personas) como secundarias (textos, publicaciones, memorias, cibergrafia, videos, entre otras). Recuerde que no todas las investigaciones exigen fuentes primarias, pero todas exigen fuentes secundarias, en la medida en que siempre deben tener un referente teórico. Para las fuentes primarias usualmente se utilizan instrumentos como cuestionarios, entrevistas (estructuradas o no estructuradas) y encuestas o técnicas como la observación participante o no participante. Para las fuentes secundarias se utiliza la técnica de análisis documental.</li>
+                    </ol>
+
+                </p>
+
+            </div>
+        </div>
+
+        <!--FINALIZA AYUDA TEXTO-->
+        <!--INICIA AYUDA AUDIO-->
+        <div id="audioAyudaNueve" style="display:none">
+            <div class="player audioPerfilProyecto">
+                <div class="control-row">
+                    <div class="pauseButton" id="pause-button1">
+                        <i class="icon icon-play"></i>
+                        <i class="icon"></i>
+                    </div>
+                    <div class="seek-field">
+                        <input id="audioSeekBar1" min="0" max="334" step="1" value="0" type="range" oninput="audioSeekBar1()" onchange="this.oninput()">
+                    </div>
+                    <div class="volume-icon">
+                        <i class="icon-volume-up"></i>
+                    </div>
+                    <div class="volume-field">
+                        <input type="range" min="0" max="100" value="100" step="1" oninput="audio.volume = this.value/100" onchange="this.oninput()">
+                    </div>
+                    <div>
+                        <button class="fa fa-close " id="closePerfil2" ng-click="PauseAudio()" style="float:right; border:none; background:none ;color:#238276; margin-right:1%; font-size:18px;">  </button>
+                    </div>
+                </div>
+            </div>
+
+            <audio id="audio-player1" ontimeupdate="SeekBar1()" ondurationchange="CreateSeekBar1()" preload="auto">
+                <source src="../audios/7.PERFIL DEL PROYECTO.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+        <!--FINALIZA AYUDA AUDIO-->
+        <!--INICIA AYUDA VIDEO-->
+
+        <div id="ayudaVideoOcho">
+            <div class="svg-popup-content" style="width:auto;">
+                <h3 class="title-plagin">Video ayuda perfil del proyecto</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/MXBDfmNpeho" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div id="containerPerfilProyect" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="auto;">
+
+            <nav class="verticalCinco" id="menuAyudaCinco">
+                <input type="checkbox" id="toggle5" />
+                <label id="menuToggle" for="toggle5">
+                    <span class="fa fa-bars" style="font-size:22px;"></span>
+                </label>
+                <menu style="margin-top:-6%;">
+                    <li><a class="fa fa-power-off menuAyuda" style="font-size:22px;" ng-click="cerrarSesion()" title="Cerrar sesión"></a></li>
+                    <li><a class="fa fa-arrow-left menuAyuda" title="Regresar al menú" ng-click="atras()" style="font-size:22px;"></a></li>
+                    <li><a class="fa fa-file button demo-btn ayudaTextoOcho menuAyuda" title="Leer ayuda" data-svg-popup="ayudaTextoOcho" style="font-size:22px;"></a></li>
+                    <li><a class="fa fa-video-camera button demo-btn ayudaVideoOcho menuAyuda" title="Ver ayuda" data-svg-popup="ayudaVideoOcho" ng-click="PauseAudio()" style="font-size:22px;"></a></li>
+                    <li><a class="fa fa-volume-up button menuAyuda" title="Escuchar ayuda" id="ayudaAudioNueve" style="font-size:22px;"></a></li>
+                    <li><a class="fa fa-book button menuAyuda" title="Sobre nosotros" ng-click="Colaboradores()" style="font-size:22px;"></a></li>
+
+                </menu>
+            </nav>
+
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:auto;">
+
+                <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11" style="height:15vh; margin-bottom:2%">
+                    <h1 class="titulovistaObjetivos">Perfil del proyecto</h1>
+                </div>
+
+                <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11" style="height: 6vh;"><p class="textos">PLANTEAMIENTO DEL PROBLEMA</p></div>
+
+
+                <div class="col-lg-11 col-md-11 col-sm-1 col-xs-11" id="planteamientoStyle" style="height: 30vh; position:relative;   margin-bottom:2%">
+                    <textarea class="form-control" rows="12" maxlength="5000" ng-model="PerfilProyecto2.Planteamiento"></textarea>
+
+                </div>
+
+                <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11" style="height:8vh;"></div>
+
+                <div id="impactoStyle" style="margin-top:-2%; position:relative; margin-bottom:2%">
+                    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11" id="tituloImpacto"  style="height: 6vh;"><p class="textos">IMPACTO</p></div>
+
+                    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11" style="height: 20vh;">
+                        <textarea class="form-control" rows="9" maxlength="5000" ng-model="PerfilProyecto2.Impacto"></textarea>
+                       
+                    </div>
+                    <div style="z-index:99; cursor:pointer;" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                        <span><i class="fa fa-info-circle" style="font-size:40px; color:#238276; float:right;" onclick="tipPerfilProyecto()"></i></span>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11" id="metodologiaStyle " style="height:8vh; margin-top:2%"></div>
+
+                <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11" id="tituloMetodologia" style="height: 6vh;"><p class="textos">METODOLOGÍA</p></div>
+
+
+                <table class="table col-lg-11 col-md-11 col-sm-11 col-xs-11 ">
+                    <tbody>
+                        <tr>
+                            <th class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
+                                <p>Enfoque</p>
+                            </th>
+
+                            <th class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
+                                <select class="form-control" id="enfoque" ng-change="cambioEnfoque(Enfoque.significado)" ng-model="Enfoque.significado">
+                                    <option ng-repeat="E in Enfoque" value="{{E.significado}}">{{E.id}}</option>
+
+                                </select>
+                            </th>
+
+                            <th class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
+                                <p style="font-size:10px;" ng-model="Significado">{{Significado}}</p>
+                            </th>
+                        </tr>
+
+                        <tr>
+                            <th class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
+                                <p>Tipo de investigación</p>
+                            </th>
+
+                            <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                <select class="form-control" id="tipoInve" ng-change="CambioTipoInvesticacion(TipoInvesticion.significado)" ng-model="TipoInvesticion.significado">
+                                    <option value="{{t.significado}}" ng-repeat="t in TipoInvesticion">{{t.id}}</option>
+
+                                </select>
+                            </th>
+
+                            <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                <p style="font-size:10px;" id="significado" ng-model="Sig">{{Sig}}</p>
+                            </th>
+                        </tr>
+
+                        <tr>
+                            <th class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
+                                <p>Método de estudio</p>
+                            </th>
+
+                            <th class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
+                                <select class="form-control" id="metodo" ng-model="Metodo.significado" ng-change="CambioMetodo(Metodo.significado)">
+                                    <option value="{{m.significado}}" ng-repeat="m in Metodo">{{m.id}}</option>
+
+                                </select>
+                            </th>
+
+                            <th class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
+                                <p style="font-size:10px;" ng-model="sigMetodo">{{sigMetodo}}</p>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+                <table class="table table col-lg-11 col-md-11 col-sm-11 col-xs-11">
+                    <tbody>
+                        <tr>
+                            <th class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <p>Población y Muestra</p>
+                            </th>
+
+                            <th class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <textarea class="form-control" maxlength="150" ng-model="PerfilProyecto2.Poblacion"></textarea>
+                            </th>
+                        </tr>
+
+                        <tr>
+                            <th class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <p>Variables o categorías de análisis</p>
+                            </th>
+
+                            <th class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <textarea class="form-control" maxlength="100" ng-model="PerfilProyecto2.Variables"></textarea>
+                            </th>
+                        </tr>
+
+                        <tr>
+                            <th class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <p>Técnicas e instrumentos de recolección y análisis de la información</p>
+                            </th>
+
+                            <th class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <textarea class="form-control" maxlength="100" ng-model="PerfilProyecto2.Tecnicas"></textarea>
+                            </th>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+                <textarea class="form-control col-lg-11 col-md-11 col-sm-11 col-xs-11" maxlength="5000" rows="10" style="margin-bottom:2%;" ng-model="PerfilProyecto2.Metodologia"></textarea>
+
+                <div style="z-index:99; cursor:pointer;" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                    <span><i class="fa fa-info-circle" style="font-size:40px; color:#238276; float:right;" onclick="tipPerfilProyectoDos()"></i></span>
+                </div>
+
+
+                <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11" style="height:6vh;">
+
+                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" style="height:6vh;"></div>
+
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="height:6vh;">
+
+
+                    </div>
+
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="height:6vh; margin-left:90%; margin-top:-5%;">
+
+                        <div style="" id="guardarPerfil2" ng-click="guardarPerfil2()">
+
+                            <i id="iconGuardar" class="fa fa-floppy-o" style="cursor:pointer; font-size:30px; color:#238276;" aria-hidden="true"></i>
+
+                            <p style="font-size:10px; text-align:center; margin-left:-51%;">Guardar</p>
+                        </div>
+
+
+                        <div id="editarPerfil2" ng-click="editarPerfilProyectoParte2()" style="margin-left:105%; margin-top:-5%;">
+                            <i id="iconEditar" class="fa fa-pencil-square-o" title="Editar" style="cursor:pointer; font-size:30px; color:#238276;" aria-hidden="true"></i>
+                            <p style="font-size:10px; text-align:center; margin-left:-25%;">Editar</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!--<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="height: 160vh;">
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:62vh;"></div>
+
+                <div style="z-index:99; cursor:pointer;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <span><i class="fa fa-info-circle" style="font-size:40px; color:#238276; float:right;" onclick="tipPerfilProyecto()"></i></span>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:73vh;"></div>
+
+                <div style="z-index:99; cursor:pointer;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <span><i class="fa fa-info-circle" style="font-size:40px; color:#238276; float:right;" onclick="tipPerfilProyectoDos()"></i></span>
+                </div>
+
+            </div>-->
+
+
+        </div>
+
+
+
+
+
+
+        <!-- TERMINA CONTAINER DE PERFIL PROYECTO -->
+        <!--MENU DE ABAJO-->
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="menuTabs" style="position:relative;  height: 12vh; ">
+
+
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="height: 12vh;">
+                <center>
+                    <button ng-click="MostrarNombre()" class="btn btn-success" title="Nombre del proyecto" style="border-radius:40%; margin-top:15%;">
+                        <i class="fa fa-id-badge" style="font-size:55px;"></i>
+                    </button>
+                </center>
+            </div>
+
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" style="height: 12vh;"><hr class="lineaTab" style="height:2px; background:#238276; margin-top:5%;" /></div>
+
+
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="height: 12vh; ">
+                <center>
+                    <button ng-click="MostrarPerilProyecto()" class="btn btn-success" id="Perfil2" title="Perfil del proyecto" style="border-radius:40%; margin-top:15%;">
+                        <i class="fa fa-user" style="font-size:55px;"></i>
+                    </button>
+                </center>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+
+
+    
+    
+    }
+    @media (max-width: 1280px) and (max-height: 961px) {
+        #menuTabs{
+             margin-top: -6%;
+        }
+    }
+
+    @media (max-width: 1280px) and (max-height: 720px) {
+
+        #menuTabs{
+             margin-top: 6%;
+        }
+    }
+
+     @media (max-width:1176px){
+         #menuTabs{
+             margin-top: 8%;
+        }
+
+         #tituloImpacto{
+             margin-top:5%;
+         }
+        #tituloMetodologia {
+            margin-top:5%;
+        }
+    }
+
+     @media (max-width:1152px){
+         #menuTabs{
+             margin-top: 1%;
+        }
+    }
+
+    @media (max-width:1024px){
+         #menuTabs{
+             margin-top: 6%;
+        }
+    }
+
+
+    
+
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+</style>
+<script src="../scripts/AnimacionTextoVideoAudio.js"></script>
+<script src="../scripts/audioAyuda.js"></script>
+<script src="../scripts/audioAyuda2.js"></script>
+<script src="../scripts/waves.min.js"></script>

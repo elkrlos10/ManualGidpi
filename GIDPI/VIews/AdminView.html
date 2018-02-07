@@ -1,0 +1,113 @@
+﻿<link href="../Css/EstilosAdministrador.css" rel="stylesheet" />
+
+
+<div class="container-fluid" style="margin-top:-10%;">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:6vh; width:105%; margin-left:-2%">
+
+        <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11" style="height:6vh; background:#238276;">
+            <h2 style="float:left; line-height:2vh; font-weight:600;">GIDPI / Administrador</h2>
+        </div>
+
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="height:6vh; background:#238276;">
+            <center><li><a class="fa fa-power-off" style="font-size:30px; color:white; text-decoration:none; cursor:pointer; line-height:6vh;" ng-click="cerrarSesion()" title="Cerrar sesión"></a></li></center>
+        </div>
+
+    </div>
+
+
+
+   
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:32vh;">
+
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="height:32vh;">
+            <ul class="ca-menu">
+                <li>
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                        <div class="ca-content">
+                            <h4 class="ca-main" ng-model="Usuarios">{{Usuarios}}</h4>
+                            <h3 class="ca-sub">Usuarios registrados</h3>
+                        </div>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="height:32vh;">
+            <ul class="ca-menu">
+                <li>
+                   
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        <div class="ca-content">
+                            <h4 class="ca-main one">{{PersonaNatural}}</h4>
+                            <h3 class="ca-sub one">Personas naturales</h3>
+                        </div>
+                 
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="height:32vh;">
+
+            <ul class="ca-menu"  style="float:right;">
+                <li>
+                    
+                        <i class="fa fa-briefcase" aria-hidden="true"></i>
+                        <div class="ca-content">
+                            <h4 class="ca-main two">{{personaJuridica}}</h4>
+                            <h3 class="ca-sub two">Personas jurídicas</h3>
+                        </div>
+                  
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="height:32vh;">
+            <ul class="ca-menu" style="float:right;">
+                <li>
+                  
+                        <i class="fa fa-database" aria-hidden="true"></i>
+                        <div class="ca-content">
+                            <h4 class="ca-main four">{{Proyectos}}</h4>
+                            <h3 class="ca-sub four">Número total de proyectos</h3>
+                        </div>
+                 
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+ 
+
+    <div id="estadisticas" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:59vh;">
+        <hr class="col-md-12" style="background-color:black; margin-left:1.5%; width:94.5%" />
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6" style="height:59vh;">
+
+            <div class="col-lg-12 col-md-12 cl-sm-12 col-xs-12" style="height:5vh;">
+                <h3 class="centrar" style="font-weight:600; line-height:5vh; color:#238276;">Tipos de proyectos</h3>
+           
+                <div id="donutchart" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:500px;  margin-top:-25%"></div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6" style="height:59vh;">
+            <div class="col-lg-12 col-md-12 cl-sm-12 col-xs-12" style="height:5vh;">
+                <h3   class="centrar" style="font-weight:600; line-height:5vh; color:#238276;">Estapas de proyectos</h3>
+   
+                <div id="donutchart2" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:500px; margin-left:7%; margin-top:-25%"></div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6" style="height:59vh; ">
+            <div class="col-lg-12 col-md-12 cl-sm-12 col-xs-12" style="height:5vh;">
+                <h3  class="centrar" style="font-weight:600; line-height:5vh; color:#238276;">Proyectos con matriz de vester</h3>
+          
+                <div id="Matriz" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:500px; margin-left:7%;  margin-top:-25%"></div>
+            </div>
+        </div>
+    </div>
+ </div>   
+
+

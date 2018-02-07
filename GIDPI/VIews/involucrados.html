@@ -1,0 +1,223 @@
+﻿<link href="../Css/MenuAyudaInvolucrados.css" rel="stylesheet" />
+<link href="../Css/AyudaAudio.css" rel="stylesheet" />
+<link href="../Css/fontAudio.css" rel="stylesheet" />
+
+<!--INICIA AYUDA TEXTO-->
+
+<div id="ayudaTextoSiete">
+    <div class="svg-popup-content" style="width:auto;">
+        <h3 class="title-plagin" style="text-align:center; color:#238271; text-transform:uppercase; font-weight:600;">Matriz de involucrados</h3>
+        <hr style="background:black;" />
+
+        <p>
+            <h4><b>Involucrados</b></h4>
+        <p>
+            Son las personas, agentes, entidades o empresas que tienen algún interés, capacidad o necesidad y son afectadas por el proyecto, o se mueven en el entorno del el. los cuales, pueden influir para el éxito o el fracaso del mismo.
+        </p>
+        <h4><b>Intereses</b></h4>
+        <p>
+            Son los beneficios que obtienen las personas involucradas dentro de un proyecto de manera directa o indirecta; dichos beneficios pueden ser morales, económicos, sociales, personales, entre otras.
+        </p>
+        <h4><b>Problemas percibidos</b></h4>
+        <p>
+            Son todas aquellas problemáticas que pueden ser identificadas por los involucrados en su entorno, siendo estas, las que se pretende dar solución por medio del proyecto.
+        </p>
+        <h4><b>Recursos y mandatos</b></h4>
+        <p>
+            Los mandatos se refieren a la autoridad formal que tiene un grupo de involucrados para proporcionar un servicio o cumplir una función determinada. Recursos, son los medios financieros y no financieros que el grupo puede poner a disposición para contribuir a solucionar el problema de desarrollo.
+        </p>
+        <h4><b>Estrategias</b></h4>
+        <p>
+            Planes para la resolución de los problemas percibidos y la comprensión de los intereses de la sociedad. (Como el involucrado va a contribuir con el proyecto)        
+        </p>
+    </p>
+
+    </div>
+</div>
+
+<!--FINALIZA AYUDA TEXTO-->
+<!--INICIA AYUDA VIDEO-->
+
+<div id="ayudaVideoSiete">
+    <div class="svg-popup-content" style="width:auto;">
+        <h3 class="title-plagin">Video ayuda Matriz de involucrados</h3>
+        <iframe width="560" class="cierre" height="315" src="https://www.youtube.com/embed/vA8lJQbaJwo"  frameborder="0" allowfullscreen></iframe>
+    </div>
+</div>
+
+<!--FINALIZA AYUDA VIDEO-->
+
+
+<!--INICIA AYUDA AUDIO-->
+<div id="audioAyudaSiete" style="display:none">
+    <div class="player audioInvolucrados">
+        <div class="control-row">
+            <div class="pauseButton"  id="pause-button">
+                <i class="icon icon-play"></i>
+                <i class="icon"></i>
+            </div>
+            <div class="seek-field">
+                <input id="audioSeekBar" min="0" max="334" step="1" value="0" type="range" oninput="audioSeekBar()" onchange="this.oninput()">
+            </div>
+            <div class="volume-icon">
+                <i class="icon-volume-up"></i>
+            </div>
+            <div class="volume-field">
+                <input type="range" min="0" max="100" value="100" step="1" oninput="audio.volume = this.value/100" onchange="this.oninput()">
+            </div>
+            <div>
+                <button class="fa fa-close cerrarAudio" style="float:right; border:none; background:none ;color:#238276; margin-right:1%; font-size:18px;">  </button>
+            </div>
+        </div>
+    </div>
+
+    <audio id="audio-player" ontimeupdate="SeekBar()" ondurationchange="CreateSeekBar()" preload="auto" >
+        <source src="../audios/5.ANÁLISIS DE INVOLUCRADOS.mp3" type="audio/mpeg">
+    </audio>
+</div>
+<!--FINALIZA AYUDA AUDIO-->
+
+<nav class="vertical" id="menuAyuda">
+    <input type="checkbox" id="toggle2" />
+    <label id="menuToggle" for="toggle2">
+        <span class="fa fa-bars" style="font-size:22px;"></span>
+    </label>
+    <menu style="margin-top:-6%;">
+
+        <li><a class="fa fa-power-off menuAyuda" style="font-size:22px;" ng-click="cerrarSesion()" title="Cerrar sesión"></a></li>
+        <li><a class="fa fa-arrow-left menuAyuda" title="Regresar al menú" ng-click="atras()" style="font-size:22px;"></a></li>
+        <li><a class="fa fa-file button demo-btn ayudaTextoSiete menuAyuda" title="Leer ayuda" data-svg-popup="ayudaTextoSiete" style="font-size:22px;"></a></li>
+        <li><a class="fa fa-video-camera button demo-btn ayudaVideoSiete menuAyuda" title="Ver ayuda" data-svg-popup="ayudaVideoSiete" ng-click="PauseAudio()" style="font-size:22px;"></a></li>
+        <li><a class="fa fa-volume-up button menuAyuda" title="Escuchar ayuda" id="ayudaAudioSiete" style="font-size:22px;"></a></li>
+        <li><a class="fa fa-book button menuAyuda" title="Sobre nosotros" ng-click="Colaboradores()" style="font-size:22px;"></a></li>
+
+    </menu>
+</nav>
+
+
+<div class="container-fluid" style="height: auto; margin-top:-10%;">
+
+    <div class="container" style="background-color:rgba(192,192,192,0.15);">
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:12vh; margin-bottom:2%;">
+            <h1 class="titulovistaObjetivos" id="tituloInvolucrados">Matriz de involucrados</h1>
+        </div>
+
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="min-height: 85vh;">
+
+            <center>
+                <table class="table table-responsive" style="width:100%;">
+                    <thead>
+                        <tr>
+                            <th class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">
+                                <span>
+                                    <i class="fa fa-info-circle" style="font-size:25px; color:#238276; float:left; cursor:pointer; line-height:10px;" onclick="tipInvolucrados()"></i>
+                                </span>
+                                Involucrados
+                            </th>
+
+                            <th class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">
+                                <span>
+                                    <i class="fa fa-info-circle" style="font-size:25px; color:#238276; float:left; cursor:pointer; line-height:10px;" onclick="tipInvolucradosDos()"></i>
+                                </span>
+                                Intereses
+                            </th>
+                            <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center">
+                                <span>
+                                    <i class="fa fa-info-circle" style="font-size:25px; color:#238276; float:left; cursor:pointer; line-height:10px;" onclick="tipInvolucradosTres()"></i>
+                                </span>
+                                Problemas percibidos
+                            </th>
+                            <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center">
+                                <span>
+                                    <i class="fa fa-info-circle" style="font-size:25px; color:#238276; float:left; cursor:pointer; line-height:10px;" onclick="tipInvolucradosCuatro()"></i>
+                                </span>
+                                Recursos y mandatos
+                            </th>
+                            <th class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">Estrategias</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr ng-repeat="Inv in Involucrados">
+                            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center" ><textarea class="form-control" maxlength="100" ng-model="Inv.Involucrado"></textarea></td>
+                            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center"><textarea class="form-control" maxlength="499" ng-model="Inv.Interes" max></textarea></td>
+                            <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center"><textarea class="form-control" maxlength="499"  ng-model="Inv.Problema"></textarea></td>
+                            <td class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center"><textarea class="form-control" maxlength="499" ng-model="Inv.Recursos"></textarea></td>
+                            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center"><textarea class="form-control" maxlength="699" ng-model="Inv.Estrategia"></textarea></td>
+                        </tr>
+
+                    </tbody>
+                   
+                </table>
+            </center>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:6vh;">
+
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="height:6vh;">
+
+                    <center>
+                        <div id="botonCampos" ng-click="AgregarCampos1()" style="margin-left:3%;">
+                            <i id="iconEditar" class="fa fa-plus-square-o" style="cursor:pointer; font-size:30px; color:#238276;" aria-hidden="true"></i>
+                        </div>
+                        <p style="font-size:10px;">Agregar</p>
+                    </center>
+
+                </div>
+
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="height:6vh;">
+
+                    <center>
+                        <div id="botonQuitar" ng-click="EliminarCampos()" style="margin-left:3%;">
+                            <i id="iconEditar" class="fa fa-trash-o" style="cursor:pointer; font-size:30px; color:#238276;" aria-hidden="true"></i>
+                        </div>
+                        <p style="font-size:10px;">Eliminar</p>
+                    </center>
+
+                </div>
+
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="height:6vh;"></div>
+
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="height:6vh;">
+
+                    <div id="guardarInvo" style="margin-left:92%; margin-top:-5%;" ng-click="GuardarInvolucrados()">
+                        <i id="iconGuardar" class="fa fa-floppy-o" style="cursor:pointer; font-size:30px; color:#238276;" aria-hidden="true"></i>
+                        <p style="font-size:10px; text-align:center; margin-left:-60%;">Guardar</p>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    
+
+
+function toggleVideo(state) {
+    // if state == 'hide', hide. Else: show video
+    var div = document.getElementById("popupVid");
+    var iframe = div.getElementsByTagName("iframe")[0].contentWindow;
+    div.style.display = state == 'hide' ? 'none' : '';
+    func = state == 'hide' ? 'pauseVideo' : 'playVideo';
+    iframe.postMessage('{"event":"command","func":"' + func + '","args":""}', '*');
+}
+</script>
+
+<style>
+     ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+
+</style>
+
+<script src="../scripts/AnimacionTextoVideoAudio.js"></script>
+<script src="../scripts/AnimacionTips.js"></script>
+<script src="../scripts/audioAyuda.js"></script>
+<script src="../scripts/waves.min.js"></script>
