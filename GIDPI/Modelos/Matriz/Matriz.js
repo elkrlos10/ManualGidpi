@@ -539,6 +539,14 @@ ManualApp.controller('MatrizController',
                 }
                 $scope.Problemas[$scope.puntoAlto].Criterio = "Punto Critico"
                
+                $.each($scope.Problemas, function (index, value) {
+
+                    if (value.Criterio == "Criticos") {
+                        $scope.Problemas[index].Criterio = "Activos";
+                    }
+                });
+
+
                 $.each($scope.SeriesPuntos, function (index, value) {
 
                     if (value.name == $scope.Problemas[$scope.puntoAlto].Problema) {

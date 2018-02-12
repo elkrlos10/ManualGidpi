@@ -440,7 +440,7 @@ ManualApp.controller('ArbolProblemaController',
                                         borrar = document.createElement("div");
                                         txtArea = document.createElement("textarea");
                                         txtArea.value = value.Efecto;
-                                        borrar.innerHTML = "<span></span><h6 class='borrarElemento' onclick='borrarElemento(this)'></h6>";
+                                        borrar.innerHTML = "<span></span><h6 class='borrarElemento' onclick='borrarElemento(this)'>Borrar</h6>";
                                         bloque.setAttribute("class", "bloque");
                                         txtArea.setAttribute("class", "txtBloque2");
                                         txtArea.setAttribute("maxlength", "140");
@@ -468,7 +468,7 @@ ManualApp.controller('ArbolProblemaController',
                                         borrar = document.createElement("span");
                                         txtArea = document.createElement("textarea");
                                         txtArea.value = value.EfectoIndirecta;
-                                        borrar.innerHTML = "<h6 class='borrarElemento' onclick='borrarElemento2(this)'></h6>";
+                                        borrar.innerHTML = "<h6 class='borrarElemento' onclick='borrarElemento2(this)'>Borrar</h6>";
                                         bloque.setAttribute("class", "bloque2");
                                         txtArea.setAttribute("class", "txtBloque3");
                                         txtArea.setAttribute("maxlength", "140");
@@ -486,7 +486,7 @@ ManualApp.controller('ArbolProblemaController',
                                         borrar = document.createElement("div");
                                         txtArea = document.createElement("textarea");
                                         txtArea.value = value.Causa;
-                                        borrar.innerHTML = "<span></span><h6 class='borrarElemento' onclick='borrarElemento(this)'> </h6>";
+                                        borrar.innerHTML = "<span></span><h6 class='borrarElemento' onclick='borrarElemento(this)'> Borrar</h6>";
                                         bloque.setAttribute("class", "bloque");
                                         txtArea.setAttribute("class", "txtBloque2");
                                         txtArea.setAttribute("maxlength", "140");
@@ -510,7 +510,7 @@ ManualApp.controller('ArbolProblemaController',
                                         borrar = document.createElement("span");
                                         txtArea = document.createElement("textarea");
                                         txtArea.value = value.CausaIndirecta;
-                                        borrar.innerHTML = "<h6 class='borrarElemento' onclick='borrarElemento2(this)'></h6>";
+                                        borrar.innerHTML = "<h6 class='borrarElemento' onclick='borrarElemento2(this)'>Borrar</h6>";
                                         bloque.setAttribute("class", "bloque2");
                                         txtArea.setAttribute("class", "txtBloque3");
                                         txtArea.setAttribute("maxlength", "140");

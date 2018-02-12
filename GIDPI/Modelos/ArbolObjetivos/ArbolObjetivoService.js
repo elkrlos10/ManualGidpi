@@ -55,6 +55,24 @@ ManualApp.factory('ArbolObjetivoService',
                 callback(response);
             });
         };
+
+        service.ConsultarResultadosObj = function (IdProyecto, callback) {
+            item = {
+                Parametro1: IdProyecto
+            }
+            $http.post(URLServices + "ArbolObjetivo/ConsultarResultadosObj/", item)
+            .success(function (response) {
+                callback(response);
+            });
+        };
+
+        service.GuardarObjetivosEspecificos = function (ObjetivosEspecificos, callback) {
+        
+            $http.post(URLServices + "ArbolObjetivo/GuardarObjetivosEspecificos/", ObjetivosEspecificos)
+            .success(function (response) {
+                callback(response);
+            });
+        };
         //service.SubirArchivo = function (img, callback) {
 
         //    item = {

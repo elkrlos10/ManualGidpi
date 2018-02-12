@@ -5,11 +5,12 @@ ManualApp.controller('ArbolObjetivosController',
         function ($scope, $rootScope, $location, ArbolObjetivoService, $cookies, $cookieStore, MenuService, $routeParams, $sce) {
             //location.reload();
             VideoDemo = 1;
+            $("#agregar_btn").hide();
 
             $("#resultados").attr("disabled", "disabled");
             //LINEA PARA OCULTAR EL FORMULARIO DE OBJETIVOS
             $("#VistaObjetivos").hide();
-           
+
             $("#vistaResultados").hide();
             //OBJETOS
             $scope.Arbol = {
@@ -213,7 +214,7 @@ ManualApp.controller('ArbolObjetivosController',
                     document.querySelector("#imgEfecto").setAttribute("src", "img/lineaU" + efectos.length + ".png");
                 } else {
 
-                   // document.querySelector("#imgEfecto").setAttribute("src", "img/sinLinea.png");
+                    // document.querySelector("#imgEfecto").setAttribute("src", "img/sinLinea.png");
                 }
                 //causas
                 if (causas.length != 0) {
@@ -505,8 +506,8 @@ ManualApp.controller('ArbolObjetivosController',
                                         causaIndirectaUl.querySelector("li:nth-child(" + indirecto + ") div:last-child").appendChild(borrar);
                                     })
                                 }
-                              
-                                $("#guardar").hide();
+
+                                //$("#guardar").hide();
                                 $("#botonSiguienteArbol").show();
                                 waitingDialog.hide();
                             })
@@ -625,7 +626,7 @@ ManualApp.controller('ArbolObjetivosController',
                         bloque.setAttribute("class", "bloque2");
                         txtArea.setAttribute("class", "txtBloque3");
                         txtArea.setAttribute("maxlength", "140");
-                      
+
                         efectoIndirectoUl.querySelector("li:nth-child(" + indirecto + ")").appendChild(bloque).appendChild(txtArea);
                         efectoIndirectoUl.querySelector("li:nth-child(" + indirecto + ") div:last-child").appendChild(borrar);
 
@@ -643,7 +644,7 @@ ManualApp.controller('ArbolObjetivosController',
                         bloque.setAttribute("class", "bloque2");
                         txtArea.setAttribute("class", "txtBloque3");
                         txtArea.setAttribute("maxlength", "140");
-                 
+
                         causaIndirectaUl.querySelector("li:nth-child(" + indirecto + ")").appendChild(bloque).appendChild(txtArea);
                         causaIndirectaUl.querySelector("li:nth-child(" + indirecto + ") div:last-child").appendChild(borrar);
                     } else if (document.querySelectorAll("#causaIndirecta li:nth-child(" + indirecto + ") div").length >= 3) {
@@ -724,39 +725,39 @@ ManualApp.controller('ArbolObjetivosController',
                 })
                 waitingDialog.show();
 
-                $("#guardar").hide();
+                //$("#guardar").hide();
                 $("#tipArbolObjetivos").hide();
                 $(".borrarElemento").hide();
-                
+
                 setTimeout(function () {
-                    
-                html2canvas($("#arbolContenedor"), {
-                    onrendered: function (canvas) {
-                        theCanvas = canvas;
-                        //  document.body.appendChild(canvas);
 
-                        var imgageData = theCanvas.toDataURL();
-                        // Now browser starts downloading it instead of just showing it
-                        var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
-                        $scope.ObjArbol.imagen = imgageData;
-                        console.log($scope.ObjArbol.imagen);
-                        ArbolObjetivoService.GuardarDatosArbol($scope.ObjArbol, function (response) {
+                    html2canvas($("#arbolContenedor"), {
+                        onrendered: function (canvas) {
+                            theCanvas = canvas;
+                            //  document.body.appendChild(canvas);
 
-                            if (response.success) {
-                                waitingDialog.hide();
-                                swal({
-                                    text: 'Registro Exitoso',
-                                    confirmButtonColor: '#238276',
-                                    width: '25%',
-                                })
+                            var imgageData = theCanvas.toDataURL();
+                            // Now browser starts downloading it instead of just showing it
+                            var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
+                            $scope.ObjArbol.imagen = imgageData;
+                            console.log($scope.ObjArbol.imagen);
+                            ArbolObjetivoService.GuardarDatosArbol($scope.ObjArbol, function (response) {
 
-                                //$scope.ocultarArbol();
-                                $("#TabObjetivos").attr("disabled", false);
-                                $scope.ocultarArbol();
-                            }
-                        })
-                    }
-                });
+                                if (response.success) {
+                                    waitingDialog.hide();
+                                    swal({
+                                        text: 'Registro Exitoso',
+                                        confirmButtonColor: '#238276',
+                                        width: '25%',
+                                    })
+
+                                    //$scope.ocultarArbol();
+                                    $("#TabObjetivos").attr("disabled", false);
+                                    $scope.ocultarArbol();
+                                }
+                            })
+                        }
+                    });
                 }, 500);
             }
             //document.querySelector("#guardar").addEventListener("click", function () {
@@ -765,7 +766,7 @@ ManualApp.controller('ArbolObjetivosController',
             //VARIABLE PARA VALIDAR CUANDO YA INGRESO LA PRIMERA VEZ A LA VISTA DE RESULTADOS
             var contador = 0;
             var medios10 = [];
-             $scope.medios1 = []
+            $scope.medios1 = []
             //FUNCION PARA PASAR DEL ABROL A LA VISTA DE OBJETIVO GENERAL Y ESPECIFICO.
             $scope.ocultarArbol = function () {
                 $("#ArbolObjetivos").hide();
@@ -780,7 +781,7 @@ ManualApp.controller('ArbolObjetivosController',
                 audio.pause();
                 var audio2 = document.getElementById("audio-player2");
                 audio2.pause();
-             
+
                 if (contador == 0) {
                     if ($rootScope.proyecto.datos.Etapa < 5) {
                         ArbolObjetivoService.ConsultarArbolObjetivosFinal($rootScope.proyecto.datos.id, function (response) {
@@ -801,7 +802,7 @@ ManualApp.controller('ArbolObjetivosController',
                         ArbolObjetivoService.ConsultarDatosObjetivos($rootScope.proyecto.datos.id, function (response) {
                             if (response.success) {
                                 $scope.Objetivos.ObjetivoCentral = response.DatosObjetivos.ObjetivoCentral;
-                              
+
                                 $scope.medios1 = [];
                                 //$scope.medios1 = response.Especificos;
                                 $.each(response.Especificos, function (index, value) {
@@ -833,13 +834,13 @@ ManualApp.controller('ArbolObjetivosController',
                 var audio1 = document.getElementById("audio-player2");
                 audio1.pause();
 
-                
+
             }
 
             //$scope.medio1 = "";
 
             //FUNCION PARA PASAR DE LA VISTA OBJETIVOS A RESULTADOS.
-              $scope.mostrarResultados = function () {
+            $scope.mostrarResultados = function () {
 
                 $("#ArbolObjetivos").hide();
                 $("#VistaObjetivos").hide();
@@ -851,25 +852,25 @@ ManualApp.controller('ArbolObjetivosController',
                 audio.pause();
                 var audio1 = document.getElementById("audio-player1");
                 audio1.pause();
-           
+
                 if (contador == 0) {
                     if ($rootScope.proyecto.datos.Etapa < 5) {
                         ArbolObjetivoService.ConsultarArbolObjetivosFinal($rootScope.proyecto.datos.id, function (response) {
                             if (response.success) {
                                 //$scope.medios = response.ArbolFinal.Medios;
                                 $scope.mediosIndirectos = [];
-                                  $.each($scope.medios, function (index, value) {
+                                $.each($scope.medios, function (index, value) {
 
                                     for (var i = 0; i < 3; i++) {
                                         if (value.MediosIndirectos[i] != "") {
-                                            $scope.mediosIndirectos.push({ idMedio:index, medioIndirectos: value.MediosIndirectos[i], Resultado: "", Herramienta: "", Producto: "" })
+                                            $scope.mediosIndirectos.push({ idMedio: index, medioIndirectos: value.MediosIndirectos[i], Resultado: "", Herramienta: "", Producto: "" })
                                         } else {
                                             $scope.mediosIndirectos.push({ idMedio: value.Medio, medioIndirectos: "", Resultado: "", Herramienta: "", Producto: "" })
                                         }
                                     }
                                 })
-                                  //console.log($scope.mediosIndirectos);
-                                  $("#Btnguardar").css({ "display": "block" });
+                                //console.log($scope.mediosIndirectos);
+                                $("#Btnguardar").css({ "display": "block" });
                             }
                         })
                         waitingDialog.hide();
@@ -879,28 +880,50 @@ ManualApp.controller('ArbolObjetivosController',
                             if (response.success) {
                                 $scope.Objetivos.ObjetivoCentral = response.DatosObjetivos.ObjetivoCentral;
                                 $scope.prueba = response.DatosObjetivos.Objetivos
-                             
+
                                 $scope.medios = [];
                                 $scope.mediosIndirectos = [];
-                              
+                         
                                 $.each(response.Especificos, function (index, value1) {
 
                                     $scope.medios.push({ Medio: value1.ObjetivoEsp, MediosIndirectos: index });
-                                    
+                                    var cont = 0;
+                                    var faltantes = 0;
                                     $.each($scope.prueba, function (index1, value) {
 
-                                        if (value.ObjetivoEsp == value1.ObjetivoEsp) {
-
-                                            $scope.mediosIndirectos.push({ idMedio: index, medioIndirectos: value.Resultado1, Resultado: value.MedidaResultado, Herramienta: value.HerramientaResultado, Producto: value.ProductoResultado })
-
+                                        if (cont <= 3) {
+                                            
+                                            if (value1.IdObjetivoEsp == value.IdObjetivoEsp) {
+                                                $scope.mediosIndirectos.push({ idMedio: index, medioIndirectos: value.Resultado1, Resultado: value.MedidaResultado, Herramienta: value.HerramientaResultado, Producto: value.ProductoResultado })
+                                                cont++;
+                                            } else {
+                                                //$scope.mediosIndirectos.push({ idMedio: index, medioIndirectos: "", Resultado: "", Herramienta: "", Producto: "" })
+                                            }
                                         }
-                                    })
-                                })
+                                    });
+
+                                    //Se resta 3 que es el maximo de campos con la cantidad de campos que ya se agregaron
+                                    faltantes = 3 - cont;
+                                    if (faltantes >= 0) {
+                                        // Se agregan los campos faltantes
+                                        for (var i = 1; i <= faltantes; i++) {
+                                            $scope.mediosIndirectos.push({ idMedio: index, medioIndirectos: "", Resultado: "", Herramienta: "", Producto: "" })
+                                        }
+                                    } else {
+                                        
+                                        for (var i = 1; i <= 3; i++) {
+                                            $scope.mediosIndirectos.push({ idMedio: index, medioIndirectos: "", Resultado: "", Herramienta: "", Producto: "" })
+                                        }
+                                    }
+                                    cont = 0;
+                                });
                                 //console.log($scope.prueba);
                                 //console.log(response.Especificos);
                                 //console.log($scope.medios);
                                 //console.log($scope.mediosIndirectos);
-                                $("#Btnguardar").css({ "display": "none" });
+                                console.log($scope.prueba);
+                                console.log(response.Especificos);
+                                //$("#Btnguardar").css({ "display": "none" });
                                 waitingDialog.hide();
                             }
                         })
@@ -915,15 +938,19 @@ ManualApp.controller('ArbolObjetivosController',
             $scope.guardarObjetivos = function () {
 
                 var verbo = $("#verbo").val();
-                $scope.ObjetivosFinales.ObjetivoCentral = verbo + " " + $scope.Objetivos.ObjetivoCentral;
-               
+                //$scope.ObjetivosFinales.ObjetivoCentral = verbo + " " + $scope.Objetivos.ObjetivoCentral;
+                if ($('#verbo').is(":visible")) {
+                    $scope.ObjetivosFinales.ObjetivoCentral = verbo + " " + $scope.Objetivos.ObjetivoCentral;
+                } else {
+                    $scope.ObjetivosFinales.ObjetivoCentral = $("#campoObjetivoGeneral").val();
+                }
 
                 $scope.ObjetivosFinales1 = [];
                 $.each($scope.mediosIndirectos, function (index, value) {
 
                     if (index < 3) {
                         var posicion = 0;
-                    } if (index >= 3 && index <6) {
+                    } if (index >= 3 && index < 6) {
                         var posicion = 1;
                     } if (index >= 6 && index < 9) {
                         var posicion = 2;
@@ -934,7 +961,7 @@ ManualApp.controller('ArbolObjetivosController',
                     }
 
                     if (value.medioIndirectos != undefined) {
-                       
+
 
                         $scope.ObjetivosFinales1.push({ ObjetivoEsp: $scope.medios1[posicion].medio.toString(), Resultado1: value.medioIndirectos, MedidaResultado: value.Resultado, HerramientaResultado: value.Herramienta, ProductoResultado: value.Producto })
 
@@ -965,7 +992,7 @@ ManualApp.controller('ArbolObjetivosController',
                                 confirmButtonColor: '#238276',
                                 width: '25%',
                             })
-                           
+
                             $location.url("/Menu");
                         }
                     });
@@ -974,7 +1001,7 @@ ManualApp.controller('ArbolObjetivosController',
                     alertify.success("Ups! Debes completar los campos de cada resultado esperado.");
                 }
                 console.log($scope.ObjetivosFinales)
-                
+
             }
 
             $scope.atras = function () {
@@ -984,4 +1011,43 @@ ManualApp.controller('ArbolObjetivosController',
 
             }
 
+            $scope.GuardarObjetivosEspecificos = function () {
+
+                $scope.ObjetivosEspe = [];
+
+          
+                    var verbo = $("#verbo").val();
+
+                    if ($('#verbo').is(":visible")) {
+                        $scope.ObjetivosFinales.ObjetivoCentral = verbo + " " + $scope.Objetivos.ObjetivoCentral;
+                    } else {
+                        $scope.ObjetivosFinales.ObjetivoCentral =  $scope.Objetivos.ObjetivoCentral;
+                    }
+                    
+            
+
+                $.each($scope.medios1, function (index, value) {
+                    if (value.IdObjetivoEsp != 0) {
+                        $scope.ObjetivosEspe.push({ IdObjetivoEsp: value.IdObjetivoEsp, ObjetivoEsp: value.medio, IdProyecto: $rootScope.proyecto.datos.id, ObjetivoCentral: $scope.Objetivos.ObjetivoCentral })
+                    } else {
+                        $scope.ObjetivosEspe.push({ IdObjetivoEsp: 0, ObjetivoEsp: value.medio, IdProyecto: $rootScope.proyecto.datos.id, ObjetivoCentral: $scope.Objetivos.ObjetivoCentral })
+                    }
+
+                })
+
+                waitingDialog.show();
+                ArbolObjetivoService.GuardarObjetivosEspecificos($scope.ObjetivosEspe, function (response) {
+                    if (response.success) {
+                        waitingDialog.hide();
+
+                        swal({
+                            text: 'Registro Exitoso',
+                            confirmButtonColor: '#238276',
+                            width: '25%',
+                        })
+
+                        $scope.mostrarResultados();
+                    }
+                });
+            }
         }]);

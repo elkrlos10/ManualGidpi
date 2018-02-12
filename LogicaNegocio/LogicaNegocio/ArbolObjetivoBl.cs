@@ -14,6 +14,50 @@ namespace LogicaNegocio.LogicaNegocio
         public void GuardarDatosArbolObjetivos(ArbolObjetivoDTO oArbolDTO)
         {
 
+            var ArbolProyecto1 = (from i in entity.ArbolObjetivos
+                                  where i.IdProyecto == oArbolDTO.IdProyecto
+                                  select i).FirstOrDefault();
+
+
+            if (ArbolProyecto1 != null)
+            {
+
+                var medios = (from i in entity.MedioDirecto
+                              where i.IdArbolObj == ArbolProyecto1.IdArbolObj
+                              select i).ToList();
+
+                foreach (var item in medios)
+                {
+                    var mediosIndirectos = (from i in entity.MediosIndirectos
+                                            where i.IdMedio == item.IdMedio
+                                            select i).ToList();
+
+                    entity.MediosIndirectos.RemoveRange(mediosIndirectos);
+                    entity.SaveChanges();
+                    entity.MedioDirecto.Remove(item);
+                    entity.SaveChanges();
+                }
+
+                var fines = (from i in entity.FinesDirectos
+                               where i.IdArbolObj == ArbolProyecto1.IdArbolObj
+                               select i).ToList();
+
+                foreach (var item in fines)
+                {
+                    var finesIndirectos = (from i in entity.FinesIndirectos
+                                             where i.IdFIn == item.IdFin
+                                             select i).ToList();
+
+                    entity.FinesIndirectos.RemoveRange(finesIndirectos);
+                    entity.SaveChanges();
+                    entity.FinesDirectos.Remove(item);
+                    entity.SaveChanges();
+                }
+
+                entity.ArbolObjetivos.Remove(ArbolProyecto1);
+                entity.SaveChanges();
+            }
+
             string base64 = oArbolDTO.imagen.Split(',')[1];
             ArbolObjetivos oArbol = new ArbolObjetivos();
             oArbol.IdProyecto = oArbolDTO.IdProyecto;
@@ -82,9 +126,12 @@ namespace LogicaNegocio.LogicaNegocio
             var proyecto = (from i in entity.Proyecto
                             where i.IdProyecto == oArbolDTO.IdProyecto
                             select i).FirstOrDefault();
-
-            proyecto.Etapa = 4;
-            entity.SaveChanges();
+            if (proyecto.Etapa < 4)
+            {
+                proyecto.Etapa = 4;
+                entity.SaveChanges();
+            }
+           
         }
 
         public ArbolObjetivoDTO ConsultarArbolObjetivosFinal(int IdProyecto)
@@ -145,6 +192,33 @@ namespace LogicaNegocio.LogicaNegocio
 
         public void GuardarObjetivos(ObjetivosDTO oObjetivosDTO)
         {
+            var ObjGeneral = (from i in entity.ObjetivoGeneral
+                              where i.IdProyecto == oObjetivosDTO.IdProyecto
+                              select i).FirstOrDefault();
+
+            if (ObjGeneral != null)
+            {
+                var Especificos = (from i in entity.ObejetivosEspecificos
+                                   where i.IdObjetivoGeneral == ObjGeneral.IdObjetivoGeneral
+                                   select i).ToList();
+
+                foreach (var item in Especificos)
+                {
+                    var resultados = (from i in entity.Resultados
+                                      where i.IdObjetivoEsp == item.IdObjetivoEsp
+                                       select i).ToList();
+
+                    entity.Resultados.RemoveRange(resultados);
+                    entity.SaveChanges();
+                }
+
+                entity.ObejetivosEspecificos.RemoveRange(Especificos);
+                entity.SaveChanges();
+
+                entity.ObjetivoGeneral.Remove(ObjGeneral);
+                entity.SaveChanges();
+            }
+
             ObjetivoGeneral objetivoGeneral = new ObjetivoGeneral();
             objetivoGeneral.IdProyecto = oObjetivosDTO.IdProyecto;
             objetivoGeneral.ObjetivoCentral = oObjetivosDTO.ObjetivoCentral;
@@ -167,7 +241,7 @@ namespace LogicaNegocio.LogicaNegocio
                 {
                     if (oObjetivosDTO.Objetivos[i].ObjetivoEsp != "")
                     {
-                        
+
 
                         ObejetivosEspecificos objetivoEspecifico = new ObejetivosEspecificos();
                         objetivoEspecifico.IdObjetivoGeneral = objetivoGen.IdObjetivoGeneral;
@@ -184,7 +258,7 @@ namespace LogicaNegocio.LogicaNegocio
                 }
 
 
-                if (oObjetivosDTO.Objetivos[i].Resultado1 != "" && oObjetivosDTO.Objetivos[i].MedidaResultado!= "" && oObjetivosDTO.Objetivos[i].HerramientaResultado != "" && oObjetivosDTO.Objetivos[i].ProductoResultado!="")
+                if (oObjetivosDTO.Objetivos[i].Resultado1 != "" && oObjetivosDTO.Objetivos[i].MedidaResultado != "" && oObjetivosDTO.Objetivos[i].HerramientaResultado != "" && oObjetivosDTO.Objetivos[i].ProductoResultado != "")
                 {
                     Resultados ResultadosObjetivos = new Resultados();
                     ResultadosObjetivos.IdObjetivoEsp = especificos.IdObjetivoEsp;
@@ -200,15 +274,18 @@ namespace LogicaNegocio.LogicaNegocio
             }
 
             var Proyecto = (from i in entity.Proyecto
-                            where i.IdProyecto== oObjetivosDTO.IdProyecto
-                            select i ).FirstOrDefault();
-            Proyecto.Etapa = 5;
-            entity.SaveChanges();
+                            where i.IdProyecto == oObjetivosDTO.IdProyecto
+                            select i).FirstOrDefault();
+            if (Proyecto.Etapa < 5)
+            {
+                Proyecto.Etapa = 5;
+                entity.SaveChanges();
+            }
+           
 
-      
         }
 
-        public Tuple<ObjetivosDTO,List<ObejetivosEspecificos>> ConsultarDatosObjetivos(int idProyecto)
+        public Tuple<ObjetivosDTO, List<ObejetivosEspecificos>> ConsultarDatosObjetivos(int idProyecto)
         {
             List<ObjetivosEspe> listaObjetivos = new List<ObjetivosEspe>();
 
@@ -225,19 +302,19 @@ namespace LogicaNegocio.LogicaNegocio
                                         where i.IdObjetivoGeneral == objetivoGeneral1.IdObjetivoGeneral
                                         select i).ToList();
 
-           
+
             foreach (var item in objetivosEspecificos)
             {
-               
+
                 var ObjetivosResultados = (from i in entity.Resultados
                                            where i.IdObjetivoEsp == item.IdObjetivoEsp
                                            select i).ToList();
 
-               
+
                 foreach (var item1 in ObjetivosResultados)
                 {
                     ObjetivosEspe Obj = new ObjetivosEspe();
-
+                    Obj.IdObjetivoEsp = item1.IdObjetivoEsp;
                     Obj.ObjetivoEsp = item.ObjetivoEsp;
                     Obj.Resultado1 = item1.Resultado;
                     Obj.MedidaResultado = item1.MedidaResultado;
@@ -247,12 +324,12 @@ namespace LogicaNegocio.LogicaNegocio
                     listaObjetivos.Add(Obj);
                 }
 
-               
+
             }
 
             oObjetivoDTO.Objetivos = listaObjetivos;
 
-            return new Tuple<ObjetivosDTO, List<ObejetivosEspecificos>> (oObjetivoDTO, objetivosEspecificos);
+            return new Tuple<ObjetivosDTO, List<ObejetivosEspecificos>>(oObjetivoDTO, objetivosEspecificos);
 
         }
     }
