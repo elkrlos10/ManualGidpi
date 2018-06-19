@@ -158,11 +158,14 @@ function SeekBar() {
     seekbar.value = audio.currentTime;
 }
 
-audio.addEventListener("timeupdate", function () {
-    var duration = document.getElementById("duration");
-    var s = parseInt(audio.currentTime % 60);
-    var m = parseInt((audio.currentTime / 60) % 60);
-}, false);
+if (audio) {
+    audio.addEventListener("timeupdate", function () {
+        var duration = document.getElementById("duration");
+        var s = parseInt(audio.currentTime % 60);
+        var m = parseInt((audio.currentTime / 60) % 60);
+    }, false);
+
+}
 
 //---------------------------------------------------------------------------------------------
 var audio2 = document.getElementById("audio-player2");
@@ -201,11 +204,14 @@ function SeekBar2() {
     seekbar.value = audio2.currentTime;
 }
 
-audio2.addEventListener("timeupdate", function () {
-    var duration = document.getElementById("duration");
-    var s = parseInt(audio2.currentTime % 60);
-    var m = parseInt((audio2.currentTime / 60) % 60);
-}, false);
+if (audio2) {
+    audio2.addEventListener("timeupdate", function () {
+        var duration = document.getElementById("duration");
+        var s = parseInt(audio2.currentTime % 60);
+        var m = parseInt((audio2.currentTime / 60) % 60);
+    }, false);
+}
+
 
 
 Waves.init();

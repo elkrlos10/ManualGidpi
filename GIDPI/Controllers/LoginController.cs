@@ -129,5 +129,25 @@ namespace GIDPI.Controllers
             }
 
         }
+
+
+        [HttpPost]
+        public IHttpActionResult CambiarPassword(ParametrosDTO oParametrosDTO)
+        {
+            try
+            {
+                UsuarioBl oUsuarioBl = new UsuarioBl();
+               var mensaje= oUsuarioBl.CambiarContrasena(oParametrosDTO.Parametro1, oParametrosDTO.Parametro2, int.Parse(oParametrosDTO.Parametro3));
+                return Ok(new { success = true, mensaje });
+            }
+            catch (Exception exc)
+            {
+
+                return Ok(new { success = false, exc.Message });
+            }
+
+
+
+        }
     }
 }

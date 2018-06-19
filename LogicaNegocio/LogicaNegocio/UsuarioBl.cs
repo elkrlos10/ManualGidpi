@@ -91,5 +91,30 @@ namespace LogicaNegocio.LogicaNegocio
             return mensaje;
 
         }
+
+        public string CambiarContrasena(string Password, string newPassword, int usuario)
+        {
+            Model1 entity = new Model1();
+            var mensaje = "";
+            var Encriptar = SecurityEncode.SecurityEncode.Encriptar(Password);
+          
+            var Datos = (from i in entity.Usuario
+                         where i.Contrasena == Encriptar && i.IdUsuario == usuario
+                         select i).FirstOrDefault();
+
+            if (Datos != null)
+            {
+                Datos.Contrasena = SecurityEncode.SecurityEncode.Encriptar(newPassword);
+                entity.SaveChanges();
+                mensaje = "Cambio exitoso";
+            }
+            else
+            {
+                
+                mensaje = "La contraseña actual no coincide";
+            }
+
+            return mensaje;
+        }
     }
 }

@@ -4,6 +4,10 @@
   list-style: none;
 }
 
+body{
+    overflow-y: scroll !important;
+}
+
 :root{
   --subtitulos: black;
   --borde: 0.5px solid black;

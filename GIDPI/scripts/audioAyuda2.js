@@ -34,11 +34,14 @@ function SeekBar1() {
     seekbar.value = audio1.currentTime;
 }
 
-audio1.addEventListener("timeupdate", function () {
-    var duration = document.getElementById("duration");
-    var s = parseInt(audio1.currentTime % 60);
-    var m = parseInt((audio1.currentTime / 60) % 60);
-}, false);
+if (audio1) {
+    audio1.addEventListener("timeupdate", function () {
+        var duration = document.getElementById("duration");
+        var s = parseInt(audio1.currentTime % 60);
+        var m = parseInt((audio1.currentTime / 60) % 60);
+    }, false);
+}
+
 
 
 //Waves.init();

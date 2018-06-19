@@ -127,9 +127,15 @@
 </div>
 
 <!-- MOSTRAR Y OCULTAR EL PANEL -->
-<div id="mostrarPanel" ng-click="mostrarPanel()">
-    <h6 id="textoPanel">Ocultar</h6>
+<div>
+    <div id="mostrarPanel" ng-click="mostrarPanel()">
+        <h6 id="textoPanel">Ocultar</h6>
+     </div>
+    <div style="margin-bottom:150px;">
+        <h3 class="text-center" style="margin-left:500px; margin-top:-60px; margin-left:-30px;"><strong>ÁRBOL DE PROBLEMAS</strong></h3>
+    </div>
 </div>
+
 
 <!-- PANEL -->
 <div id="panel">
@@ -157,11 +163,11 @@
 
     
 
-
 <!--<div id="guardar"><p id="guardarTexto">Guardar</p></div>-->
 
 <!-- ARBOL -->
 <div id="arbolContenedor" >
+     
     <!-- EFECTOS INDIRECTOS -->
     <ul id="efectoIndirecto" class="nivel3"></ul>
     <!-- IMG3 -->
@@ -215,10 +221,10 @@
     <!--<input id="btnCrear2" class="btn" type="button" name="crearElemento" value="Crear" ng-click="crear()">-->
 </div>
 
-<script src="../Modelos/ArbolProblema/BorrarElemento.js"></script>
-<script src="../scripts/AnimacionTextoVideoAudio.js"></script>
-<script src="../scripts/audioAyuda.js"></script>
-<script src="../scripts/waves.min.js"></script>
+<script src="../Modelos/ArbolProblema/BorrarElemento.js" defer></script>
+<script src="../scripts/AnimacionTextoVideoAudio.js" defer></script>
+<script src="../scripts/audioAyuda.js" defer></script>
+<script src="../scripts/waves.min.js" defer></script>
 
 <style>
     ::-webkit-scrollbar {

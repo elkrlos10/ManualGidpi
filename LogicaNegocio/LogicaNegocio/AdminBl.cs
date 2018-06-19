@@ -13,8 +13,6 @@ namespace LogicaNegocio.LogicaNegocio
 
         Model1 entity = new Model1();
 
-
-
         public List<int> cosultarGrafica()
         {
             List<int> Datos = new List<int>();
@@ -91,6 +89,14 @@ namespace LogicaNegocio.LogicaNegocio
 
             return Datos;
 
+        }
+
+        public List<PersonaJuridica> ConsultarEmpresas()
+        {
+             var Empresas = (from i in entity.PersonaJuridica
+                            select i).ToList();
+
+            return Empresas;
         }
     }
 }

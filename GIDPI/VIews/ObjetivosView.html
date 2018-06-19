@@ -35,7 +35,8 @@
     <div id="ayudaVideoCuatro">
         <div class="svg-popup-content" style="width:auto;">
             <h3 class="title-plagin">Video ayuda arbol objetivos</h3>
-            <iframe width="560" height="315" class="cierre" src="https://www.youtube.com/embed/PMCHY43Tg8s" frameborder="0" allowfullscreen></iframe>
+            <!--<iframe width="560" height="315" class="cierre" src="https://www.youtube.com/embed/PMCHY43Tg8s" frameborder="0" allowfullscreen></iframe>-->
+            <iframe width="560" class="cierre" height="315" src="https://www.youtube.com/embed/XK0tMN5RpJ8" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
 
@@ -108,8 +109,13 @@
     </div>
 
     <!-- MOSTRAR Y OCULTAR EL PANEL -->
-    <div id="mostrarPanel" ng-click="mostrarPanel()">
-        <h6 id="textoPanel">Ocultar</h6>
+    <div>
+        <div id="mostrarPanel" ng-click="mostrarPanel()">
+            <h6 id="textoPanel">Ocultar</h6>
+        </div>
+        <div style="margin-bottom:150px;">
+            <h3 class="text-center" style="margin-left:500px; margin-top:-60px; margin-left:-30px;"><strong>ÁRBOL DE OBJETIVOS</strong></h3>
+        </div>
     </div>
 
     <!-- PANEL -->
@@ -135,9 +141,10 @@
         <input id="btnCrear" class="btn" type="button" name="crearElemento" value="Crear" ng-click="crear()">
 
     </div>
-
+   
     <!--<div id="guardar"><p>Guardar</p></div>-->
     <!-- ARBOL -->
+   
     <div id="arbolContenedor">
         <!-- EFECTOS INDIRECTOS -->
         <ul id="efectoIndirecto" class="nivel3"></ul>
@@ -656,7 +663,7 @@
 
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="height: 12vh;"><hr class="lineaTab" style="height:2px; background:#238276;" /></div>
 
-    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="height: 12vh; "><center><button id="resultados" ng-click="mostrarResultados()" title="Resultados de objetivos" class="btn btn-success" style="border-radius:40%; margin-top:23%;"><i class="fa fa-pencil-square-o" style="font-size:55px;"></i></button></center></div>
+    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="height: 12vh; "><center><button id="resultados" ng-click="mostrarResultados(1)" title="Resultados de objetivos" class="btn btn-success" style="border-radius:40%; margin-top:23%;"><i class="fa fa-pencil-square-o" style="font-size:55px;"></i></button></center></div>
 
 </div>
 
@@ -666,9 +673,9 @@
     }
 </style>
 
-<script src="../Modelos/ArbolObjetivos/BorrarElemento2.js"></script>
-<script src="../scripts/AnimacionTextoVideoAudio.js"></script>
-<script src="../scripts/AnimacionTips.js"></script>
-<script src="../scripts/audioAyuda.js"></script>
-<script src="../scripts/audioAyuda2.js"></script>
-<script src="../scripts/waves.min.js"></script>
+<script src="../Modelos/ArbolObjetivos/BorrarElemento2.js" defer></script>
+<script src="../scripts/AnimacionTextoVideoAudio.js" defer></script>
+<script src="../scripts/AnimacionTips.js" defer></script>
+<script src="../scripts/audioAyuda.js" defer></script>
+<script src="../scripts/audioAyuda2.js" defer></script>
+<script src="../scripts/waves.min.js" defer></script>

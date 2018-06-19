@@ -11,8 +11,6 @@ namespace GIDPI.Controllers
 {
     public class AdminController:ApiController
     {
-
-
         [HttpPost]
         public IHttpActionResult cosultarGrafica()
         {
@@ -22,6 +20,26 @@ namespace GIDPI.Controllers
                 var Datos = oAdminBl.cosultarGrafica();
 
                 return Ok(new { success = true, Datos });
+
+            }
+            catch (Exception e)
+            {
+
+                return Ok(new { success = false, e.Message });
+
+            }
+        }
+
+
+        [HttpPost]
+        public IHttpActionResult ConsultarEmpresas()
+        {
+            try
+            {
+                AdminBl oAdminBl = new AdminBl();
+                var empresas = oAdminBl.ConsultarEmpresas();
+
+                return Ok(new { success = true, empresas });
 
             }
             catch (Exception e)

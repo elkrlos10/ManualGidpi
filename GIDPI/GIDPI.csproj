@@ -270,6 +270,7 @@
     <Content Include="ReporteRcdl\VistaInforme.aspx" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
+    <Content Include="scripts\alasql.min.js" />
     <Content Include="scripts\alertify.js" />
     <Content Include="scripts\angular-aria.min.js" />
     <Content Include="scripts\angular-cookies.js" />
@@ -284,6 +285,7 @@
     <Content Include="scripts\bootstrap-datepicker.js" />
     <Content Include="scripts\bootstrap-datetimepicker.js" />
     <Content Include="scripts\bootstrap.js" />
+    <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\codigo.js" />
     <Content Include="scripts\codigoMenu.js" />
     <Content Include="scripts\easyResponsiveTabs.js" />
@@ -313,6 +315,7 @@
     <Content Include="scripts\prefixfree.min.js" />
     <Content Include="scripts\sweetalert2.js" />
     <Content Include="scripts\waves.min.js" />
+    <Content Include="scripts\xlsx.core.min.js" />
     <Content Include="VIews\AdminView.html" />
     <Content Include="VIews\ArbolView.html" />
     <Content Include="VIews\Colaboradores.html" />
@@ -397,6 +400,7 @@
       <DependentUpon>DataSet8.xsd</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\GidpiPublic.pubxml" />
+    <None Include="Properties\PublishProfiles\Nuevo gidpi.pubxml" />
     <None Include="ReporteRcdl\DataSet8.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>

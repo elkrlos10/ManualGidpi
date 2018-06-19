@@ -28,7 +28,7 @@
     <link href="Css/Colaboradores.css" rel="stylesheet" />
 
     <!--<link href="http://cdn.syncfusion.com/15.1.0.41/js/web/flat-azure/ej.web.all.min.css" rel="stylesheet" />-->
-
+  <!--  <base href="/">-->
 
 	<meta charset="utf-8" />
     <!--<base href="/">-->
@@ -40,7 +40,7 @@
     <footer><img id="lineaDos" src="images/lineasDos.png" style="position:fixed; width:12%;"/></footer>
     <header>
         <div id="main" style="float:right; width:100%; margin-top:10%; position:absolute;">
-             <div ng-view style="margin:0px auto;"></div>
+             <div ng-view style="margin:0px auto;" autoscroll="true"></div>
         </div>
     </header>
 </body>
@@ -87,38 +87,78 @@
    
 
 <!--modelos-->
-<script src="Modelos/General.js"></script>
+<script>document.write('<script src="Modelos/General.js?Id=' + Math.floor(Math.random() * 100)+'"><\/script>');</script>
+<script>document.write('<script src="Modelos/Principal.js?Id=' + Math.floor(Math.random() * 100) + '"><\/script>');</script>
+<script>document.write('<script src="Modelos/DatosProyecto/DatosProyecto.js?Id=' + Math.floor(Math.random() * 100) + '"><\/script>');</script>
+<script>document.write('<script src="Modelos/DatosProyecto/DatosProyectoService.js?Id=' + Math.floor(Math.random() * 100) + '"><\/script>');</script>
+<script>document.write('<script src="Modelos/Matriz/Matriz.js?Id=' + Math.floor(Math.random() * 100) + '"><\/script>');</script>
+<script>document.write('<script src="Modelos/Matriz/MatrizService.js?Id=' + Math.floor(Math.random() * 100) + '"><\/script>');</script>
+<script>document.write('<script src="Modelos/Menu/Menu.js?Id=' + Math.floor(Math.random() * 100) + '"><\/script>');</script>
+<script>document.write('<script src="Modelos/Menu/MenuService.js?Id=' + Math.floor(Math.random() * 100) + '"><\/script>');</script>
+<script>document.write('<script src="Modelos/Login/Login.js?Id=' + Math.floor(Math.random() * 100) + '"><\/script>');</script>
+<script>document.write('<script src="Modelos/Login/LoginService.js?Id=' + Math.floor(Math.random() * 100) + '"><\/script>');</script>
+<script>document.write('<script src="Modelos/ArbolProblema/ArbolProblema.js?Id=' + Math.floor(Math.random() * 100) + '"><\/script>');</script>
+<script>document.write('<script src="Modelos/ArbolProblema/ArbolProblemaService.js?Id=' + Math.floor(Math.random() * 100) + '"><\/script>');</script>
+<script>document.write('<script src="Modelos/ArbolObjetivos/ArbolObjetivos.js?Id=' + Math.floor(Math.random() * 100) + '"><\/script>');</script>
+<script>document.write('<script src="Modelos/ArbolObjetivos/ArbolObjetivoService.js?Id=' + Math.floor(Math.random() * 100) + '"><\/script>');</script>
+<script>document.write('<script src="Modelos/PerfilProyecto/PerfilProyecto.js?Id=' + Math.floor(Math.random() * 100) + '"><\/script>');</script>
+<script>document.write('<script src="Modelos/PerfilProyecto/PerfilProyectoService.js?Id=' + Math.floor(Math.random() * 100) + '"><\/script>');</script>
+<script>document.write('<script src="Modelos/Involucrados/Involucrados.js?Id=' + Math.floor(Math.random() * 100) + '"><\/script>');</script>
+<script>document.write('<script src="Modelos/Involucrados/InvolucradosService.js?Id=' + Math.floor(Math.random() * 100) + '"><\/script>');</script>
+<script>document.write('<script src="Modelos/Presupuesto/CronogramaPresupuesto.js?Id=' + Math.floor(Math.random() * 100) + '"><\/script>');</script>
+<script>document.write('<script src="Modelos/Presupuesto/CronogramaPresupuestoService.js?Id=' + Math.floor(Math.random() * 100) + '"><\/script>');</script>
+<script>document.write('<script src="Modelos/MarcoLogico/MarcoLogico.js?Id=' + Math.floor(Math.random() * 100) + '"><\/script>');</script>
+<script>document.write('<script src="Modelos/MarcoLogico/MarcoLogicoService.js?Id=' + Math.floor(Math.random() * 100) + '"><\/script>');</script>
+<script>document.write('<script src="Modelos/Admin/Admin.js?Id=' + Math.floor(Math.random() * 100) + '"><\/script>');</script>
+<script>document.write('<script src="Modelos/Admin/AdminService.js?Id=' + Math.floor(Math.random() * 100) + '"><\/script>');</script>
+
+
+
+<!--<script src="Modelos/General.js"></script>
 <script src="Modelos/Principal.js"></script>
 <script src="Modelos/Filter.js"></script>
 <script src="Modelos/DatosProyecto/DatosProyecto.js"></script>
 <script src="Modelos/DatosProyecto/DatosProyectoService.js"></script>
+
 <script src="Modelos/Matriz/Matriz.js"></script>
 <script src="Modelos/Matriz/MatrizService.js"></script>
+
 <script src="Modelos/Menu/Menu.js"></script>
 <script src="Modelos/Menu/MenuService.js"></script>
+
 <script src="Modelos/Login/Login.js"></script>
 <script src="Modelos/Login/LoginService.js"></script>
-<script src="Modelos/ArbolProblema/ArbolProblema.js"></script>
+
+<script src="Modelos/ArbolProblema/ArbolProblema.js" defer></script>
 <script src="Modelos/ArbolProblema/ArbolProblemaService.js"></script>
-<script src="Modelos/ArbolObjetivos/ArbolObjetivos.js"></script>
+
+<script src="Modelos/ArbolObjetivos/ArbolObjetivos.js" defer></script>
 <script src="Modelos/ArbolObjetivos/ArbolObjetivoService.js"></script>
+
 <script src="Modelos/PerfilProyecto/PerfilProyecto.js"></script>
 <script src="Modelos/PerfilProyecto/PerfilProyectoService.js"></script>
+
 <script src="Modelos/Involucrados/Involucrados.js"></script>
 <script src="Modelos/Involucrados/InvolucradosService.js"></script>
+
 <script src="Modelos/Presupuesto/CronogramaPresupuesto.js"></script>
 <script src="Modelos/Presupuesto/CronogramaPresupuestoService.js"></script>
+
 <script src="Modelos/MarcoLogico/MarcoLogico.js"></script>
 <script src="Modelos/MarcoLogico/MarcoLogicoService.js"></script>
-<script src="Modelos/Reporte/Reporte.js"></script>
+
 <script src="Modelos/Admin/Admin.js"></script>
-<script src="Modelos/Admin/AdminService.js"></script>
+<script src="Modelos/Admin/AdminService.js"></script>-->
 <!--<script src="scripts/grafica.js"></script>-->
 <script src="Modelos/Colaboradores/Colaboradores.js"></script>
-
-<!--Librerias reporte-->
+<script src="Modelos/Reporte/Reporte.js"></script>
+<!--Librerias reporte
 <script src="scripts/jsrender.min.js"></script>
 <!--<script src="http://cdn.syncfusion.com/js/assets/external/jsrender.min.js"></script>-->
 <!--<script src="http://cdn.syncfusion.com/15.1.0.41/js/web/ej.web.all.min.js"></script>-->
 <script src="scripts/ej.web.all.min.js"></script>
 <script src="scripts/ej.widget.angular.min.js"></script>
+<script src="scripts/alasql.min.js"></script>
+<script src="scripts/xlsx.core.min.js"></script>
+
+
