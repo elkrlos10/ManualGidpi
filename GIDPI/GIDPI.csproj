@@ -400,6 +400,7 @@
       <DependentUpon>DataSet8.xsd</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\GidpiPublic.pubxml" />
+    <None Include="Properties\PublishProfiles\nuevacasa.pubxml" />
     <None Include="Properties\PublishProfiles\Nuevo gidpi.pubxml" />
     <None Include="ReporteRcdl\DataSet8.xsd">
       <SubType>Designer</SubType>
