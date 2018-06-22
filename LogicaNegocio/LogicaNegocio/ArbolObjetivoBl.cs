@@ -11,7 +11,8 @@ namespace LogicaNegocio.LogicaNegocio
     public class ArbolObjetivoBl
     {
         Model1 entity = new Model1();
-        public void GuardarDatosArbolObjetivos(ArbolObjetivoDTO oArbolDTO)
+
+        public Task<bool> GuardarDatosArbolObjetivos(ArbolObjetivoDTO oArbolDTO)
         {
 
             var ArbolProyecto1 = (from i in entity.ArbolObjetivos
@@ -134,9 +135,10 @@ namespace LogicaNegocio.LogicaNegocio
                 entity.SaveChanges();
             }
            
+            return Task.FromResult<bool>(true);
         }
 
-        public ArbolObjetivoDTO ConsultarArbolObjetivosFinal(int IdProyecto)
+        public Task<ArbolObjetivoDTO> ConsultarArbolObjetivosFinal(int IdProyecto)
         {
             var arbol = (from i in entity.ArbolObjetivos
                          where i.IdProyecto == IdProyecto
@@ -188,11 +190,11 @@ namespace LogicaNegocio.LogicaNegocio
             oArbolDTO.Fines = ListaoFines;
             oArbolDTO.Medios = ListaoMedios;
 
-            return oArbolDTO;
+            return Task.FromResult<ArbolObjetivoDTO>(oArbolDTO);
 
         }
 
-        public void GuardarObjetivos(ObjetivosDTO oObjetivosDTO)
+        public Task<bool> GuardarObjetivos(ObjetivosDTO oObjetivosDTO)
         {
             var ObjGeneral = (from i in entity.ObjetivoGeneral
                               where i.IdProyecto == oObjetivosDTO.IdProyecto
@@ -283,11 +285,11 @@ namespace LogicaNegocio.LogicaNegocio
                 Proyecto.Etapa = 5;
                 entity.SaveChanges();
             }
-           
 
+            return Task.FromResult<bool>(true);
         }
 
-        public Tuple<ObjetivosDTO, List<ObejetivosEspecificos>> ConsultarDatosObjetivos(int idProyecto)
+        public Task<Tuple<ObjetivosDTO, List<ObejetivosEspecificos>>> ConsultarDatosObjetivos(int idProyecto)
         {
             List<ObjetivosEspe> listaObjetivos = new List<ObjetivosEspe>();
 
@@ -331,7 +333,10 @@ namespace LogicaNegocio.LogicaNegocio
 
             oObjetivoDTO.Objetivos = listaObjetivos;
 
-            return new Tuple<ObjetivosDTO, List<ObejetivosEspecificos>>(oObjetivoDTO, objetivosEspecificos);
+            var tuple = new Tuple<ObjetivosDTO, List<ObejetivosEspecificos>>(oObjetivoDTO, objetivosEspecificos);
+            return Task.FromResult(tuple);
+
+            //return new Tuple<ObjetivosDTO, List<ObejetivosEspecificos>>(oObjetivoDTO, objetivosEspecificos);
 
         }
     }

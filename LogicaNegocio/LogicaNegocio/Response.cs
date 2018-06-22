@@ -13,5 +13,7 @@ namespace LogicaNegocio.LogicaNegocio
         public string Message { get; set; }
 
         public Object Result { get; set; }
+
+        public Object Result1 { get; set; }
     }
 }

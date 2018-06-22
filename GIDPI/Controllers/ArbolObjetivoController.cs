@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 
@@ -14,29 +15,37 @@ namespace GIDPI.Controllers
     public class ArbolObjetivoController: ApiController
     {
         [HttpPost]
-        public IHttpActionResult GuardarDatosArbol(ArbolObjetivoDTO oArbolDTO)
+        public async Task<Response> GuardarDatosArbol(ArbolObjetivoDTO oArbolDTO)
         {
             try
             {
                 ArbolObjetivoBl oArbol = new ArbolObjetivoBl();
-                oArbol.GuardarDatosArbolObjetivos(oArbolDTO);
+                var dato = await oArbol.GuardarDatosArbolObjetivos(oArbolDTO);
 
-                return Ok(new { success = true });
+                return new Response
+                {
+                    success= true,
+                    Result= dato
+                };
             }
             catch (Exception e)
             {
 
-                return Ok(new { success = false, e.Message });
+                return new Response
+                {
+                    success = true,
+                    Message = e.Message
+                };
             }
         }
 
         [HttpPost]
-        public IHttpActionResult ConsultarArbolObjetivosFinal(ParametrosDTO oParametros)
+        public async Task<Response> ConsultarArbolObjetivosFinal(ParametrosDTO oParametros)
         {
             try
             {
                 ArbolObjetivoBl oArbol = new ArbolObjetivoBl();
-                var ArbolFinal = oArbol.ConsultarArbolObjetivosFinal(int.Parse(oParametros.Parametro1));
+                var ArbolFinal = await oArbol.ConsultarArbolObjetivosFinal(int.Parse(oParametros.Parametro1));
 
                 List<string> Especificos = new List<string>();
                 foreach (var item in ArbolFinal.Medios)
@@ -44,48 +53,77 @@ namespace GIDPI.Controllers
                     Especificos.Add(item.Medio);
                 }
 
-               return Ok(new { success = true, ArbolFinal, Especificos });
+                return new Response
+                {
+                    success = true,
+                    Result = ArbolFinal,
+                    Result1= Especificos
+                };
             }
             catch (Exception e)
             {
 
-                return Ok(new { success = false, e.Message });
+                return new Response
+                {
+                    success = false,
+                    Message = e.Message
+                };
             }
         }
 
         [HttpPost]
-        public IHttpActionResult GuardarObjetivos(ObjetivosDTO oObjetivoDTO)
+        public async Task<Response> GuardarObjetivos(ObjetivosDTO oObjetivoDTO)
         {
             try
             {
                 ArbolObjetivoBl oArbol = new ArbolObjetivoBl();
-                oArbol.GuardarObjetivos(oObjetivoDTO);
+                var respuesta = await oArbol.GuardarObjetivos(oObjetivoDTO);
 
-                return Ok(new { success = true });
+                return new Response
+                {
+                    success= true
+                };
+                //return Ok(new { success = true });
             }
             catch (Exception e)
             {
 
-                return Ok(new { success = false, e.Message });
+                return new Response
+                {
+                    success = false,
+                    Message = e.Message
+                };
             }
         }
 
 
         [HttpPost]
-        public IHttpActionResult ConsultarDatosObjetivos(ParametrosDTO oParametrosDTO)
+        public async Task<Response> ConsultarDatosObjetivos(ParametrosDTO oParametrosDTO)
         {
             try
             {
                 ArbolObjetivoBl oArbol = new ArbolObjetivoBl();
-               var DatosObjetivos= oArbol.ConsultarDatosObjetivos(int.Parse(oParametrosDTO.Parametro1)).Item1;
-                var Especificos = oArbol.ConsultarDatosObjetivos(int.Parse(oParametrosDTO.Parametro1)).Item2;
+               var Objetivos= await oArbol.ConsultarDatosObjetivos(int.Parse(oParametrosDTO.Parametro1));
 
-                return Ok(new { success = true, DatosObjetivos, Especificos });
+                var DatosObjetivos = Objetivos.Item1;
+                var Especificos = Objetivos.Item2;
+                //var Especificos = oArbol.ConsultarDatosObjetivos(int.Parse(oParametrosDTO.Parametro1)).Item2;
+
+                return new Response
+                {
+                    success = true,
+                    Result = DatosObjetivos,
+                    Result1 = Especificos
+                };
             }
             catch (Exception e)
             {
-
-                return Ok(new { success = false, e.Message });
+                return new Response
+                {
+                    success = true,
+                   Message= e.Message
+                };
+                
             }
         }
 
