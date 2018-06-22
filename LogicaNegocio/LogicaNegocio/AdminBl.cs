@@ -91,12 +91,14 @@ namespace LogicaNegocio.LogicaNegocio
 
         }
 
-        public List<PersonaJuridica> ConsultarEmpresas()
+        public Task<List<PersonaJuridica>> ConsultarEmpresas()
         {
-             var Empresas = (from i in entity.PersonaJuridica
-                            select i).ToList();
+      
+      var      Empresas = (from i in entity.PersonaJuridica
+                        select i).ToList();
 
-            return Empresas;
+         
+            return Task.FromResult<List<PersonaJuridica>>(Empresas);
         }
     }
 }

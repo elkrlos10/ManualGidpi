@@ -32,20 +32,21 @@ namespace GIDPI.Controllers
 
 
         [HttpPost]
-        public IHttpActionResult ConsultarEmpresas()
+        public async Task<List<PersonaJuridica>> ConsultarEmpresas()
         {
             try
             {
+                var empresas = new List<PersonaJuridica>();
                 AdminBl oAdminBl = new AdminBl();
-                var empresas = oAdminBl.ConsultarEmpresas();
+                empresas= await  oAdminBl.ConsultarEmpresas();
 
-                return Ok(new { success = true, empresas });
+                return empresas;
 
             }
             catch (Exception e)
             {
 
-                return Ok(new { success = false, e.Message });
+                return null;
 
             }
         }

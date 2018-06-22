@@ -92,6 +92,10 @@ ManualApp.config(function ($routeProvider) {
         //        }
         //    });
 
+        ////$scope.tC = $templateCache;
+        ////if ($scope.tC.get('/api/suggestions')) {
+        ////    $scope.tC.remove('/api/suggestions');
+        ////};
         //    $rootScope.globals = $cookieStore.get('username');
 
         //    $rootScope.proyecto = {
