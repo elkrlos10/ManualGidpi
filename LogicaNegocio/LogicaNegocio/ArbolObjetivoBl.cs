@@ -84,6 +84,7 @@ namespace LogicaNegocio.LogicaNegocio
                     entity.SaveChanges();
 
                     var medio = (from i in entity.MedioDirecto
+                                 where i.IdArbolObj == ArbolProyecto.IdArbolObj
                                  orderby i.IdMedio descending
                                  select i).FirstOrDefault();
 
@@ -109,6 +110,7 @@ namespace LogicaNegocio.LogicaNegocio
                     entity.SaveChanges();
 
                     var fines = (from i in entity.FinesDirectos
+                                 where i.IdArbolObj == ArbolProyecto.IdArbolObj
                                  orderby i.IdFin descending
                                  select i).FirstOrDefault();
 

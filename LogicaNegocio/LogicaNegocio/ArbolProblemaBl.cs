@@ -110,6 +110,7 @@ namespace LogicaNegocio.LogicaNegocio
                     entity.SaveChanges();
 
                     var causa = (from i in entity.CausaDirecta
+                                 where i.IdArbolProblema== ArbolProyecto.IdArbolProblema
                                  orderby i.IdCausa descending
                                  select i).FirstOrDefault();
 
@@ -135,6 +136,7 @@ namespace LogicaNegocio.LogicaNegocio
                     entity.SaveChanges();
 
                     var efecto = (from i in entity.EfectoDirecto
+                                  where i.IdArbolProblema == ArbolProyecto.IdArbolProblema
                                   orderby i.IdEfecto descending
                                   select i).FirstOrDefault();
 
