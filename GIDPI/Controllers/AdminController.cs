@@ -30,9 +30,8 @@ namespace GIDPI.Controllers
             }
         }
 
-
         [HttpPost]
-        public async Task<List<PersonaJuridica>> ConsultarEmpresas()
+        public async Task<Response> ConsultarEmpresas()
         {
             try
             {
@@ -40,13 +39,21 @@ namespace GIDPI.Controllers
                 AdminBl oAdminBl = new AdminBl();
                 empresas= await  oAdminBl.ConsultarEmpresas();
 
-                return empresas;
+                return new Response
+                {
+                    success= true,
+                    Result= empresas
+                };
 
             }
             catch (Exception e)
             {
 
-                return null;
+                return new Response
+                {
+                    success = false,
+                    Message = e.Message
+                };
 
             }
         }

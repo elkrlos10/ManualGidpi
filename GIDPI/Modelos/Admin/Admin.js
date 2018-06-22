@@ -103,11 +103,11 @@ ManualApp.controller('AdminController',
 
             $scope.ConsultarEmpresas = function () {
                 AdminService.ConsultarEmpresas(function (response) {
-                    //if (response) {
+                    if (response.success) {
                       
                         $scope.EmpresasExport = [];
 
-                        $.each(response, function (index, value) {
+                        $.each(response.Result, function (index, value) {
                            
                             $scope.EmpresasExport.push({
                                 Razon_Social: value.RazonSocial,
@@ -119,7 +119,7 @@ ManualApp.controller('AdminController',
                             });
                         });
                         alasql('SELECT * INTO XLSX("Empresas.xlsx",{headers:true}) FROM ?', [$scope.EmpresasExport]);
-                    //}
+                    }
                 })
             }
 

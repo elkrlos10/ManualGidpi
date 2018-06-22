@@ -24,56 +24,56 @@ namespace LogicaNegocio.LogicaNegocio
 
             Datos.Add(TotalUsuarios);
 
-            var  PersonaNatural = (from i in entity.Usuario
-                                     where i.TipoUsuario == 1
-                                     select i).Count();
+            var PersonaNatural = (from i in entity.Usuario
+                                  where i.TipoUsuario == 1
+                                  select i).Count();
             Datos.Add(PersonaNatural);
 
 
             var PersonaJuridica = (from i in entity.Usuario
-                                  where i.TipoUsuario == 2
-                                  select i).Count();
+                                   where i.TipoUsuario == 2
+                                   select i).Count();
 
 
             Datos.Add(PersonaJuridica);
 
 
             var Proyectos = (from i in entity.Proyecto
-                                   select i).Count();
+                             select i).Count();
 
             Datos.Add(Proyectos);
 
             var TipoProyectoInnovacion = (from i in entity.Proyecto
-                                where i.TipoProyecto == "INNOVACIÓN" 
-                                select i).Count();
+                                          where i.TipoProyecto == "INNOVACIÓN"
+                                          select i).Count();
             Datos.Add(TipoProyectoInnovacion);
 
             var TipoProyectoServicios = (from i in entity.Proyecto
-                                          where i.TipoProyecto == "SERVICIOS TECNOLÓGICOS"
-                                          select i).Count();
+                                         where i.TipoProyecto == "SERVICIOS TECNOLÓGICOS"
+                                         select i).Count();
             Datos.Add(TipoProyectoServicios);
 
 
             var TipoProyectoInvestigacion = (from i in entity.Proyecto
-                                         where i.TipoProyecto == "INVESTIGACIÓN"
-                                         select i).Count();
+                                             where i.TipoProyecto == "INVESTIGACIÓN"
+                                             select i).Count();
             Datos.Add(TipoProyectoInvestigacion);
 
             var TipoProyectoOtro = (from i in entity.Proyecto
-                                             where i.TipoProyecto == "OTRO"
-                                             select i).Count();
+                                    where i.TipoProyecto == "OTRO"
+                                    select i).Count();
 
             Datos.Add(TipoProyectoOtro);
 
 
             var ProyectoCompleto = (from i in entity.Proyecto
-                                          where i.Etapa >= 10
-                                          select i).Count();
+                                    where i.Etapa >= 10
+                                    select i).Count();
             Datos.Add(ProyectoCompleto);
 
             var ProyectoDesarrollo = (from i in entity.Proyecto
-                                          where i.Etapa  < 10
-                                          select i).Count();
+                                      where i.Etapa < 10
+                                      select i).Count();
             Datos.Add(ProyectoDesarrollo);
 
 
@@ -81,11 +81,11 @@ namespace LogicaNegocio.LogicaNegocio
                           select i).Count();
 
 
-           
+
 
             Datos.Add(matriz);
 
-        
+
 
             return Datos;
 
@@ -93,11 +93,11 @@ namespace LogicaNegocio.LogicaNegocio
 
         public Task<List<PersonaJuridica>> ConsultarEmpresas()
         {
-      
-      var      Empresas = (from i in entity.PersonaJuridica
-                        select i).ToList();
 
-         
+            var Empresas = (from i in entity.PersonaJuridica
+                            select i).ToList();
+
+
             return Task.FromResult<List<PersonaJuridica>>(Empresas);
         }
     }
