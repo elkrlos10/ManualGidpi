@@ -7,7 +7,6 @@ using System.Web.Http;
 using Datos;
 using GIDPI.Parametros;
 using Datos.Modelos;
-using System.Threading.Tasks;
 
 namespace GIDPI.Controllers
 {
@@ -15,163 +14,118 @@ namespace GIDPI.Controllers
     {
 
         [HttpPost]
-        public async Task<Response> GuardarDatosProyecto(Proyecto oProyecto)
+        public IHttpActionResult GuardarDatosProyecto(Proyecto oProyecto)
         {
 
             try
             {
                 DatosProyectoBl oDatosProyectoBl = new DatosProyectoBl();
 
-                var proyecto = await oDatosProyectoBl.GuardarDatosProyecto(oProyecto);
+                var proyecto = oDatosProyectoBl.GuardarDatosProyecto(oProyecto);
 
-                return new Response
-                {
-                    success = true,
-                    Result = proyecto
-                };
+                return Ok(new { success = true, proyecto });
             }
             catch (Exception exc)
             {
 
-                return new Response
-                {
-                    success = true,
-                    Message = exc.Message
-                };
+                return Ok(new { suceess = false });
             }
         }
 
         [HttpGet]
-        public async Task<Response> ConsultarDepartamentos()
+        public IHttpActionResult ConsultarDepartamentos()
         {
             try
             {
                 DatosProyectoBl oDatosProyectoBl = new DatosProyectoBl();
 
-                var departamentos = await oDatosProyectoBl.ConsultarDepartamentos();
+                var departamentos = oDatosProyectoBl.ConsultarDepartamentos();
 
-                return new Response
-                {
-                    success = true,
-                    Result = departamentos
-                };                
+                return Ok(new { success = true, departamentos });
             }
             catch (Exception exc)
             {
 
-                return new Response
-                {
-                    success = true,
-                    Message = exc.Message
-                };
+                return Ok(new { success = false, exc.Message });
             }
         }
 
         [HttpPost]
-        public async Task<Response> ConsultarMunicipiosDepartamento(ParametrosDTO oParametrosDTO)
+        public IHttpActionResult ConsultarMunicipiosDepartamento(ParametrosDTO oParametrosDTO)
         {
 
             try
             {
                 DatosProyectoBl oDatosProyectoBl = new DatosProyectoBl();
 
-                var municipios = await oDatosProyectoBl.ConsultarMunicipiosDepartamento(int.Parse(oParametrosDTO.Parametro1));
+                var municipios = oDatosProyectoBl.ConsultarMunicipiosDepartamento(int.Parse(oParametrosDTO.Parametro1));
 
-                return new Response
-                {
-                    success = true,
-                    Result = municipios
-                };
+                return Ok(new { success = true, municipios });
             }
             catch (Exception exc)
             {
 
-                return new Response
-                {
-                    success = true,
-                    Message = exc.Message
-                };
+                return Ok(new { suceess = false });
+            }
+        }
+
+
+        [HttpPost]
+        public IHttpActionResult ConsultarDepartamentoxMunicipio(ParametrosDTO oParametrosDTO)
+        {
+
+            try
+            {
+                DatosProyectoBl oDatosProyectoBl = new DatosProyectoBl();
+
+                var departamento = oDatosProyectoBl.ConsultarDepartamentoxMunicipio(int.Parse(oParametrosDTO.Parametro1));
+
+                return Ok(new { success = true, departamento });
+            }
+            catch (Exception exc)
+            {
+
+                return Ok(new { suceess = false, exc.Message });
+            }
+        }
+
+  
+
+        [HttpPost]
+        public IHttpActionResult ModificarProyecto(Proyecto oProyecto)
+        {
+
+            try
+            {
+                DatosProyectoBl oDatosProyectoBl = new DatosProyectoBl();
+
+                oDatosProyectoBl.ModificarProyecto(oProyecto);
+
+                return Ok(new { success = true});
+            }
+            catch (Exception exc)
+            {
+
+                return Ok(new { suceess = false });
             }
         }
 
         [HttpPost]
-        public async Task<Response> ConsultarDepartamentoxMunicipio(ParametrosDTO oParametrosDTO)
-        {
-
-            try
-            {
-                DatosProyectoBl oDatosProyectoBl = new DatosProyectoBl();
-
-                var departamento = await oDatosProyectoBl.ConsultarDepartamentoxMunicipio(int.Parse(oParametrosDTO.Parametro1));
-
-                return new Response
-                {
-                    success = true,
-                    Result = departamento
-                };
-            }
-            catch (Exception exc)
-            {
-
-                return new Response
-                {
-                    success = true,
-                    Message = exc.Message
-                };
-            }
-        }  
-
-        [HttpPost]
-        public async Task<Response> ModificarProyecto(Proyecto oProyecto)
-        {
-
-            try
-            {
-                DatosProyectoBl oDatosProyectoBl = new DatosProyectoBl();
-
-                var dato = await oDatosProyectoBl.ModificarProyecto(oProyecto);
-
-                return new Response
-                {
-                    success = true,
-                    Result = dato
-                };
-            }
-            catch (Exception exc)
-            {
-
-                return new Response
-                {
-                    success = true,
-                    Message = exc.Message
-                };
-            }
-        }
-
-        [HttpPost]
-        public async Task<Response> ConsultarProyecto(ParametrosDTO oParametros)
+        public IHttpActionResult ConsultarProyecto(ParametrosDTO oParametros)
         {
 
             try
             {
                 MenuBl oMenu = new MenuBl();
 
-                var proyecto = await oMenu.AbrirProyecto(int.Parse(oParametros.Parametro1));
+                var proyecto = oMenu.AbrirProyecto(int.Parse(oParametros.Parametro1));
 
-                return new Response
-                {
-                    success = true,
-                    Result = proyecto
-                };
+                return Ok(new { success = true, proyecto });
             }
-            catch (Exception exc)
+            catch (Exception)
             {
 
-                return new Response
-                {
-                    success = true,
-                    Message = exc.Message
-                };
+                return Ok(new { success = false });
             }
         }
 

@@ -11,17 +11,17 @@ namespace LogicaNegocio.LogicaNegocio
     {
         Model1 entity = new Model1();
 
-        public Task<Proyecto> AbrirProyecto(int IdProyecto)
+        public Proyecto AbrirProyecto(int IdProyecto)
         {
 
             var proyecto = (from i in entity.Proyecto
                             where i.IdProyecto == IdProyecto
                             select i).FirstOrDefault();
 
-            return Task.FromResult<Proyecto>(proyecto);
+            return proyecto;
         }
 
-        public Task<bool> consultarMatriz(int IdProyecto)
+        public bool consultarMatriz(int IdProyecto)
         {
 
             var matriz = (from i in entity.Proyecto
@@ -32,16 +32,15 @@ namespace LogicaNegocio.LogicaNegocio
 
             if (matriz != null)
             {
-                return Task.FromResult<bool>(true);
-            }
-            else
+                return true;
+            }else
             {
-                return Task.FromResult<bool>(false);
+                return false;
             }
         }
 
 
-        public Task<bool> EliminarProyecto(int idProyecto)
+        public void EliminarProyecto(int idProyecto)
         {
 
             #region matriz marco logico
@@ -330,10 +329,10 @@ namespace LogicaNegocio.LogicaNegocio
                 entity.Proyecto.Remove(datos);
                 entity.SaveChanges();
             }
-
+          
             #endregion
 
-            return Task.FromResult<bool>(true);
+
         }
     }
 }
