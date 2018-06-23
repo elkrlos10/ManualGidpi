@@ -5,6 +5,7 @@ using LogicaNegocio.LogicaNegocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 
@@ -15,53 +16,53 @@ namespace GIDPI.Controllers
     {
 
         [HttpPost]
-        public IHttpActionResult LLenarMarco (ParametrosDTO oParametrosDTO)
+        public async Task<Response> LLenarMarco (ParametrosDTO oParametrosDTO)
         {
             try
             {
                 MarcoLogicoBl oMarco = new MarcoLogicoBl();
-               var marco= oMarco.LLenarMarco(int.Parse(oParametrosDTO.Parametro1));
+               var marco= await oMarco.LLenarMarco(int.Parse(oParametrosDTO.Parametro1));
 
-                return Ok(new { success = true, marco });
+                return new Response { success = true, Result= marco };
             }
             catch (Exception e)
             {
 
-                return Ok(new { success = false, e.Message });
+                return new Response { success = false, Message= e.Message };
             }
         }
 
         [HttpPost]
-        public IHttpActionResult GuardarMarco( MarcoLogico oMarco)
+        public async Task<Response> GuardarMarco( MarcoLogico oMarco)
         {
             try
             {
                 MarcoLogicoBl oMarco1 = new MarcoLogicoBl();
-                 oMarco1.GuardarMarco(oMarco);
+                 var resp = await oMarco1.GuardarMarco(oMarco);
 
-                return Ok(new { success = true });
+                return new Response { success = true };
             }
             catch (Exception e)
             {
+                return new Response { success = false, Message= e.Message };
 
-                return Ok(new { success = false, e.Message });
             }
         }
 
         [HttpPost]
-        public IHttpActionResult ConsultarMarco(ParametrosDTO oParametros)
+        public async Task<Response> ConsultarMarco(ParametrosDTO oParametros)
         {
             try
             {
                 MarcoLogicoBl oMarco1 = new MarcoLogicoBl();
-               var marco= oMarco1.ConsultarMarco(int.Parse(oParametros.Parametro1));
+               var marco= await oMarco1.ConsultarMarco(int.Parse(oParametros.Parametro1));
 
-                return Ok(new { success = true, marco });
+                return new Response{ success = true, Result= marco };
             }
             catch (Exception e)
             {
 
-                return Ok(new { success = false, e.Message });
+                return new Response { success = true, Message= e.Message };
             }
         }
     }

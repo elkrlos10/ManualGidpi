@@ -13,7 +13,7 @@ namespace LogicaNegocio.LogicaNegocio
         Model1 entity = new Model1();
 
 
-        public void GuardarInvolucrados(List<Involucrados> oListInvolucrados)
+        public Task<bool> GuardarInvolucrados(List<Involucrados> oListInvolucrados)
         {
            
             foreach (var item in oListInvolucrados)
@@ -48,21 +48,21 @@ namespace LogicaNegocio.LogicaNegocio
                 Proyecto.Etapa = 6;
                 entity.SaveChanges();
             }
-          
 
+            return Task.FromResult<bool>(true);
 
         }
 
-        public List<Involucrados> ConsultarInvolucrados(int IdProyecto)
+        public Task<List<Involucrados>> ConsultarInvolucrados(int IdProyecto)
         {
             var involucrados = (from i in entity.Involucrados
                                 where i.IdProyecto == IdProyecto
                                 select i).ToList();
 
-            return involucrados;
+            return Task.FromResult<List<Involucrados>>(involucrados);
         }
 
-        public void EliminarInvolucrado(int idInvolucrado)
+        public Task<bool> EliminarInvolucrado(int idInvolucrado)
         {
            var Involucrado = (from i in entity.Involucrados
                             where i.IdInvolucrado == idInvolucrado
@@ -71,6 +71,7 @@ namespace LogicaNegocio.LogicaNegocio
             entity.Involucrados.Remove(Involucrado);
             entity.SaveChanges();
 
+            return Task.FromResult<bool>(true);
         }
     }
 }

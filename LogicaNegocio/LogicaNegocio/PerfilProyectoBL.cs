@@ -12,7 +12,8 @@ namespace LogicaNegocio.LogicaNegocio
     {
 
         Model1 entity = new Model1();
-        public ProyectoDTO ConsultarProyecto(int IdProyecto)
+
+        public Task<ProyectoDTO> ConsultarProyecto(int IdProyecto)
         {
             var Proyecto = (from i in entity.Proyecto
                             where i.IdProyecto == IdProyecto
@@ -34,11 +35,11 @@ namespace LogicaNegocio.LogicaNegocio
             oProyectoDTO.AccionProyecto = Proyecto.AccionProyecto;
             oProyectoDTO.NombreProyecto = Proyecto.AccionProyecto + " " + Proyecto.TemaProyecto + " " + municipio.NombreMunicipio;
 
-            return oProyectoDTO;
+            return Task.FromResult<ProyectoDTO>(oProyectoDTO);
 
         }
 
-        public void GuardarPerfilProyecto(PerfilProyecto perfilProyecto)
+        public Task<bool> GuardarPerfilProyecto(PerfilProyecto perfilProyecto)
         {
             PerfilProyecto obj = new PerfilProyecto();
             obj = perfilProyecto;
@@ -48,19 +49,21 @@ namespace LogicaNegocio.LogicaNegocio
                             select i).FirstOrDefault();
             proyecto.Etapa = 7;
             entity.SaveChanges();
+
+            return Task.FromResult<bool>(true);
         }
 
-        public PerfilProyecto ConsultarPerfilTerminado(int IdProyecto)
+        public Task<PerfilProyecto> ConsultarPerfilTerminado(int IdProyecto)
         {
             var perfil = (from i in entity.PerfilProyecto
                           where i.IdProyecto == IdProyecto
                           select i).FirstOrDefault();
 
-            return perfil;
+            return Task.FromResult<PerfilProyecto>(perfil);
 
         }
 
-        public void EditarPerfilProyecto(PerfilProyecto PerfilProyecto)
+        public Task<bool> EditarPerfilProyecto(PerfilProyecto PerfilProyecto)
         {
             var editar = (from i in entity.PerfilProyecto
                           where i.idPerfilProyecto == PerfilProyecto.idPerfilProyecto
@@ -71,11 +74,11 @@ namespace LogicaNegocio.LogicaNegocio
             editar.NumeroProyecto = PerfilProyecto.NumeroProyecto;
             editar.Justificacion = PerfilProyecto.Justificacion;
             entity.SaveChanges();
-               
+            return Task.FromResult<bool>(true);
         }
 
 
-        public void GuardarPerfilProyecto2(Perfil2 Perfil2)
+        public Task<bool> GuardarPerfilProyecto2(Perfil2 Perfil2)
         {
             Perfil2 perfil = new Perfil2();
             perfil = Perfil2;
@@ -85,18 +88,18 @@ namespace LogicaNegocio.LogicaNegocio
                             select i).FirstOrDefault();
             proyecto.Etapa = 8;
             entity.SaveChanges();
-
+            return Task.FromResult<bool>(true);
         }
 
-        public Perfil2 ConsultarPerfil2(int IdProyecto)
+        public Task<Perfil2> ConsultarPerfil2(int IdProyecto)
         {
             var consulta = (from i in entity.Perfil2
                             where i.idProyecto == IdProyecto
                             select i).FirstOrDefault();
-            return consulta;    
+            return Task.FromResult<Perfil2>(consulta);
         }
 
-        public void EditarPerfilProyecto2(Perfil2 PerfilProyecto)
+        public Task<bool> EditarPerfilProyecto2(Perfil2 PerfilProyecto)
         {
             var editarPerfil = (from i in entity.Perfil2
                           where i.IdPerfilProyecto2 == PerfilProyecto.IdPerfilProyecto2
@@ -113,8 +116,7 @@ namespace LogicaNegocio.LogicaNegocio
             editarPerfil.Metodologia = PerfilProyecto.Metodologia;
 
             entity.SaveChanges();
-
-            
+            return Task.FromResult<bool>(true);
         }
     }
 }

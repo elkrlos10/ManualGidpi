@@ -12,16 +12,17 @@ namespace LogicaNegocio.LogicaNegocio
     {
         Model1 entity = new Model1();
 
-        public MatrizDTO ArbolProblemaProyecto(int IdProyecto)
+        public  Task<Tuple<int, MatrizDTO>> ArbolProblemaProyecto(int IdProyecto)
         {
-
+            var matriz1 = new MatrizDTO();
             var matriz = (from i in entity.MatrizVester
                           where i.IdProyecto == IdProyecto
                           select i).FirstOrDefault();
 
             if (matriz == null)
             {
-                return null;
+                var tuple1 = new Tuple<int, MatrizDTO>(1, matriz1);
+                return Task.FromResult(tuple1);
             }
             var detalle = (from i in entity.DetalleMatriz
                            where i.IdMatriz == matriz.IdMatriz
@@ -34,12 +35,11 @@ namespace LogicaNegocio.LogicaNegocio
             oArbol.ProblemaGeneral = matriz.ProblemaGeneral;
             oArbol.DetalleMat = detalle;
 
-
-
-            return oArbol;
+            var tuple = new Tuple<int, MatrizDTO>(2, oArbol);
+            return Task.FromResult(tuple);
         }
 
-        public void GuardarDatosArbol(ArbolProblemaDTO oArbolDTO)
+        public Task<bool> GuardarDatosArbol(ArbolProblemaDTO oArbolDTO)
         {
             var ArbolProyecto1 = (from i in entity.ArbolProblema
                                   where i.IdProyecto == oArbolDTO.IdProyecto
@@ -162,6 +162,7 @@ namespace LogicaNegocio.LogicaNegocio
 
            
             entity.SaveChanges();
+            return Task.FromResult<bool>(true);
             //}
             //else
             //{
@@ -335,7 +336,7 @@ namespace LogicaNegocio.LogicaNegocio
 
         }
 
-        public ArbolProblemaDTO ConsultarArbolFinal(int IdProyecto)
+        public Task<ArbolProblemaDTO> ConsultarArbolFinal(int IdProyecto)
         {
             var arbol = (from i in entity.ArbolProblema
                          where i.IdProyecto == IdProyecto
@@ -385,7 +386,7 @@ namespace LogicaNegocio.LogicaNegocio
             oArbolDTO.Efectos = ListaoEfectos;
             oArbolDTO.Causas = ListaoCausas;
 
-            return oArbolDTO;
+            return Task.FromResult<ArbolProblemaDTO>(oArbolDTO);
 
         }
     }

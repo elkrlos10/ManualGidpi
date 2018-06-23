@@ -334,12 +334,12 @@ ManualApp.controller('ArbolObjetivosController',
                         if ($scope.DatosProyecto.Etapa < 4) {
                             ArbolObjetivoService.ConsultarArbolFinal($rootScope.proyecto.datos.id, function (response) {
                                 if (response.success) {
-                                    var problemaGeneral = response.ArbolFinal.ProblemaCentral;
+                                    var problemaGeneral = response.Result.ProblemaCentral;
                                     document.querySelector("#txtProblema").value = problemaGeneral;
                                     alerta1("Consejo.", "En el panel de la izquierda podras crear los medios y fines.", 5);
 
                                     //CICLO PARA CREAR LOS EFECTOS EN EL ARBOL
-                                    $.each(response.ArbolFinal.Efectos, function (index, value) {
+                                    $.each(response.Result.Efectos, function (index, value) {
 
                                         img3 = document.createElement("img");
                                         elemento = document.createElement("li");
@@ -383,7 +383,7 @@ ManualApp.controller('ArbolObjetivosController',
                                     })
 
                                     //CICLO PARA CREAR LOS CAUSAS EN EL ARBOL
-                                    $.each(response.ArbolFinal.Causas, function (index, value) {
+                                    $.each(response.Result.Causas, function (index, value) {
 
                                         img3 = document.createElement("img");
                                         elemento = document.createElement("li");

@@ -11,7 +11,7 @@ namespace LogicaNegocio.LogicaNegocio
     {
         Model1 entity = new Model1();
 
-        public MarcoLogico LLenarMarco(int IdProyecto)
+        public Task<MarcoLogico> LLenarMarco(int IdProyecto)
         {
             MarcoLogico oMarco = new MarcoLogico();
 
@@ -87,12 +87,12 @@ namespace LogicaNegocio.LogicaNegocio
          
             oMarco.Fin1 = ObjetivoGeneral.ObjetivoCentral;
 
-            return oMarco;
+            return Task.FromResult<MarcoLogico>(oMarco);
 
         }
 
 
-        public void GuardarMarco(MarcoLogico oMarco)
+        public Task<bool> GuardarMarco(MarcoLogico oMarco)
         {
 
             if (oMarco.IdMarco == 0)
@@ -128,19 +128,19 @@ namespace LogicaNegocio.LogicaNegocio
                 marco.Actividad3 = oMarco.Actividad3;
                 marco.Actividad4 = oMarco.Actividad4;
                 entity.SaveChanges();
-
             }
+            return Task.FromResult<bool>(true);
         }
 
 
-        public MarcoLogico ConsultarMarco(int idProyecto)
+        public Task<MarcoLogico> ConsultarMarco(int idProyecto)
         {
             var marco = (from i in entity.MarcoLogico
                          where i.IdProyecto == idProyecto
                          select i).FirstOrDefault();
             var vstring = marco.Actividad1.Length;
 
-            return marco;
+            return Task.FromResult<MarcoLogico>(marco);
         }
     }
 }
