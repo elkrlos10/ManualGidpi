@@ -146,7 +146,8 @@ ManualApp.controller('InvolucradosController',
             InvolucradosService.AbrirProyecto($rootScope.proyecto.datos.id, function (response) {
                 waitingDialog.show();
                 if (response.success) {
-                    $rootScope.proyecto.datos.Etapa = response.proyecto.Etapa;
+                    console.log(response);
+                    $rootScope.proyecto.datos.Etapa = response.Result.Etapa;
 
                     if ($rootScope.proyecto.datos.Etapa >= 6) {
                         InvolucradosService.ConsultarInvolucrados($rootScope.proyecto.datos.id, function (response) {

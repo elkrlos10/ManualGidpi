@@ -11,36 +11,37 @@ namespace LogicaNegocio.LogicaNegocio
     {
         Model1 entity = new Model1();
 
-        public Proyecto AbrirProyecto(int IdProyecto)
+        public Task<Proyecto> AbrirProyecto(int IdProyecto)
         {
 
             var proyecto = (from i in entity.Proyecto
                             where i.IdProyecto == IdProyecto
                             select i).FirstOrDefault();
 
-            return proyecto;
+            return Task.FromResult<Proyecto>(proyecto);
         }
 
-        public bool consultarMatriz(int IdProyecto)
+        public Task<bool> consultarMatriz(int IdProyecto)
         {
 
             var matriz = (from i in entity.Proyecto
-                            join m in entity.MatrizVester on i.IdProyecto equals m.IdProyecto
-                            where i.IdProyecto == IdProyecto
-                            select m).FirstOrDefault();
+                          join m in entity.MatrizVester on i.IdProyecto equals m.IdProyecto
+                          where i.IdProyecto == IdProyecto
+                          select m).FirstOrDefault();
 
 
             if (matriz != null)
             {
-                return true;
-            }else
+                return Task.FromResult<bool>(true);
+            }
+            else
             {
-                return false;
+                return Task.FromResult<bool>(false);
             }
         }
 
 
-        public void EliminarProyecto(int idProyecto)
+        public Task<bool> EliminarProyecto(int idProyecto)
         {
 
             #region matriz marco logico
@@ -63,11 +64,11 @@ namespace LogicaNegocio.LogicaNegocio
             if (Presupuesto != null)
             {
                 foreach (var item in Presupuesto)
-                 {
-                
+                {
+
                     entity.Presupuesto.Remove(item);
                     entity.SaveChanges();
-                 }
+                }
             }
             #endregion
 
@@ -83,8 +84,8 @@ namespace LogicaNegocio.LogicaNegocio
             if (Cronograma != null)
             {
                 foreach (var item in Cronograma)
-            {
-                
+                {
+
                     entity.Cronograma.Remove(item);
                     entity.SaveChanges();
                 }
@@ -142,7 +143,7 @@ namespace LogicaNegocio.LogicaNegocio
             {
                 foreach (var item in Involucrados)
                 {
-                
+
                     entity.Involucrados.Remove(item);
                     entity.SaveChanges();
                 }
@@ -239,15 +240,15 @@ namespace LogicaNegocio.LogicaNegocio
                 entity.SaveChanges();
             }
 
-               
+
             #endregion
 
 
             #region arbol Problema
 
             var problema = (from i in entity.ArbolProblema
-                             where i.IdProyecto == idProyecto
-                             select i).FirstOrDefault();
+                            where i.IdProyecto == idProyecto
+                            select i).FirstOrDefault();
 
             if (problema != null)
             {
@@ -329,10 +330,10 @@ namespace LogicaNegocio.LogicaNegocio
                 entity.Proyecto.Remove(datos);
                 entity.SaveChanges();
             }
-          
+
             #endregion
 
-
+            return Task.FromResult<bool>(true);
         }
     }
 }

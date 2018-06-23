@@ -86,7 +86,7 @@ ManualApp.controller('MarcoLogicoController',
             MarcoLogicoService.AbrirProyecto($rootScope.proyecto.datos.id, function (response) {
                 waitingDialog.show();
                 if (response.success) {
-                    $rootScope.proyecto.datos.Etapa = response.proyecto.Etapa;
+                    $rootScope.proyecto.datos.Etapa = response.Result.Etapa;
 
                     if ($rootScope.proyecto.datos.Etapa == 10) {
                         MarcoLogicoService.LLenarMarco($rootScope.proyecto.datos.id, function (response) {

@@ -266,7 +266,7 @@ ManualApp.controller('ArbolProblemaController',
                 //waitingDialog.show();
                 if (response.success) {
                     debugger;
-                    $scope.DatosProyecto = response.proyecto;
+                    $scope.DatosProyecto = response.Result;
                     //FUNCIÓN PARA CONSULTAR LOS DATOS DE LA MATRIZ  Y PINTAR EL ARBOL DE PROBLEMAS
                     if ($rootScope.proyecto != undefined) {
                         if ($scope.DatosProyecto.Etapa < 3) {

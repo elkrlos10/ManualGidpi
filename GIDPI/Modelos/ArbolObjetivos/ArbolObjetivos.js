@@ -326,7 +326,7 @@ ManualApp.controller('ArbolObjetivosController',
             $scope.IdProyecto = $rootScope.proyecto.datos.id;
             MenuService.AbrirProyecto($scope.IdProyecto, function (response) {
                 if (response.success) {
-                    $scope.DatosProyecto = response.proyecto;
+                    $scope.DatosProyecto = response.Result;
                     $rootScope.proyecto.datos.Etapa = $scope.DatosProyecto.Etapa;
                     waitingDialog.show();
                     //FUNCIÓN PARA CONSULTAR LOS DATOS DE LA MATRIZ  Y PINTAR EL ARBOL DE PROBLEMAS
