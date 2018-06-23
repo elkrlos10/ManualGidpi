@@ -14,36 +14,36 @@ namespace LogicaNegocio.LogicaNegocio
     {
         Model1 entity = new Model1();
 
-        public List<Departamento> ConsultarDepartamentos()
+        public Task<List<Departamento>> ConsultarDepartamentos()
         {
                 var departamentos = (from i in entity.Departamento
                                      select i).ToList();
 
-                return departamentos;
+            return Task.FromResult<List<Departamento>>(departamentos);
         }
 
-        public List<Municipio> ConsultarMunicipiosDepartamento(int IdDepartamento)
+        public Task<List<Municipio>> ConsultarMunicipiosDepartamento(int IdDepartamento)
         {
             var municipios = (from i in entity.Municipio
                               where i.IdDepartamento == IdDepartamento
                               select i).ToList();
 
-            return municipios;
+            return Task.FromResult<List<Municipio>>(municipios);
 
         }
 
-        public Departamento ConsultarDepartamentoxMunicipio(int IdMunicipio)
+        public Task<Departamento> ConsultarDepartamentoxMunicipio(int IdMunicipio)
         {
             var Departamento = (from i in entity.Departamento
                                 join m in entity.Municipio on i.IdDepartamento equals m.IdDepartamento
                                  where m.IdMunicipio == IdMunicipio
                                 select i).FirstOrDefault();
 
-            return Departamento;
+            return Task.FromResult<Departamento>(Departamento);
 
         }
 
-        public Proyecto GuardarDatosProyecto(Proyecto oProyecto )
+        public Task<Proyecto> GuardarDatosProyecto(Proyecto oProyecto )
         {
 
             entity.Proyecto.Add(oProyecto);
@@ -53,11 +53,11 @@ namespace LogicaNegocio.LogicaNegocio
                             orderby i.IdProyecto descending
                             select i).FirstOrDefault();
 
-            return proyecto;
+            return Task.FromResult<Proyecto>(proyecto);
 
         }
 
-        public void ModificarProyecto(Proyecto oProyecto)
+        public Task<bool> ModificarProyecto(Proyecto oProyecto)
         {
             var proyecto = (from i in entity.Proyecto
                             where i.IdProyecto == oProyecto.IdProyecto
@@ -69,10 +69,10 @@ namespace LogicaNegocio.LogicaNegocio
             proyecto.IdMunicipio = oProyecto.IdMunicipio;
             proyecto.Sector = proyecto.Sector;
             entity.SaveChanges();
-
+            return Task.FromResult<bool>(true);
         }
 
-        public List<Proyecto> ConsultarProyectos(int IdUsuario)
+        public  Task<List<Proyecto>> ConsultarProyectos(int IdUsuario)
         {
 
             var proyectos = (from i in entity.Proyecto
@@ -80,7 +80,7 @@ namespace LogicaNegocio.LogicaNegocio
                             orderby i.IdProyecto descending
                             select i).ToList();
 
-            return proyectos;
+            return Task.FromResult<List<Proyecto>>(proyectos);
 
         }
     }

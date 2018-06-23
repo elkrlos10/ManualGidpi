@@ -3,91 +3,124 @@ using LogicaNegocio.LogicaNegocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 
 namespace GIDPI.Controllers
 {
-    public class MenuController: ApiController
+    public class MenuController : ApiController
     {
         [HttpPost]
 
-        public IHttpActionResult ConsultarProyectos(ParametrosDTO oParametros)
+        public async Task<Response> ConsultarProyectos(ParametrosDTO oParametros)
         {
 
             try
             {
                 DatosProyectoBl oMenu = new DatosProyectoBl();
 
-                var proyectos = oMenu.ConsultarProyectos(int.Parse(oParametros.Parametro1));
+                var proyectos = await oMenu.ConsultarProyectos(int.Parse(oParametros.Parametro1));
 
-                return Ok(new {success = true, proyectos});
+                return new Response
+                {
+                    success = true,
+                    Result = proyectos
+                };
             }
             catch (Exception exc)
             {
 
-                return Ok(new { success = false, exc.Message });
+                return new Response
+                {
+                    success = true,
+                    Message = exc.Message
+                };
             }
         }
 
         [HttpPost]
 
-        public IHttpActionResult AbrirProyecto(ParametrosDTO oParametros)
+        public async Task<Response> AbrirProyecto(ParametrosDTO oParametros)
         {
 
             try
             {
                 MenuBl oMenu = new MenuBl();
 
-                var proyecto = oMenu.AbrirProyecto(int.Parse(oParametros.Parametro1));
+                var proyecto = await oMenu.AbrirProyecto(int.Parse(oParametros.Parametro1));
 
-                return Ok(new { success = true, proyecto });
+                return new Response
+                {
+                    success = true,
+                    Result = proyecto
+                };
             }
-            catch (Exception)
+            catch (Exception exc)
             {
 
-                return Ok(new { success = false });
+                return new Response
+                {
+                    success = true,
+                    Message = exc.Message
+                };
             }
         }
 
         [HttpPost]
-        public IHttpActionResult consultarMatriz(ParametrosDTO oParametros)
+        public async Task<Response> consultarMatriz(ParametrosDTO oParametros)
         {
 
             try
             {
                 MenuBl oMenu = new MenuBl();
 
-                var proyecto = oMenu.consultarMatriz(int.Parse(oParametros.Parametro1));
+                var proyecto = await oMenu.consultarMatriz(int.Parse(oParametros.Parametro1));
 
-                return Ok(new { success = proyecto });
+                return new Response
+                {
+                    success = true,
+                    Result = proyecto
+                };
             }
-            catch (Exception)
+            catch (Exception exc)
             {
 
-                return Ok(new { success = false });
+                return new Response
+                {
+                    success = true,
+                    Message = exc.Message
+                };
             }
         }
 
 
         [HttpPost]
-        public IHttpActionResult EliminarProyecto(ParametrosDTO IdProyecto)
+        public async Task<Response> EliminarProyecto(ParametrosDTO IdProyecto)
         {
 
             try
             {
                 MenuBl oMenu = new MenuBl();
 
-                 oMenu.EliminarProyecto(int.Parse(IdProyecto.Parametro1));
+                var dato = await oMenu.EliminarProyecto(int.Parse(IdProyecto.Parametro1));
 
-                return Ok(new { success = true});
+                return new Response
+                {
+                    success = true,
+                    Result = dato
+                };
             }
-            catch (Exception)
+            catch (Exception exc)
             {
 
-                return Ok(new { success = false });
+                return new Response
+                {
+                    success = true,
+                    Message = exc.Message
+                };
             }
         }
 
     }
-    }
+}

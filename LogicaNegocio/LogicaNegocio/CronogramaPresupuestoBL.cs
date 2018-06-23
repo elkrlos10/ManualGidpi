@@ -12,7 +12,7 @@ namespace LogicaNegocio.LogicaNegocio
     {
         Model1 entity = new Model1();
 
-        public void GuardarCronograma(List<Cronograma> oListCronograma)
+        public Task<bool> GuardarCronograma(List<Cronograma> oListCronograma)
         {
             foreach (var item in oListCronograma)
             {
@@ -49,19 +49,20 @@ namespace LogicaNegocio.LogicaNegocio
                 Proyecto.Etapa = 9;
                 entity.SaveChanges();
             }
-
+            return Task.FromResult<bool>(true);
         }
 
-        public List<Cronograma> ConsultarCronograma(int IdProyecto)
+        public Task<List<Cronograma>> ConsultarCronograma(int IdProyecto)
         {
             var Crono = (from i in entity.Cronograma
                          where i.IdProyecto == IdProyecto
                          select i).ToList();
-            return Crono;
+
+            return Task.FromResult<List<Cronograma>>(Crono);
         }
 
 
-        public void GuardarPresupuesto(List<Presupuesto> oListPresupuesto)
+        public Task<bool> GuardarPresupuesto(List<Presupuesto> oListPresupuesto)
         {
             foreach (var item in oListPresupuesto)
             {
@@ -87,6 +88,7 @@ namespace LogicaNegocio.LogicaNegocio
                     entity.SaveChanges();
 
                 }
+                                
             }
 
 
@@ -101,19 +103,20 @@ namespace LogicaNegocio.LogicaNegocio
                 Proyecto.Etapa = 10;
                 entity.SaveChanges();
             }
-
+            return Task.FromResult<bool>(true);
         }
 
 
-        public List<Presupuesto> ConsultarPresupuesto(int IdProyecto)
+        public Task<List<Presupuesto>> ConsultarPresupuesto(int IdProyecto)
         {
             var Presupuesto = (from i in entity.Presupuesto
                          where i.IdProyecto == IdProyecto
                          select i).ToList();
-            return Presupuesto;
+
+            return Task.FromResult<List<Presupuesto>>(Presupuesto);
         }
 
-        public void GuardarAIU(Aiu AUI)
+        public Task<bool> GuardarAIU(Aiu AUI)
         {
             
 
@@ -124,7 +127,9 @@ namespace LogicaNegocio.LogicaNegocio
             }
             else
             {
-                var aiu = ConsultarAIU(AUI.IdProyecto);
+                var aiu = (from i in entity.AIU
+                           where i.IdProyecto == AUI.IdProyecto
+                           select i).FirstOrDefault();
 
                 aiu.Iva = AUI.Iva;
                 aiu.A = AUI.A;
@@ -133,20 +138,22 @@ namespace LogicaNegocio.LogicaNegocio
                 aiu.ValorTotal = AUI.ValorTotal;
                 entity.SaveChanges();
             }
+
+            return Task.FromResult<bool>(true);
         }
 
-        public Aiu ConsultarAIU(int IdProyecto)
+        public Task<Aiu> ConsultarAIU(int IdProyecto)
         {
             var aiu = (from i in entity.AIU
                        where i.IdProyecto == IdProyecto
                        select i).FirstOrDefault();
 
-            return aiu;
+            return Task.FromResult<Aiu>(aiu);
         }
 
 
 
-        public void eliminarItemCronograma(int idCronograma)
+        public Task<bool> eliminarItemCronograma(int idCronograma)
         {
             var Consulta = (from i in entity.Cronograma
                             where i.IdCronograma == idCronograma
@@ -154,6 +161,8 @@ namespace LogicaNegocio.LogicaNegocio
 
             entity.Cronograma.Remove(Consulta);
             entity.SaveChanges();
+
+            return Task.FromResult<bool>(true);
         }
     }
 }
