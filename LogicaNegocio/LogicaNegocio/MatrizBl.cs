@@ -12,7 +12,7 @@ namespace LogicaNegocio.LogicaNegocio
     {
         Model1 entity = new Model1();
 
-        public void Guardar(MatrizDTO oMatrizDetalle)
+        public Task<bool> Guardar(MatrizDTO oMatrizDetalle)
         {
             MatrizVester oMatriz = new MatrizVester();
 
@@ -51,9 +51,10 @@ namespace LogicaNegocio.LogicaNegocio
                 entity.SaveChanges();
             }
 
+            return Task.FromResult<bool>(true);
         }
 
-        public MatrizDTO ConsultarMatriz(int IdProyecto)
+        public Task<MatrizDTO> ConsultarMatriz(int IdProyecto)
         {
             var matriz = (from i in entity.MatrizVester
                           where i.IdProyecto == IdProyecto
@@ -70,7 +71,7 @@ namespace LogicaNegocio.LogicaNegocio
             oMatriz.ProblemaGeneral = matriz.ProblemaGeneral;
             oMatriz.DetalleMat = detalleMatriz;
 
-            return oMatriz;
+            return Task.FromResult<MatrizDTO>(oMatriz);
 
         }
 

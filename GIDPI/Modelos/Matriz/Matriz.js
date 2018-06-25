@@ -52,8 +52,8 @@ ManualApp.controller('MatrizController',
                 debugger;
                 MatrizService.ConsultarMatriz($rootScope.proyecto.datos.id, function (response) {
                     if (response.success) {
-                        $scope.DatosMatriz = response.matriz.DetalleMat;
-                        $scope.DatosProyecto.ProblemaGeneral = response.matriz.ProblemaGeneral;
+                        $scope.DatosMatriz = response.Result.DetalleMat;
+                        $scope.DatosProyecto.ProblemaGeneral = response.Result.ProblemaGeneral;
                         console.log($scope.DatosMatriz)
                         var inicio = {
                             name: "Problemas",

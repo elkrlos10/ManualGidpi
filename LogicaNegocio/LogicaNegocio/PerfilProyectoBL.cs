@@ -66,7 +66,7 @@ namespace LogicaNegocio.LogicaNegocio
         public Task<bool> EditarPerfilProyecto(PerfilProyecto PerfilProyecto)
         {
             var editar = (from i in entity.PerfilProyecto
-                          where i.idPerfilProyecto == PerfilProyecto.idPerfilProyecto
+                          where i.IdProyecto == PerfilProyecto.IdProyecto
                           select i).FirstOrDefault();
 
             editar.NombreProyecto = PerfilProyecto.NombreProyecto;

@@ -67,7 +67,7 @@ namespace LogicaNegocio.LogicaNegocio
             proyecto.AccionProyecto = oProyecto.AccionProyecto;
             proyecto.TemaProyecto = oProyecto.TemaProyecto;
             proyecto.IdMunicipio = oProyecto.IdMunicipio;
-            proyecto.Sector = proyecto.Sector;
+            proyecto.Sector = oProyecto.Sector;
             entity.SaveChanges();
             return Task.FromResult<bool>(true);
         }

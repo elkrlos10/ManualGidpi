@@ -306,6 +306,8 @@ ManualApp.controller('PerfilProyectoController',
                     PerfilProyectoService.GuardarPerfilProyecto($scope.PerfilProyecto, function (response) {
                         if (response.success) {
                             waitingDialog.hide();
+                            $("#btnEditarPerfil").show();
+                            $("#btnGuardarPerfil").hide();
                             $("#containerNombre").hide();
                             $("#containerPerfilProyect").show();
                             swal({
@@ -470,6 +472,9 @@ ManualApp.controller('PerfilProyectoController',
                 $scope.PerfilProyecto.idPerfilProyecto = $rootScope.proyecto.datos.id;
                 $scope.PerfilProyecto.NombreArea = $("#NombreArea option:selected").text();
                 $scope.PerfilProyecto.NumeroProyecto = $("#NumeroArea").val();
+                $scope.PerfilProyecto2.Enfoque = $("#enfoque option:selected").text();
+                $scope.PerfilProyecto2.TipoInvestigacion = $("#tipoInve option:selected").text();
+                $scope.PerfilProyecto2.Metodo = $("#metodo option:selected").text();
 
                 if ($scope.ValidarPerfilProyecto2() != false) {
                     waitingDialog.show();

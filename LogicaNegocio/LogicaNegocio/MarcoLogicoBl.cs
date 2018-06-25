@@ -95,7 +95,10 @@ namespace LogicaNegocio.LogicaNegocio
         public Task<bool> GuardarMarco(MarcoLogico oMarco)
         {
 
-            if (oMarco.IdMarco == 0)
+            var marcoProyecto = (from i in entity.MarcoLogico
+                                 where i.IdProyecto == oMarco.IdProyecto
+                                 select i).FirstOrDefault();
+            if (marcoProyecto == null)
             {
                 entity.MarcoLogico.Add(oMarco);
                 entity.SaveChanges();
@@ -109,7 +112,7 @@ namespace LogicaNegocio.LogicaNegocio
             else
             {
                 var marco = (from i in entity.MarcoLogico
-                             where i.IdMarco == oMarco.IdMarco
+                             where i.IdProyecto == oMarco.IdProyecto
                              select i).FirstOrDefault();
                 marco.Fin1 = oMarco.Fin1;
                 marco.Fin2 = oMarco.Fin2;

@@ -801,7 +801,13 @@ ManualApp.controller('ArbolObjetivosController',
                     }
                     $scope.medios1.splice(($scope.medios1.length - 1), 1);
                     $scope.medios.splice(($scope.medios.length - 1), 1);
-                    console.log($scope.medios);
+                   
+                } else {
+                    swal({
+                        text: 'Debe haber mínimo un objetivo especifico',
+                        confirmButtonColor: '#238276',
+                        width: '25%',
+                    })
                 }
             }
 
