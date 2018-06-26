@@ -335,7 +335,7 @@ namespace LogicaNegocio.LogicaNegocio
 
 
         }
-
+            
         public Task<ArbolProblemaDTO> ConsultarArbolFinal(int IdProyecto)
         {
             var arbol = (from i in entity.ArbolProblema

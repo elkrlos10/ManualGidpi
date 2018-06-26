@@ -811,9 +811,7 @@ ManualApp.controller('ArbolObjetivosController',
                 }
             }
 
-
             //VARIABLE PARA VALIDAR CUANDO YA INGRESO LA PRIMERA VEZ A LA VISTA DE RESULTADOS
-
             var contadorObjetivos = 0;
             var medios10 = [];
             $scope.medios1 = []
@@ -872,7 +870,6 @@ ManualApp.controller('ArbolObjetivosController',
                 waitingDialog.hide();
                 contadorObjetivos++;
             }
-
 
             //FUNCION PARA REGRESAR  A LA VISTA DEL ARBOL DE OBJETIVOS. 
             $scope.ocultarObjetivos = function () {
@@ -1016,7 +1013,6 @@ ManualApp.controller('ArbolObjetivosController',
                 audio1.pause();
                 return contadorResultados;
             }
-
 
             //FUNCION PARA GUARDAR TODOS LOS DATOS DE OBJETIVOS.
             $scope.guardarObjetivos = function () {
