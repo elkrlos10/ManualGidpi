@@ -9,6 +9,8 @@ ManualApp.controller('MenuController',
 
             $rootScope.globals = $cookieStore.get('username');
 
+            $('.modal-backdrop').remove();
+
             if ($rootScope.proyecto == undefined) {
                 if (VideoDemo == 0) {
                     setTimeout(function () {

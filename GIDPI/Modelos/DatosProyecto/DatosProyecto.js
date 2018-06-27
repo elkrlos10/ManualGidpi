@@ -264,7 +264,7 @@ ManualApp.controller('DatosProyectoController',
                         if (response.success) {
                             waitingDialog.hide();
                             swal({
-                                text: 'Modificacion Exitoso',
+                                text: 'Modificación Exitosa',
                                 confirmButtonColor: '#238276',
                                 width: '25%'
 

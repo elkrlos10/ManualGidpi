@@ -231,12 +231,14 @@ namespace LogicaNegocio.LogicaNegocio
             entity.SaveChanges();
 
             var objetivoGen = (from i in entity.ObjetivoGeneral
+                               where i.IdProyecto ==oObjetivosDTO.IdProyecto
                                orderby i.IdObjetivoGeneral descending
                                select i).FirstOrDefault();
 
             for (int i = 0; i < oObjetivosDTO.Objetivos.Count; i++)
             {
                 var especificos = (from f in entity.ObejetivosEspecificos
+                                   where f.IdObjetivoGeneral == objetivoGen.IdObjetivoGeneral
                                    orderby f.IdObjetivoEsp descending
                                    select f).FirstOrDefault();
                 //ObejetivosEspecificos especificos;
@@ -245,8 +247,6 @@ namespace LogicaNegocio.LogicaNegocio
                 {
                     if (oObjetivosDTO.Objetivos[i].ObjetivoEsp != "")
                     {
-
-
                         ObejetivosEspecificos objetivoEspecifico = new ObejetivosEspecificos();
                         objetivoEspecifico.IdObjetivoGeneral = objetivoGen.IdObjetivoGeneral;
                         objetivoEspecifico.ObjetivoEsp = oObjetivosDTO.Objetivos[i].ObjetivoEsp;
@@ -255,6 +255,7 @@ namespace LogicaNegocio.LogicaNegocio
                         entity.SaveChanges();
 
                         especificos = (from f in entity.ObejetivosEspecificos
+                                       where f.IdObjetivoGeneral == objetivoGen.IdObjetivoGeneral
                                        orderby f.IdObjetivoEsp descending
                                        select f).FirstOrDefault();
                     }
@@ -262,7 +263,8 @@ namespace LogicaNegocio.LogicaNegocio
                 }
 
 
-                if (oObjetivosDTO.Objetivos[i].Resultado1 != "" && oObjetivosDTO.Objetivos[i].MedidaResultado != "" && oObjetivosDTO.Objetivos[i].HerramientaResultado != "" && oObjetivosDTO.Objetivos[i].ProductoResultado != "")
+                if (oObjetivosDTO.Objetivos[i].Resultado1 != "" && oObjetivosDTO.Objetivos[i].MedidaResultado != "" 
+                    && oObjetivosDTO.Objetivos[i].HerramientaResultado != "" && oObjetivosDTO.Objetivos[i].ProductoResultado != "")
                 {
                     Resultados ResultadosObjetivos = new Resultados();
                     ResultadosObjetivos.IdObjetivoEsp = especificos.IdObjetivoEsp;
