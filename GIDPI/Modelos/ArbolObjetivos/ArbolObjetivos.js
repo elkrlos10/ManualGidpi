@@ -649,7 +649,6 @@ ManualApp.controller('ArbolObjetivosController',
 
                     // crear causa indirecta
                     if (tipo == "causaIndirecta" && document.querySelectorAll("#causaIndirecta li:nth-child(" + indirecto + ") div").length < 3) {
-                        console.log(indirecto);
                         bloque = document.createElement("div");
                         borrar = document.createElement("span");
                         txtArea = document.createElement("textarea");
@@ -753,7 +752,6 @@ ManualApp.controller('ArbolObjetivosController',
                             // Now browser starts downloading it instead of just showing it
                             var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
                             $scope.ObjArbol.imagen = imgageData;
-                            console.log($scope.ObjArbol.imagen);
                             ArbolObjetivoService.GuardarDatosArbol($scope.ObjArbol, function (response) {
 
                                 if (response.success) {
@@ -811,9 +809,7 @@ ManualApp.controller('ArbolObjetivosController',
                 }
             }
 
-
             //VARIABLE PARA VALIDAR CUANDO YA INGRESO LA PRIMERA VEZ A LA VISTA DE RESULTADOS
-
             var contadorObjetivos = 0;
             var medios10 = [];
             $scope.medios1 = []
@@ -872,7 +868,6 @@ ManualApp.controller('ArbolObjetivosController',
                 waitingDialog.hide();
                 contadorObjetivos++;
             }
-
 
             //FUNCION PARA REGRESAR  A LA VISTA DEL ARBOL DE OBJETIVOS. 
             $scope.ocultarObjetivos = function () {
@@ -1017,13 +1012,14 @@ ManualApp.controller('ArbolObjetivosController',
                 return contadorResultados;
             }
 
-
             //FUNCION PARA GUARDAR TODOS LOS DATOS DE OBJETIVOS.
             $scope.guardarObjetivos = function () {
 
                 var verbo = $("#verbo").val();
                 //$scope.ObjetivosFinales.ObjetivoCentral = verbo + " " + $scope.Objetivos.ObjetivoCentral;
-                if ($('#verbo').is(":visible")) {
+                var esVisible = $("#verbo").is(":visible");
+                console.log(esVisible);
+                if ($scope.DatosProyecto.Etapa < 5  )  {
                     $scope.ObjetivosFinales.ObjetivoCentral = verbo + " " + $scope.Objetivos.ObjetivoCentral;
                 } else {
                     $scope.ObjetivosFinales.ObjetivoCentral = $("#campoObjetivoGeneral").val();
@@ -1084,8 +1080,6 @@ ManualApp.controller('ArbolObjetivosController',
                 } else {
                     alertify.success("Ups! Debes completar los campos de cada resultado esperado.");
                 }
-                console.log($scope.ObjetivosFinales)
-
             }
 
             $scope.atras = function () {

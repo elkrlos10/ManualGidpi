@@ -283,7 +283,7 @@ ManualApp.controller('ArbolProblemaController',
 
                                         //CICLO PARA RECORRER TODOS LOS PROBLEMAS Y SEPARAR CAUSAS Y EFECTOS
                                         $.each($scope.Arbol.DetalleMat, function (index, value) {
-                                            if (value.Criterio == "Punto Critico") {
+                                            if (value.Criterio == "Punto Crítico") {
                                                 var txtInicial = value.Problema;//capturar texto del problema central en modal
                                                 document.querySelector("#txtProblema").value = txtInicial;
                                             }

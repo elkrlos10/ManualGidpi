@@ -9,6 +9,8 @@ ManualApp.controller('MenuController',
 
             $rootScope.globals = $cookieStore.get('username');
 
+            $('.modal-backdrop').remove();
+
             if ($rootScope.proyecto == undefined) {
                 if (VideoDemo == 0) {
                     setTimeout(function () {
@@ -54,7 +56,7 @@ ManualApp.controller('MenuController',
                     })
                 } else if ($rootScope.proyecto.datos.Etapa > 2) {
                     MenuService.consultarMatriz($rootScope.proyecto.datos.id, function (response) {
-                        if (response.success) {
+                        if (response.success && response.Result != false) {
                             //$location.url("/Matriz");
 
                             $location.url("/Matriz");

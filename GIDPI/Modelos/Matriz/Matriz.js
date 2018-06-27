@@ -73,7 +73,7 @@ ManualApp.controller('MatrizController',
 
                         $.each($scope.DatosMatriz, function (index, value) {
 
-                            if (value.Criterio == "Punto Critico") {
+                            if (value.Criterio == "Punto Crítico") {
                                 var dato = {
                                     name: value.Problema,
                                     color: 'rgba(255,0,0,1)',
@@ -577,7 +577,7 @@ ManualApp.controller('MatrizController',
 
                    
                 }
-                $scope.Problemas[$scope.puntoAlto].Criterio = "Punto Critico"
+                $scope.Problemas[$scope.puntoAlto].Criterio = "Punto Crítico"
                
                 $.each($scope.Problemas, function (index, value) {
 
@@ -591,7 +591,7 @@ ManualApp.controller('MatrizController',
 
                     if (value.name == $scope.Problemas[$scope.puntoAlto].Problema) {
                         var inicio = {
-                            name: "Punto Critico: " + $scope.Problemas[$scope.puntoAlto].Problema,
+                            name: "Punto Crítico: " + $scope.Problemas[$scope.puntoAlto].Problema,
                             color: 'rgba(255,0,0,1)',
                             data: [[$scope.Problemas[$scope.puntoAlto].EjeX, $scope.Problemas[$scope.puntoAlto].EjeY]]
                         }
