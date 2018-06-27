@@ -402,6 +402,7 @@
     <None Include="Properties\PublishProfiles\GidpiPublic.pubxml" />
     <None Include="Properties\PublishProfiles\nuevacasa.pubxml" />
     <None Include="Properties\PublishProfiles\Nuevo gidpi.pubxml" />
+    <None Include="Properties\PublishProfiles\SENA.pubxml" />
     <None Include="ReporteRcdl\DataSet8.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>

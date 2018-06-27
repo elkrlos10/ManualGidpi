@@ -753,8 +753,33 @@ ManualApp.controller('ArbolObjetivosController',
                             var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
                             $scope.ObjArbol.imagen = imgageData;
                             ArbolObjetivoService.GuardarDatosArbol($scope.ObjArbol, function (response) {
-
                                 if (response.success) {
+                                    $scope.ObjArbol = {
+                                        IdProyecto: $rootScope.proyecto.datos.id,
+                                        ObjetivoCentral: "",
+                                        Medios: [
+                                          {
+                                              Medio: "",
+                                              MediosIndirectos: [
+                                                  {
+                                                      indirecta: ""
+                                                  }
+                                              ]
+                                          }
+                                        ],
+                                        Fines: [
+                                         {
+                                             fin: "",
+                                             FinesIndirectos: [
+                                                 {
+                                                     indirecto: ""
+                                                 }
+                                             ]
+                                         }
+                                        ]
+
+                                    }
+
                                     waitingDialog.hide();
                                     swal({
                                         text: 'Registro Exitoso',
